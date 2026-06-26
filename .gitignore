@@ -1,0 +1,13 @@
+# Python sanal ortamı
+.venv/
+venv/
+__pycache__/
+
+# API anahtarları (ÇOK ÖNEMLİ!)
+.env
+
+# ChromaDB veritabanı klasörü
+backend/data/chromadb/
+
+# OS dosyaları
+.DS_Store

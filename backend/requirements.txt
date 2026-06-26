@@ -1,0 +1,5 @@
+pandas
+chromadb
+google-genai
+python-dotenv
+openpyxl
