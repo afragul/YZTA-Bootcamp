@@ -60,11 +60,11 @@ Bu doküman, **AI Destekli Kariyer Asistanı** projesinde **Kişi 2 (AI Çekirde
 ---
 
 ## 🛠️ Nasıl Çalıştırılır?
-1. Bağımlılıkları kurun:
+1. `.env` dosyasına `GEMINI_API_KEY` değerinizi ekleyin.
+2. Bağımlılıkları kurun:
    ```bash
    pip install -r requirements.txt
    ```
-2. `.env` dosyasına `GEMINI_API_KEY` değerinizi ekleyin.
 3. Test scriptini çalıştırın:
    ```bash
    python test_prompt.py
