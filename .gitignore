@@ -11,3 +11,6 @@ backend/data/chromadb/
 
 # OS dosyaları
 .DS_Store
+# Sanal ortam ve local sirlar
+venv/
+.env
