@@ -9,8 +9,8 @@ Bu doküman, **AI Destekli Kariyer Asistanı** projesinde **Kişi 2 (AI Çekirde
 | Hafta | Tema | Durum | Açıklama |
 | :--- | :--- | :---: | :--- |
 | **Hafta 1** | Kurulum, Tasarım & Mock Veri | 🟢 Tamamlandı | Şema ve mock veriler donduruldu, test ortamı hazırlandı. |
-| **Hafta 2** | CV Analizi (Prompt v1) | 🟡 Sıradaki | Ham metinden yapılandırılmış veri çıkarma ve doğrulama. |
-| **Hafta 3** | Skorlama & Eksik Analizi | ⚪ Beklemede | Rol uygunluk skorları ve gelişim alanlarının analizi. |
+| **Hafta 2** | CV Analizi (Prompt v1) | 🟢 Tamamlandı | Modüler cv_service.py yazıldı, 5 örnek CV ile toplu testler yapıldı. |
+| **Hafta 3** | Skorlama & Eksik Analizi | 🟡 Sıradaki | Rol uygunluk gerekçeleri ve eksik analizi detaylandırılması. |
 | **Hafta 4** | Chat Beyin & İyileştirme | ⚪ Beklemede | Kariyer Koçu sistem promptu ve edge case kontrolleri. |
 | **Hafta 5** | Kalite, Dokümantasyon & Sunum | ⚪ Beklemede | Prompt test tabloları ve demo senaryosu hazırlığı. |
 
@@ -28,15 +28,15 @@ Bu doküman, **AI Destekli Kariyer Asistanı** projesinde **Kişi 2 (AI Çekirde
 
 ---
 
-## 🟡 Hafta 2: CV Analizi & Yapısal Veri (Sıradaki)
-- [ ] Kişi 1 (Backend) ile entegre çalışacak LLM servis wrapper'ının yazılması.
-- [ ] **Prompt v1 Tasarımı:** CV metninden kişisel bilgiler, eğitim, deneyim ve yetenekleri hatasız ayıklayan promptun hazırlanması.
-- [ ] Gemini API **Structured JSON Output** özelliğinin aktifleştirilerek Pydantic şemasıyla eşleştirilmesi.
-- [ ] Farklı formatlardaki 5-10 örnek CV üzerinde promptun kararlılığının test edilmesi.
+## 🟢 Hafta 2: CV Analizi & Yapısal Veri (Tamamlandı)
+- [x] Kişi 1 (Backend) ile entegre çalışacak LLM servis sınıfının (`cv_service.py`) yazılması.
+- [x] **Prompt v1 Tasarımı:** CV metninden kişisel bilgiler, eğitim, deneyim ve yetenekleri hatasız ayıklayan promptun hazırlanması.
+- [x] Gemini API **Structured JSON Output** (Pydantic şeması) özelliğinin aktifleştirilip schema.py ile eşleştirilmesi.
+- [x] Farklı formatlardaki 5 örnek CV üzerinde promptun kararlılığının ve puanlamasının test edilmesi.
 
 ---
 
-## ⚪ Hafta 3: Rol Skorlama & Eksik Analizi
+## 🟡 Hafta 3: Rol Skorlama & Eksik Analizi (Sıradaki)
 - [ ] **Prompt v2 Tasarımı:** Adayın hedef rollere (ML, Backend, Frontend vb.) 0-100 arası uygunluk skorunun hesaplanması.
 - [ ] Belirlenen skorların gerekçelerinin (reasoning) açıklanması.
 - [ ] **Eksik Analizi (Gap Analysis):** Adayın seçtiği hedef role göre hangi becerilerde eksik kaldığının ("Docker tecrübesi zayıf" vb.) tespiti.

@@ -1,0 +1,46 @@
+{
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Redux",
+    "Git",
+    "REST API",
+    "GraphQL API"
+  ],
+  "experience_years": 2.0,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Hacettepe Üniversitesi",
+      "department": "Bilgisayar Bilimleri",
+      "graduation_year": 2022
+    }
+  ],
+  "strengths": [
+    "2 yıllık profesyonel Frontend Geliştirici deneyimi",
+    "Modern frontend teknolojilerine (React, Next.js, Tailwind CSS) hakimiyet",
+    "Redux Toolkit ile kapsamlı state yönetimi deneyimi",
+    "REST ve GraphQL API entegrasyonu becerisi",
+    "Responsive web arayüzleri tasarlama yeteneği",
+    "Sürüm kontrol sistemi (Git) kullanımı"
+  ],
+  "gaps": [
+    "Backend geliştirme veya tam yığın (full-stack) deneyimi eksikliği",
+    "Veritabanı bilgisi ve deneyimi belirtilmemiş",
+    "Test framework'leri (örn: Jest, React Testing Library, Cypress) hakkında deneyim eksikliği",
+    "Bulut platformları (AWS, Azure, GCP) veya CI/CD süreçleri hakkında deneyim belirtilmemiş",
+    "Performans optimizasyonu ve erişilebilirlik (accessibility) konularında detaylı bilgi eksikliği"
+  ],
+  "role_scores": {
+    "backend_developer": 15,
+    "frontend_developer": 90,
+    "machine_learning_engineer": 5,
+    "data_scientist": 5,
+    "devops_engineer": 10
+  }
+}

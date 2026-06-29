@@ -1,0 +1,42 @@
+{
+  "skills": [
+    "Python",
+    "FastAPI",
+    "Django",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "RabbitMQ",
+    "Git"
+  ],
+  "experience_years": 1.5,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Ege Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "graduation_year": 2023
+    }
+  ],
+  "strengths": [
+    "1.5 yıllık Backend Geliştirici deneyimi",
+    "FastAPI, PostgreSQL ve Docker gibi modern backend teknolojilerinde yetkinlik",
+    "Mikroservis mimarisi, Redis cache ve Celery ile asenkron görev kuyrukları konularında pratik deneyim",
+    "E-ticaret platformu API'leri geliştirme tecrübesi",
+    "Python ekosistemine hakimiyet (FastAPI, Django)"
+  ],
+  "gaps": [
+    "Bulut platformları (AWS, Azure, GCP) deneyimi eksikliği",
+    "CI/CD süreçleri ve otomasyon araçları bilgisi eksikliği",
+    "Test yazma (unit, integration, end-to-end) konusunda belirtilen bir deneyim yok",
+    "Güvenlik pratikleri (örn: OWASP Top 10) konusunda detay eksikliği",
+    "Farklı veritabanı türleri (örn: NoSQL veritabanları) ile deneyim eksikliği"
+  ],
+  "role_scores": {
+    "backend_developer": 92,
+    "frontend_developer": 12,
+    "machine_learning_engineer": 18,
+    "data_scientist": 22,
+    "devops_engineer": 35
+  }
+}

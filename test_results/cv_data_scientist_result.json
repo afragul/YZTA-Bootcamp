@@ -1,0 +1,49 @@
+{
+  "skills": [
+    "Python",
+    "SQL",
+    "R",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+    "Tableau",
+    "PowerBI",
+    "Git"
+  ],
+  "experience_years": 1.0,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "ODTÜ",
+      "department": "İstatistik",
+      "graduation_year": 2021
+    },
+    {
+      "degree": "Yüksek Lisans",
+      "school": "Sabancı Üniversitesi",
+      "department": "Veri Analitiği",
+      "graduation_year": 2023
+    }
+  ],
+  "strengths": [
+    "1 yıllık doğrudan Veri Bilimcisi (Data Scientist) deneyimi",
+    "Büyük veri kümeleri üzerinde Keşifsel Veri Analizi (EDA) yapma becerisi",
+    "Müşteri kaybı (churn) ve segmentasyon gibi makine öğrenimi modelleri tasarlama deneyimi",
+    "SQL, Python (Pandas, NumPy, Scikit-learn) ve R gibi temel veri bilimi araçlarına hakimiyet",
+    "Tableau ve PowerBI kullanarak interaktif iş zekası panoları (dashboard) geliştirme yeteneği",
+    "Veri analizi ve modelleme süreçlerinde pratik deneyim"
+  ],
+  "gaps": [
+    "Deneyim süresi (1 yıl) daha kıdemli roller için sınırlı olabilir",
+    "Büyük veri ekosistemi araçları (örn. Spark, Hadoop) veya bulut platformları (AWS, Azure, GCP) deneyimi belirtilmemiş",
+    "Model dağıtımı (deployment) ve MLOps süreçleri hakkında bilgi veya deneyim eksikliği",
+    "R becerisi belirtilse de, projelerde Python kadar aktif kullanımına dair detay bulunmamaktadır"
+  ],
+  "role_scores": {
+    "backend_developer": 10,
+    "frontend_developer": 5,
+    "machine_learning_engineer": 70,
+    "data_scientist": 95,
+    "devops_engineer": 10
+  }
+}

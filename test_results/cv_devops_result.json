@@ -1,0 +1,52 @@
+{
+  "skills": [
+    "AWS",
+    "Terraform",
+    "Docker",
+    "Kubernetes",
+    "Ansible",
+    "Jenkins",
+    "Prometheus",
+    "Linux",
+    "Bash",
+    "Git",
+    "GitHub Actions",
+    "EC2",
+    "S3",
+    "RDS",
+    "Grafana",
+    "CI/CD",
+    "IaC"
+  ],
+  "experience_years": 2.0,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Yıldız Teknik Üniversitesi",
+      "department": "Matematik Mühendisliği",
+      "graduation_year": 2022
+    }
+  ],
+  "strengths": [
+    "2 yıllık sağlam DevOps Mühendisi deneyimi",
+    "AWS bulut hizmetleri (EC2, S3, RDS) yönetimi konusunda yetkinlik",
+    "Terraform ile Infrastructure as Code (IaC) uygulama becerisi",
+    "Jenkins ve GitHub Actions kullanarak CI/CD boru hatları tasarlama ve uygulama deneyimi",
+    "Kubernetes küme yönetimi ve izleme (Prometheus, Grafana) konularında bilgi ve deneyim",
+    "Geniş bir teknik beceri setine sahip (Docker, Ansible, Linux, Bash, Git)"
+  ],
+  "gaps": [
+    "Daha ileri düzey scripting/programlama dilleri (örn: Python, Go) ile otomasyon deneyimi",
+    "Diğer büyük bulut sağlayıcıları (Azure, GCP) ile deneyim eksikliği",
+    "Güvenlik (DevSecOps) ve ağ (networking) konularında spesifik deneyim belirtilmemiş",
+    "Büyük ölçekli dağıtık sistemler veya mikroservis mimarileri konusunda daha fazla deneyim belirtilmemiş",
+    "Veritabanı yönetimi (NoSQL, SQL optimizasyon) konusunda detay eksikliği"
+  ],
+  "role_scores": {
+    "backend_developer": 20,
+    "frontend_developer": 5,
+    "machine_learning_engineer": 5,
+    "data_scientist": 5,
+    "devops_engineer": 95
+  }
+}
