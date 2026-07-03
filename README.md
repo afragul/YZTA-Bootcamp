@@ -20,7 +20,7 @@
 :---:
 |
 |
- İsmail Dönmez 
+ Afragül Tığ 
 |
  Product Owner 
 |
@@ -31,7 +31,7 @@
 )
 |
 |
- İncila Kırbaç 
+ Tolga Duy
 |
  Scrum Master 
 |
@@ -42,7 +42,7 @@
 )
 |
 |
- İbrahim Serhat Aktaş 
+  Ekin Karıncalı
 |
  Developer 
 |
@@ -53,7 +53,7 @@
 )
 |
 |
- İpek Nezihe Can 
+ Muhammed Behlül Alar
 |
  Developer 
 |
