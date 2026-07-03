@@ -4,65 +4,15 @@
 
 # Ürün İle İlgili Bilgiler
 
+
 ## Takım Elemanları
-|
- Name 
-|
- Title 
-|
- Socials 
-|
-|
-:---
-|
-:---
-|
-:---:
-|
-|
- Afragül Tığ 
-|
- Product Owner 
-|
-[
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
-](
-#
-)
-|
-|
- Tolga Duy
-|
- Scrum Master 
-|
-[
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
-](
-#
-)
-|
-|
-  Ekin Karıncalı
-|
- Developer 
-|
-[
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
-](
-#
-)
-|
-|
- Muhammed Behlül Alar
-|
- Developer 
-|
-[
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
-](
-#
 
-
+| <div align="center">Name</div>   | <div align="center">Title</div>  | <div align="center">Socials</div>     |
+| :---------- | :---------- | :----------: |
+| Afragül Tığ     | Product Owner     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/afragul-tig/)   | 
+| Tolga Duy     | Scrum Master     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/tolga-duy/) |
+| Ekin Karıncalı      | Developer      | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in//)   |
+| Muhammed Behlül Alar      | Developer     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/muhammed-behlül-alar/)    |
 
 ## Ürün İsmi
 
