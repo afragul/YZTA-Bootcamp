@@ -5,11 +5,65 @@
 # Ürün İle İlgili Bilgiler
 
 ## Takım Elemanları
+|
+ Name 
+|
+ Title 
+|
+ Socials 
+|
+|
+:---
+|
+:---
+|
+:---:
+|
+|
+ İsmail Dönmez 
+|
+ Product Owner 
+|
+[
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
+](
+#
+)
+|
+|
+ İncila Kırbaç 
+|
+ Scrum Master 
+|
+[
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
+](
+#
+)
+|
+|
+ İbrahim Serhat Aktaş 
+|
+ Developer 
+|
+[
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
+](
+#
+)
+|
+|
+ İpek Nezihe Can 
+|
+ Developer 
+|
+[
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
+](
+#
+)
+|
 
-*   [Üye Adı 1]: Backend & Altyapı Lideri
-*   [Üye Adı 2]: AI Çekirdek Sorumlusu (Siz)
-*   [Üye Adı 3]: RAG & Agent Sorumlusu
-*   [Üye Adı 4]: Frontend & UX Lideri
 
 ## Ürün İsmi
 
