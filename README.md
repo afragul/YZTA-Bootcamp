@@ -61,8 +61,7 @@
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" height="18"/>
 ](
 #
-)
-|
+
 
 
 ## Ürün İsmi
