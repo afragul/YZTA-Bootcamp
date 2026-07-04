@@ -14,3 +14,5 @@ backend/data/chromadb/
 # Sanal ortam ve local sirlar
 venv/
 .env
+
+.idea/
