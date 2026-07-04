@@ -8,15 +8,21 @@
     "Scikit-learn",
     "Tableau",
     "PowerBI",
-    "Git"
+    "Git",
+    "Keşifsel Veri Analizi (EDA)",
+    "Müşteri Kaybı Modelleme",
+    "Segmentasyon Modelleme",
+    "İnteraktif Dashboard Geliştirme",
+    "Analitik Düşünme",
+    "Problem Çözme"
   ],
   "experience_years": 1.0,
   "education": [
     {
       "degree": "Lisans",
-      "school": "ODTÜ",
+      "school": "Orta Doğu Teknik Üniversitesi",
       "department": "İstatistik",
-      "graduation_year": 2021
+      "graduation_year": 2019
     },
     {
       "degree": "Yüksek Lisans",
@@ -26,24 +32,34 @@
     }
   ],
   "strengths": [
-    "1 yıllık doğrudan Veri Bilimcisi (Data Scientist) deneyimi",
-    "Büyük veri kümeleri üzerinde Keşifsel Veri Analizi (EDA) yapma becerisi",
-    "Müşteri kaybı (churn) ve segmentasyon gibi makine öğrenimi modelleri tasarlama deneyimi",
-    "SQL, Python (Pandas, NumPy, Scikit-learn) ve R gibi temel veri bilimi araçlarına hakimiyet",
-    "Tableau ve PowerBI kullanarak interaktif iş zekası panoları (dashboard) geliştirme yeteneği",
-    "Veri analizi ve modelleme süreçlerinde pratik deneyim"
+    "1 yıllık Data Scientist olarak pratik iş deneyimi",
+    "Python (Pandas, NumPy, Scikit-learn), SQL ve R gibi temel veri bilimi dillerine ve kütüphanelerine hakimiyet",
+    "Keşifsel Veri Analizi (EDA) ve makine öğrenimi modellemesi (müşteri kaybı, segmentasyon) konularında deneyim",
+    "Tableau ve PowerBI kullanarak interaktif dashboardlar geliştirme yeteneği",
+    "Güçlü analitik düşünme ve problem çözme becerileri"
   ],
   "gaps": [
-    "Deneyim süresi (1 yıl) daha kıdemli roller için sınırlı olabilir",
-    "Büyük veri ekosistemi araçları (örn. Spark, Hadoop) veya bulut platformları (AWS, Azure, GCP) deneyimi belirtilmemiş",
-    "Model dağıtımı (deployment) ve MLOps süreçleri hakkında bilgi veya deneyim eksikliği",
-    "R becerisi belirtilse de, projelerde Python kadar aktif kullanımına dair detay bulunmamaktadır"
+    "Derin öğrenme (Deep Learning) veya ileri istatistiksel modelleme yöntemleri konusunda deneyim eksikliği",
+    "Büyük veri teknolojileri (örn. Spark, Hadoop) veya bulut platformları (AWS, Azure, GCP) deneyimi belirtilmemiş",
+    "Model dağıtımı (deployment) ve MLOps süreçleri hakkında bilgi eksikliği",
+    "A/B testleri veya deneysel tasarım konularında deneyim belirtilmemiş",
+    "İletişim ve sunum becerileri CV'de açıkça vurgulanmamış"
   ],
   "role_scores": {
     "backend_developer": 10,
     "frontend_developer": 5,
-    "machine_learning_engineer": 70,
+    "mobile_developer": 5,
+    "devops_engineer": 10,
+    "machine_learning_engineer": 65,
     "data_scientist": 95,
-    "devops_engineer": 10
+    "data_analyst": 90,
+    "ui_ux_designer": 5,
+    "product_manager": 20,
+    "project_manager": 20,
+    "digital_marketing_specialist": 10,
+    "business_analyst": 85,
+    "sales_specialist": 5,
+    "hr_specialist": 5,
+    "customer_success_specialist": 5
   }
 }

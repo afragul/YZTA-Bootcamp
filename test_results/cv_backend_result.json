@@ -7,7 +7,9 @@
     "Redis",
     "Docker",
     "RabbitMQ",
-    "Git"
+    "Git",
+    "Mikroservis Mimarisi",
+    "Asenkron Görev Kuyrukları (Celery)"
   ],
   "experience_years": 1.5,
   "education": [
@@ -19,24 +21,34 @@
     }
   ],
   "strengths": [
-    "1.5 yıllık Backend Geliştirici deneyimi",
+    "1.5 yıllık Backend Geliştirici olarak pratik deneyim",
     "FastAPI, PostgreSQL ve Docker gibi modern backend teknolojilerinde yetkinlik",
-    "Mikroservis mimarisi, Redis cache ve Celery ile asenkron görev kuyrukları konularında pratik deneyim",
-    "E-ticaret platformu API'leri geliştirme tecrübesi",
-    "Python ekosistemine hakimiyet (FastAPI, Django)"
+    "E-ticaret platformu API geliştirme tecrübesi",
+    "Mikroservis mimarisi, Redis cache ve Celery ile asenkron görev kuyrukları kurma bilgisi",
+    "Python ve ilgili framework'lerde (FastAPI, Django) güçlü teknik bilgi"
   ],
   "gaps": [
-    "Bulut platformları (AWS, Azure, GCP) deneyimi eksikliği",
-    "CI/CD süreçleri ve otomasyon araçları bilgisi eksikliği",
-    "Test yazma (unit, integration, end-to-end) konusunda belirtilen bir deneyim yok",
-    "Güvenlik pratikleri (örn: OWASP Top 10) konusunda detay eksikliği",
-    "Farklı veritabanı türleri (örn: NoSQL veritabanları) ile deneyim eksikliği"
+    "Frontend veya mobil geliştirme becerileri eksikliği",
+    "Bulut platformları (AWS, Azure, GCP) deneyimi belirtilmemiş",
+    "Yazılım test süreçleri (unit, integration test) hakkında bilgi veya deneyim belirtilmemiş",
+    "CI/CD (Sürekli Entegrasyon/Sürekli Dağıtım) süreçleri hakkında deneyim eksikliği",
+    "Soft skill'ler (iletişim, problem çözme, takım çalışması) CV'de açıkça belirtilmemiş"
   ],
   "role_scores": {
-    "backend_developer": 92,
-    "frontend_developer": 12,
-    "machine_learning_engineer": 18,
-    "data_scientist": 22,
-    "devops_engineer": 35
+    "backend_developer": 95,
+    "frontend_developer": 5,
+    "mobile_developer": 5,
+    "devops_engineer": 40,
+    "machine_learning_engineer": 10,
+    "data_scientist": 15,
+    "data_analyst": 20,
+    "ui_ux_designer": 0,
+    "product_manager": 5,
+    "project_manager": 5,
+    "digital_marketing_specialist": 0,
+    "business_analyst": 10,
+    "sales_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
   }
 }

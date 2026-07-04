@@ -10,13 +10,13 @@
     "Linux",
     "Bash",
     "Git",
-    "GitHub Actions",
-    "EC2",
-    "S3",
-    "RDS",
-    "Grafana",
     "CI/CD",
-    "IaC"
+    "Infrastructure as Code (IaC)",
+    "Cloud Infrastructure Management",
+    "Monitoring",
+    "Problem Çözme",
+    "Takım Çalışması",
+    "Analitik Düşünme"
   ],
   "experience_years": 2.0,
   "education": [
@@ -28,25 +28,35 @@
     }
   ],
   "strengths": [
-    "2 yıllık sağlam DevOps Mühendisi deneyimi",
-    "AWS bulut hizmetleri (EC2, S3, RDS) yönetimi konusunda yetkinlik",
-    "Terraform ile Infrastructure as Code (IaC) uygulama becerisi",
-    "Jenkins ve GitHub Actions kullanarak CI/CD boru hatları tasarlama ve uygulama deneyimi",
-    "Kubernetes küme yönetimi ve izleme (Prometheus, Grafana) konularında bilgi ve deneyim",
-    "Geniş bir teknik beceri setine sahip (Docker, Ansible, Linux, Bash, Git)"
+    "DevOps araçları ve metodolojilerinde (AWS, Terraform, Kubernetes, Jenkins, Prometheus) güçlü pratik deneyim",
+    "Bulut altyapısı yönetimi ve Infrastructure as Code (IaC) uygulamalarında yetkinlik",
+    "CI/CD boru hatları tasarlama ve yönetme becerisi",
+    "Kapsayıcılaştırma (Docker) ve orkestrasyon (Kubernetes) konularında bilgi ve deneyim",
+    "Linux ortamlarında ve Bash scripting'de yetkinlik",
+    "Sistem izleme ve alarm kurma deneyimi (Prometheus, Grafana)"
   ],
   "gaps": [
-    "Daha ileri düzey scripting/programlama dilleri (örn: Python, Go) ile otomasyon deneyimi",
-    "Diğer büyük bulut sağlayıcıları (Azure, GCP) ile deneyim eksikliği",
-    "Güvenlik (DevSecOps) ve ağ (networking) konularında spesifik deneyim belirtilmemiş",
-    "Büyük ölçekli dağıtık sistemler veya mikroservis mimarileri konusunda daha fazla deneyim belirtilmemiş",
-    "Veritabanı yönetimi (NoSQL, SQL optimizasyon) konusunda detay eksikliği"
+    "Gelişmiş programlama dillerinde (Python, Go gibi) daha derinlemesine deneyim eksikliği",
+    "DevSecOps prensipleri ve güvenlik araçları konusunda belirtilen bir deneyim olmaması",
+    "Veritabanı yönetimi ve optimizasyonu konusunda sınırlı bilgi (RDS kullanımı dışında)",
+    "Büyük ölçekli veya çoklu bulut ortamlarında deneyim belirtilmemiş",
+    "Sadece 2 yıllık deneyimle, daha karmaşık mimarilerde liderlik veya tasarım rollerinde deneyim eksikliği"
   ],
   "role_scores": {
     "backend_developer": 20,
     "frontend_developer": 5,
-    "machine_learning_engineer": 5,
-    "data_scientist": 5,
-    "devops_engineer": 95
+    "mobile_developer": 5,
+    "devops_engineer": 95,
+    "machine_learning_engineer": 10,
+    "data_scientist": 10,
+    "data_analyst": 10,
+    "ui_ux_designer": 5,
+    "product_manager": 15,
+    "project_manager": 20,
+    "digital_marketing_specialist": 5,
+    "business_analyst": 15,
+    "sales_specialist": 5,
+    "hr_specialist": 5,
+    "customer_success_specialist": 5
   }
 }

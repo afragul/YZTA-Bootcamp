@@ -7,14 +7,15 @@
     "MLflow",
     "OpenCV",
     "Git",
-    "Hugging Face Transformers",
-    "Triton Server",
     "Görüntü Sınıflandırma",
     "Nesne Tespiti",
-    "NLP (Doğal Dil İşleme)",
-    "Model İnce Ayarı (Fine-tuning)",
+    "NLP Model İnce Ayarı (Fine-tuning)",
+    "Model Dağıtımı (Triton Server)",
     "Deney Takibi",
-    "Model Dağıtımı (Deployment)"
+    "Analitik Düşünme",
+    "Problem Çözme",
+    "Araştırma Yeteneği",
+    "Öğrenmeye Açıklık"
   ],
   "experience_years": 1.0,
   "education": [
@@ -32,24 +33,34 @@
     }
   ],
   "strengths": [
-    "Makine öğrenimi kavramları ve uygulamalarında (görüntü sınıflandırma, nesne tespiti, NLP) güçlü temel.",
-    "PyTorch, TensorFlow ve Scikit-learn gibi temel ML çerçevelerinde yetkinlik.",
-    "MLOps araçları (MLflow ile deney takibi, Triton Server ile model dağıtımı) deneyimi.",
-    "AI start-up ortamında pratik deneyim, uyum sağlama ve uygulamalı becerileri gösterir.",
-    "Hem Bilgisayar Mühendisliği hem de Yapay Zeka alanında güçlü akademik geçmiş."
+    "Makine öğrenimi ve derin öğrenme modelleri geliştirme konusunda güçlü teknik bilgi (PyTorch, TensorFlow)",
+    "Görüntü işleme (görüntü sınıflandırma, nesne tespiti) ve doğal dil işleme (NLP) alanlarında pratik deneyim",
+    "MLflow ile deney takibi ve Triton Server ile model dağıtımı konularında bilgi sahibi",
+    "AI start-up ortamında stajyer olarak çalışma deneyimi",
+    "Koç Üniversitesi'nden Bilgisayar Mühendisliği Lisans ve Yapay Zeka Yüksek Lisans dereceleri"
   ],
   "gaps": [
-    "Sınırlı profesyonel iş deneyimi (1 yıllık staj).",
-    "Daha geniş kapsamlı yazılım mühendisliği prensipleri ve araçları (örn. birim testleri, CI/CD boru hatları) eksikliği.",
-    "Büyük ölçekli veri işleme teknolojileri (örn. Spark, Hadoop) deneyimi belirtilmemiş.",
-    "Bulut platformları (AWS, GCP, Azure) üzerinde ML çözümleri geliştirme ve dağıtma deneyimi eksikliği.",
-    "Veritabanı yönetimi (SQL/NoSQL) becerileri belirtilmemiş."
+    "Stajyerlik dışında daha fazla endüstriyel tam zamanlı iş deneyimi",
+    "Bulut platformları (AWS, Azure, GCP) üzerinde MLOps ve altyapı yönetimi deneyimi eksikliği",
+    "Büyük veri teknolojileri (Spark, Hadoop) bilgisi eksikliği",
+    "Yazılım mühendisliği prensipleri ve tasarım desenleri konusunda daha derinlemesine bilgi",
+    "Farklı programlama dilleri veya ek framework'ler konusunda deneyim eksikliği"
   ],
   "role_scores": {
-    "backend_developer": 40,
+    "backend_developer": 20,
     "frontend_developer": 5,
-    "machine_learning_engineer": 92,
-    "data_scientist": 65,
-    "devops_engineer": 35
+    "mobile_developer": 5,
+    "devops_engineer": 30,
+    "machine_learning_engineer": 95,
+    "data_scientist": 80,
+    "data_analyst": 40,
+    "ui_ux_designer": 0,
+    "product_manager": 10,
+    "project_manager": 10,
+    "digital_marketing_specialist": 0,
+    "business_analyst": 15,
+    "sales_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
   }
 }
