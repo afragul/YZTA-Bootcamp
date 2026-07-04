@@ -17,21 +17,28 @@ class CVAnalysisService:
         self.client = genai.Client(api_key=api_key)
         self.model_name = "gemini-2.5-flash"
         
-        # Projede skorlama yapacağımız 15 hedef rol
+        # Projede skorlama yapacağımız 22 hedef rol (jobs_dataset.xlsx analizinden türetilmiştir)
         self.target_roles = [
             "Backend Developer",
             "Frontend Developer",
+            "Full Stack Developer",
             "Mobile Developer",
             "DevOps Engineer",
+            "Cloud Engineer / Architect",
             "Machine Learning Engineer",
             "Data Scientist",
+            "Data Engineer",
             "Data Analyst",
+            "Business Intelligence (BI) Analyst",
+            "Database Administrator (DBA)",
+            "Cybersecurity Specialist",
+            "Systems / Network Administrator",
             "UI/UX Designer",
+            "Graphic Designer",
             "Product Manager",
             "Project Manager",
-            "Digital Marketing Specialist",
             "Business Analyst",
-            "Sales / Account Specialist",
+            "Digital Marketing Specialist",
             "HR Specialist / Recruiter",
             "Customer Success Specialist"
         ]
@@ -55,25 +62,26 @@ class CVAnalysisService:
     def analyze_cv(self, cv_text: str) -> dict:
         """
         Ham CV metnini alır, yapılandırılmış şemaya göre analiz eder,
-        belirlenen 15 hedef rol için skorlama yapar ve JSON/Sözlük olarak döner.
+        belirlenen 22 hedef rol için skorlama yapar ve JSON/Sözlük olarak döner.
         """
         response_schema = self._get_clean_schema()
         
-        # Yapay zekaya 15 rolün tamamını analiz etmesini söyleyen sistem talimatı
+        # Yapay zekaya 22 rolün tamamını analiz etmesini söyleyen sistem talimatı
         system_instruction = (
             "Sen profesyonel bir Kariyer ve İK Asistanı yapay zekasısın. Görevin, sana verilen "
             "CV metnini titizlikle incelemek ve belirtilen JSON şemasına uygun şekilde analiz etmektir.\n\n"
             "ÖNEMLİ KURALLAR:\n"
             "1. Deneyim yılını sayısal (float) olarak çıkar.\n"
             "2. Eğitim geçmişini listele.\n"
-            "3. Adayın sahip olduğu hem teknik hem de sosyal/iletişim (soft skills) becerilerini listele.\n"
+            "3. Adayın sahip olduğu teknik, sektörel ve sosyal (soft skills) becerilerini listele.\n"
             "4. Adayın güçlü yönlerini (strengths) ve gelişim alanlarını (gaps) net maddeler halinde belirt.\n"
-            "5. 'role_scores' altındaki tüm alanlar için adayın CV'sine göre 0-100 arasında uygunluk skoru ata:\n"
-            "   - backend_developer, frontend_developer, mobile_developer, devops_engineer\n"
-            "   - machine_learning_engineer, data_scientist, data_analyst\n"
-            "   - ui_ux_designer, product_manager, project_manager\n"
-            "   - digital_marketing_specialist, business_analyst, sales_specialist\n"
-            "   - hr_specialist, customer_success_specialist\n"
+            "5. 'role_scores' altındaki tüm 22 alan için adayın CV'sine göre 0-100 arasında uygunluk skoru ata:\n"
+            "   - Yazılım Geliştirme: backend_developer, frontend_developer, fullstack_developer, mobile_developer, devops_engineer, cloud_engineer\n"
+            "   - Veri & AI Sistemleri: machine_learning_engineer, data_scientist, data_engineer, data_analyst, bi_analyst, database_administrator\n"
+            "   - Altyapı & Güvenlik: cybersecurity_specialist, systems_administrator\n"
+            "   - Tasarım: ui_ux_designer, graphic_designer\n"
+            "   - Yönetim & Analiz: product_manager, project_manager, business_analyst\n"
+            "   - İş Operasyonları: digital_marketing_specialist, hr_specialist, customer_success_specialist\n"
             "Her bir alan için kesinlikle sayısal bir puan hesaplamalı ve boş bırakmamalısın."
         )
 

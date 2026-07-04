@@ -7,12 +7,12 @@
     "HTML5",
     "CSS3",
     "Tailwind CSS",
-    "Redux",
+    "Redux Toolkit",
     "Git",
     "Responsive Web Design",
-    "State Management (Redux Toolkit)",
-    "REST API Integration",
-    "GraphQL API Integration"
+    "REST API Entegrasyonu",
+    "GraphQL API Entegrasyonu",
+    "State Yönetimi"
   ],
   "experience_years": 2.0,
   "education": [
@@ -24,34 +24,41 @@
     }
   ],
   "strengths": [
-    "Modern frontend teknolojilerinde (React, Next.js, Tailwind CSS) güçlü deneyim",
-    "Responsive web arayüzleri tasarlama ve geliştirme yeteneği",
-    "Redux Toolkit ile kapsamlı state yönetimi bilgisi",
-    "REST ve GraphQL API entegrasyonunda tecrübe",
-    "Bilgisayar Bilimleri eğitimi ile sağlam teorik altyapı"
+    "Modern frontend teknolojilerinde (React, Next.js, Tailwind CSS) güçlü yetkinlik.",
+    "Redux Toolkit ile kapsamlı state yönetimi deneyimi.",
+    "REST ve GraphQL API entegrasyonlarında yetkinlik.",
+    "Modern ve responsive web arayüzleri tasarlama ve geliştirme becerisi.",
+    "Ajans ortamında (PixelDesign) 2 yıllık pratik frontend geliştirme deneyimi."
   ],
   "gaps": [
-    "Backend geliştirme veya veritabanı bilgisi eksikliği",
-    "Test yazma (unit/integration tests) konusunda belirtilen bir deneyim yok",
-    "UI/UX prensipleri veya tasarım araçları hakkında bilgi belirtilmemiş",
-    "Bulut platformları (AWS, Azure, GCP) veya CI/CD süreçleri hakkında deneyim belirtilmemiş",
-    "Mobil geliştirme (React Native gibi) veya farklı frontend framework'leri (Angular, Vue) konusunda deneyim eksikliği"
+    "Test frameworkleri (örn. Jest, React Testing Library) konusunda belirtilmiş bir deneyim eksikliği.",
+    "Performans optimizasyonu ve SEO gibi ileri düzey frontend konularında detay eksikliği.",
+    "Backend teknolojileri veya veritabanı bilgisi belirtilmemiş, bu da full-stack rolleri için bir gelişim alanı.",
+    "UI/UX prensipleri veya tasarım araçları (Figma, Sketch) hakkında bilgi eksikliği, sadece geliştirme odaklı.",
+    "Proje yönetimi veya takım liderliği gibi sosyal beceriler hakkında bilgi eksikliği."
   ],
   "role_scores": {
     "backend_developer": 15,
     "frontend_developer": 95,
+    "fullstack_developer": 45,
     "mobile_developer": 20,
     "devops_engineer": 10,
+    "cloud_engineer": 10,
     "machine_learning_engineer": 5,
     "data_scientist": 5,
+    "data_engineer": 5,
     "data_analyst": 5,
-    "ui_ux_designer": 20,
-    "product_manager": 5,
-    "project_manager": 5,
-    "digital_marketing_specialist": 0,
-    "business_analyst": 5,
-    "sales_specialist": 0,
-    "hr_specialist": 0,
-    "customer_success_specialist": 0
+    "bi_analyst": 5,
+    "database_administrator": 5,
+    "cybersecurity_specialist": 5,
+    "systems_administrator": 5,
+    "ui_ux_designer": 35,
+    "graphic_designer": 5,
+    "product_manager": 10,
+    "project_manager": 10,
+    "business_analyst": 10,
+    "digital_marketing_specialist": 5,
+    "hr_specialist": 5,
+    "customer_success_specialist": 5
   }
 }

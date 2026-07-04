@@ -9,7 +9,9 @@
     "RabbitMQ",
     "Git",
     "Mikroservis Mimarisi",
-    "Asenkron Görev Kuyrukları (Celery)"
+    "API Geliştirme",
+    "Asenkron Görev Kuyrukları",
+    "Veritabanı Yönetimi"
   ],
   "experience_years": 1.5,
   "education": [
@@ -21,33 +23,40 @@
     }
   ],
   "strengths": [
-    "1.5 yıllık Backend Geliştirici olarak pratik deneyim",
-    "FastAPI, PostgreSQL ve Docker gibi modern backend teknolojilerinde yetkinlik",
-    "E-ticaret platformu API geliştirme tecrübesi",
-    "Mikroservis mimarisi, Redis cache ve Celery ile asenkron görev kuyrukları kurma bilgisi",
-    "Python ve ilgili framework'lerde (FastAPI, Django) güçlü teknik bilgi"
+    "1.5 yıllık aktif backend geliştirme deneyimi bulunmaktadır.",
+    "FastAPI, PostgreSQL ve Docker gibi modern backend teknolojilerinde yetkinliğe sahiptir.",
+    "Mikroservis mimarisi, Redis cache entegrasyonu ve Celery ile asenkron görev kuyrukları kurma tecrübesi vardır.",
+    "E-ticaret platformu için API geliştirme konusunda pratik deneyim kazanmıştır.",
+    "Python ekosistemine (FastAPI, Django) hakimdir."
   ],
   "gaps": [
-    "Frontend veya mobil geliştirme becerileri eksikliği",
-    "Bulut platformları (AWS, Azure, GCP) deneyimi belirtilmemiş",
-    "Yazılım test süreçleri (unit, integration test) hakkında bilgi veya deneyim belirtilmemiş",
-    "CI/CD (Sürekli Entegrasyon/Sürekli Dağıtım) süreçleri hakkında deneyim eksikliği",
-    "Soft skill'ler (iletişim, problem çözme, takım çalışması) CV'de açıkça belirtilmemiş"
+    "Bulut platformları (AWS, Azure, GCP) üzerinde deneyim eksikliği bulunmaktadır.",
+    "CI/CD süreçleri ve otomasyon araçları (Jenkins, GitLab CI) hakkında detaylı bilgi ve uygulama tecrübesi belirtilmemiştir.",
+    "Test yazma (unit, integration, end-to-end) konusunda deneyim belirtilmemiştir.",
+    "Büyük ölçekli sistemlerde performans optimizasyonu ve ileri düzey hata ayıklama konularında daha derinlemesine deneyim eksikliği olabilir.",
+    "Frontend teknolojileri (JavaScript, React, Vue vb.) bilgisi bulunmamaktadır, bu da fullstack roller için bir gelişim alanıdır."
   ],
   "role_scores": {
     "backend_developer": 95,
-    "frontend_developer": 5,
+    "frontend_developer": 10,
+    "fullstack_developer": 30,
     "mobile_developer": 5,
-    "devops_engineer": 40,
-    "machine_learning_engineer": 10,
-    "data_scientist": 15,
+    "devops_engineer": 55,
+    "cloud_engineer": 30,
+    "machine_learning_engineer": 5,
+    "data_scientist": 5,
+    "data_engineer": 45,
     "data_analyst": 20,
+    "bi_analyst": 15,
+    "database_administrator": 50,
+    "cybersecurity_specialist": 5,
+    "systems_administrator": 25,
     "ui_ux_designer": 0,
-    "product_manager": 5,
-    "project_manager": 5,
-    "digital_marketing_specialist": 0,
+    "graphic_designer": 0,
+    "product_manager": 10,
+    "project_manager": 10,
     "business_analyst": 10,
-    "sales_specialist": 0,
+    "digital_marketing_specialist": 0,
     "hr_specialist": 0,
     "customer_success_specialist": 0
   }

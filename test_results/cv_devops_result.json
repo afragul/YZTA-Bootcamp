@@ -12,11 +12,9 @@
     "Git",
     "CI/CD",
     "Infrastructure as Code (IaC)",
-    "Cloud Infrastructure Management",
     "Monitoring",
-    "Problem Çözme",
-    "Takım Çalışması",
-    "Analitik Düşünme"
+    "Cloud Infrastructure Management",
+    "GitHub Actions"
   ],
   "experience_years": 2.0,
   "education": [
@@ -28,35 +26,42 @@
     }
   ],
   "strengths": [
-    "DevOps araçları ve metodolojilerinde (AWS, Terraform, Kubernetes, Jenkins, Prometheus) güçlü pratik deneyim",
-    "Bulut altyapısı yönetimi ve Infrastructure as Code (IaC) uygulamalarında yetkinlik",
-    "CI/CD boru hatları tasarlama ve yönetme becerisi",
-    "Kapsayıcılaştırma (Docker) ve orkestrasyon (Kubernetes) konularında bilgi ve deneyim",
-    "Linux ortamlarında ve Bash scripting'de yetkinlik",
-    "Sistem izleme ve alarm kurma deneyimi (Prometheus, Grafana)"
+    "DevOps prensipleri ve araçlarında (CI/CD, IaC, monitoring) güçlü pratik deneyim",
+    "AWS bulut platformu (EC2, S3, RDS) ve Kubernetes küme yönetimi konusunda yetkinlik",
+    "Terraform ve Ansible gibi otomasyon araçlarını etkin kullanma becerisi",
+    "Jenkins ve GitHub Actions ile CI/CD boru hatları tasarlama ve uygulama deneyimi",
+    "Prometheus ve Grafana ile sistem izleme altyapısı kurma bilgisi",
+    "Linux ve Bash scripting konularında sağlam temel"
   ],
   "gaps": [
-    "Gelişmiş programlama dillerinde (Python, Go gibi) daha derinlemesine deneyim eksikliği",
-    "DevSecOps prensipleri ve güvenlik araçları konusunda belirtilen bir deneyim olmaması",
-    "Veritabanı yönetimi ve optimizasyonu konusunda sınırlı bilgi (RDS kullanımı dışında)",
-    "Büyük ölçekli veya çoklu bulut ortamlarında deneyim belirtilmemiş",
-    "Sadece 2 yıllık deneyimle, daha karmaşık mimarilerde liderlik veya tasarım rollerinde deneyim eksikliği"
+    "Sadece 2 yıllık deneyimle daha karmaşık ve büyük ölçekli kurumsal altyapı projelerinde deneyim eksikliği olabilir",
+    "DevSecOps veya genel siber güvenlik uygulamalarına dair belirtilen bir deneyim bulunmamaktadır",
+    "Bash dışında spesifik bir programlama dilinde (örn. Python, Go) derinlemesine otomasyon veya geliştirme deneyimi belirtilmemiştir",
+    "Diğer bulut sağlayıcıları (Azure, GCP) ile deneyim eksikliği",
+    "İleri düzey ağ yapılandırmaları veya güvenlik mimarileri konularında detaylı bilgi eksikliği"
   ],
   "role_scores": {
-    "backend_developer": 20,
-    "frontend_developer": 5,
-    "mobile_developer": 5,
+    "backend_developer": 10,
+    "frontend_developer": 0,
+    "fullstack_developer": 5,
+    "mobile_developer": 0,
     "devops_engineer": 95,
-    "machine_learning_engineer": 10,
-    "data_scientist": 10,
-    "data_analyst": 10,
-    "ui_ux_designer": 5,
-    "product_manager": 15,
-    "project_manager": 20,
-    "digital_marketing_specialist": 5,
-    "business_analyst": 15,
-    "sales_specialist": 5,
-    "hr_specialist": 5,
-    "customer_success_specialist": 5
+    "cloud_engineer": 90,
+    "machine_learning_engineer": 0,
+    "data_scientist": 0,
+    "data_engineer": 15,
+    "data_analyst": 0,
+    "bi_analyst": 0,
+    "database_administrator": 20,
+    "cybersecurity_specialist": 10,
+    "systems_administrator": 75,
+    "ui_ux_designer": 0,
+    "graphic_designer": 0,
+    "product_manager": 5,
+    "project_manager": 5,
+    "business_analyst": 0,
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
   }
 }
