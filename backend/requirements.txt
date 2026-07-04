@@ -3,3 +3,8 @@ chromadb
 google-genai
 python-dotenv
 openpyxl
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+pydantic>=2.0.0
