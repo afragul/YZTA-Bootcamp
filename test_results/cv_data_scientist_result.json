@@ -9,10 +9,9 @@
     "Tableau",
     "PowerBI",
     "Git",
-    "Keşifsel Veri Analizi (EDA)",
-    "Müşteri Kaybı (Churn) Modellemesi",
-    "Segmentasyon Modellemesi",
-    "İnteraktif Dashboard Geliştirme"
+    "Veri Analizi",
+    "Makine Öğrenimi",
+    "Veri Görselleştirme"
   ],
   "experience_years": 1.0,
   "education": [
@@ -30,42 +29,42 @@
     }
   ],
   "strengths": [
-    "1 yıllık Data Scientist olarak doğrudan iş deneyimi",
-    "SQL ve Pandas kullanarak büyük veri kümeleri üzerinde güçlü keşifsel veri analizi (EDA) yeteneği",
-    "Scikit-learn ile müşteri kaybı ve segmentasyon gibi makine öğrenimi modelleri tasarlama deneyimi",
-    "Tableau ve PowerBI gibi önde gelen araçlarla interaktif iş zekası dashboardları geliştirme becerisi",
-    "Python, R, NumPy gibi temel veri bilimi araçlarına ve kütüphanelerine hakimiyet",
-    "Git ile versiyon kontrol sistemleri bilgisi"
+    "Güçlü veri analizi ve makine öğrenimi modelleme becerileri (EDA, müşteri kaybı, segmentasyon).",
+    "Çeşitli veri bilimi kütüphanelerine hakimiyet (Pandas, NumPy, Scikit-learn).",
+    "Veri görselleştirme araçlarını etkin kullanma (Tableau, PowerBI).",
+    "SQL bilgisi ile büyük veri kümeleri üzerinde çalışma yeteneği.",
+    "Hem istatistiksel temel hem de pratik veri analitiği eğitimi.",
+    "Versiyon kontrol sistemleri bilgisi (Git)."
   ],
   "gaps": [
-    "Derin öğrenme (Deep Learning) veya doğal dil işleme (NLP) gibi ileri düzey makine öğrenimi tekniklerinde deneyim eksikliği",
-    "Büyük veri platformları (örn. Spark, Hadoop) veya bulut tabanlı veri hizmetleri (örn. AWS S3, Azure Data Lake) deneyimi eksikliği",
-    "Veri mühendisliği süreçleri (ETL boru hatları, veri ambarı tasarımı) konusunda sınırlı deneyim",
-    "Model dağıtımı (deployment) ve MLOps pratikleri hakkında deneyim eksikliği",
-    "Farklı sektörlerdeki veri bilimi projelerinde çeşitlilik eksikliği"
+    "Deneyim süresi henüz sınırlı (1 yıl).",
+    "Derin öğrenme (Deep Learning) veya büyük veri teknolojileri (Spark, Hadoop) gibi ileri seviye konulara dair belirtilen bir deneyim yok.",
+    "Dağıtık sistemler veya bulut platformları (AWS, Azure, GCP) üzerinde deneyim belirtilmemiş.",
+    "Model deployment ve MLOps süreçleri hakkında deneyim eksikliği.",
+    "İletişim, sunum ve proje yönetimi gibi sosyal beceriler veya liderlik deneyimi belirtilmemiş."
   ],
   "role_scores": {
-    "backend_developer": 10,
-    "frontend_developer": 5,
+    "backend_developer": 20,
+    "frontend_developer": 0,
     "fullstack_developer": 5,
     "mobile_developer": 0,
-    "devops_engineer": 15,
-    "cloud_engineer": 10,
-    "machine_learning_engineer": 85,
+    "devops_engineer": 10,
+    "cloud_engineer": 5,
+    "machine_learning_engineer": 75,
     "data_scientist": 95,
-    "data_engineer": 50,
+    "data_engineer": 40,
     "data_analyst": 90,
     "bi_analyst": 85,
-    "database_administrator": 20,
+    "database_administrator": 15,
     "cybersecurity_specialist": 0,
     "systems_administrator": 0,
     "ui_ux_designer": 0,
     "graphic_designer": 0,
-    "product_manager": 25,
-    "project_manager": 20,
-    "business_analyst": 70,
+    "product_manager": 10,
+    "project_manager": 5,
+    "business_analyst": 60,
     "digital_marketing_specialist": 0,
     "hr_specialist": 0,
-    "customer_success_specialist": 15
+    "customer_success_specialist": 10
   }
 }

@@ -1,6 +1,11 @@
 import os
+import sys
 import json
-from cv_service import CVAnalysisService
+
+# Backend dizinini sys.path'e ekle (importların çalışması için)
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend"))
+
+from services.cv_service import CVAnalysisService
 
 def run_all_tests():
     print("=== TOPLU CV ANALİZİ TEST SÜRECİ BAŞLADI ===")

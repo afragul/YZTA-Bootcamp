@@ -1,9 +1,14 @@
 import os
+import sys
 import json
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from schema import CVAnalysisOutput
+
+# Backend dizinini sys.path'e ekle
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend"))
+
+from schemas.cv_analysis import CVAnalysisOutput
 
 # .env dosyasından API anahtarını yükle (sistem değişkenlerini ezerek)
 load_dotenv(override=True)

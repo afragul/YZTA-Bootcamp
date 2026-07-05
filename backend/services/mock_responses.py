@@ -7,7 +7,7 @@ def build_mock_upload_response(cv_id: str, filename: str) -> CVUploadResponse:
         cv_id=cv_id,
         filename=filename,
         status="completed",
-        message="Mock yanit - Hafta 1 entegrasyon kontrati",
+        message="Mock yanit - Hafta 1 entegrasyon kontrati (22 Rol Uyumlu)",
         analysis=CVAnalysisOutput(
             skills=["Python", "FastAPI", "React", "JavaScript", "SQL", "Git"],
             experience_years=1.5,
@@ -30,11 +30,39 @@ def build_mock_upload_response(cv_id: str, filename: str) -> CVUploadResponse:
                 "Bulut bilisim (AWS/GCP) tecrubesi bulunmuyor",
             ],
             role_scores=RoleScores(
+                # Teknoloji & Yazılım Geliştirme
                 backend_developer=85,
                 frontend_developer=70,
+                fullstack_developer=80,
+                mobile_developer=30,
+                devops_engineer=50,
+                cloud_engineer=45,
+                
+                # Yapay Zeka & Veri Sistemleri
                 machine_learning_engineer=40,
                 data_scientist=45,
-                devops_engineer=50,
+                data_engineer=55,
+                data_analyst=60,
+                bi_analyst=50,
+                database_administrator=65,
+                
+                # Güvenlik, Sistem & Ağ
+                cybersecurity_specialist=30,
+                systems_administrator=40,
+                
+                # Tasarım
+                ui_ux_designer=55,
+                graphic_designer=20,
+                
+                # Ürün, Yönetim & Analiz
+                product_manager=40,
+                project_manager=35,
+                business_analyst=50,
+                
+                # Pazarlama, İK & Müşteri İlişkileri
+                digital_marketing_specialist=15,
+                hr_specialist=10,
+                customer_success_specialist=25,
             ),
         ),
         top_matches=[

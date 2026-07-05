@@ -3,7 +3,7 @@ import json
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from schema import CVAnalysisOutput
+from schemas.cv_analysis import CVAnalysisOutput
 
 # .env dosyasından çevresel değişkenleri yükle
 load_dotenv(override=True)

@@ -9,9 +9,8 @@
     "RabbitMQ",
     "Git",
     "Mikroservis Mimarisi",
-    "API Geliştirme",
     "Asenkron Görev Kuyrukları",
-    "Veritabanı Yönetimi"
+    "API Geliştirme"
   ],
   "experience_years": 1.5,
   "education": [
@@ -23,34 +22,36 @@
     }
   ],
   "strengths": [
-    "1.5 yıllık aktif backend geliştirme deneyimi bulunmaktadır.",
-    "FastAPI, PostgreSQL ve Docker gibi modern backend teknolojilerinde yetkinliğe sahiptir.",
-    "Mikroservis mimarisi, Redis cache entegrasyonu ve Celery ile asenkron görev kuyrukları kurma tecrübesi vardır.",
-    "E-ticaret platformu için API geliştirme konusunda pratik deneyim kazanmıştır.",
-    "Python ekosistemine (FastAPI, Django) hakimdir."
+    "Güçlü Python ve web framework (FastAPI, Django) bilgisi.",
+    "Veritabanı (PostgreSQL, Redis) ve mesajlaşma kuyruğu (RabbitMQ) deneyimi.",
+    "Docker ile konteynerizasyon ve mikroservis mimarisi uygulama becerisi.",
+    "Celery ile asenkron görev yönetimi tecrübesi.",
+    "E-ticaret platformu API geliştirme deneyimi.",
+    "Git versiyon kontrol sistemini etkin kullanma."
   ],
   "gaps": [
-    "Bulut platformları (AWS, Azure, GCP) üzerinde deneyim eksikliği bulunmaktadır.",
-    "CI/CD süreçleri ve otomasyon araçları (Jenkins, GitLab CI) hakkında detaylı bilgi ve uygulama tecrübesi belirtilmemiştir.",
-    "Test yazma (unit, integration, end-to-end) konusunda deneyim belirtilmemiştir.",
-    "Büyük ölçekli sistemlerde performans optimizasyonu ve ileri düzey hata ayıklama konularında daha derinlemesine deneyim eksikliği olabilir.",
-    "Frontend teknolojileri (JavaScript, React, Vue vb.) bilgisi bulunmamaktadır, bu da fullstack roller için bir gelişim alanıdır."
+    "Frontend teknolojilerinde (JavaScript, React/Vue/Angular) belirtilen bir deneyim eksikliği.",
+    "Bulut platformları (AWS, Azure, GCP) veya CI/CD araçları hakkında bilgi eksikliği.",
+    "Test otomasyonu veya güvenlik pratikleri hakkında detay verilmemiş.",
+    "Proje yönetimi veya iş analizi gibi soft skill'ler hakkında bilgi eksikliği.",
+    "Deneyim süresi (1.5 yıl) nispeten kısa olup, daha kıdemli roller için ek tecrübe gerekebilir.",
+    "Mobil geliştirme, veri bilimi, makine öğrenimi gibi alanlarda deneyim eksikliği."
   ],
   "role_scores": {
     "backend_developer": 95,
     "frontend_developer": 10,
     "fullstack_developer": 30,
     "mobile_developer": 5,
-    "devops_engineer": 55,
-    "cloud_engineer": 30,
-    "machine_learning_engineer": 5,
-    "data_scientist": 5,
-    "data_engineer": 45,
+    "devops_engineer": 40,
+    "cloud_engineer": 20,
+    "machine_learning_engineer": 15,
+    "data_scientist": 15,
+    "data_engineer": 35,
     "data_analyst": 20,
     "bi_analyst": 15,
-    "database_administrator": 50,
+    "database_administrator": 40,
     "cybersecurity_specialist": 5,
-    "systems_administrator": 25,
+    "systems_administrator": 10,
     "ui_ux_designer": 0,
     "graphic_designer": 0,
     "product_manager": 10,

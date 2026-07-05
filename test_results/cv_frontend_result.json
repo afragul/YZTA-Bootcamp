@@ -7,12 +7,13 @@
     "HTML5",
     "CSS3",
     "Tailwind CSS",
-    "Redux Toolkit",
+    "Redux",
     "Git",
+    "Redux Toolkit",
+    "REST API Integration",
+    "GraphQL API Integration",
     "Responsive Web Design",
-    "REST API Entegrasyonu",
-    "GraphQL API Entegrasyonu",
-    "State Yönetimi"
+    "State Management"
   ],
   "experience_years": 2.0,
   "education": [
@@ -24,41 +25,41 @@
     }
   ],
   "strengths": [
-    "Modern frontend teknolojilerinde (React, Next.js, Tailwind CSS) güçlü yetkinlik.",
-    "Redux Toolkit ile kapsamlı state yönetimi deneyimi.",
-    "REST ve GraphQL API entegrasyonlarında yetkinlik.",
-    "Modern ve responsive web arayüzleri tasarlama ve geliştirme becerisi.",
-    "Ajans ortamında (PixelDesign) 2 yıllık pratik frontend geliştirme deneyimi."
+    "Modern frontend teknolojilerinde (React, Next.js, Redux) güçlü yetkinlik.",
+    "Responsive web arayüzleri tasarlama ve geliştirme deneyimi.",
+    "API entegrasyonu (REST, GraphQL) konusunda bilgi ve deneyim.",
+    "Sürüm kontrol sistemleri (Git) kullanımı.",
+    "Bilgisayar Bilimleri alanında üniversite eğitimi."
   ],
   "gaps": [
-    "Test frameworkleri (örn. Jest, React Testing Library) konusunda belirtilmiş bir deneyim eksikliği.",
-    "Performans optimizasyonu ve SEO gibi ileri düzey frontend konularında detay eksikliği.",
-    "Backend teknolojileri veya veritabanı bilgisi belirtilmemiş, bu da full-stack rolleri için bir gelişim alanı.",
-    "UI/UX prensipleri veya tasarım araçları (Figma, Sketch) hakkında bilgi eksikliği, sadece geliştirme odaklı.",
-    "Proje yönetimi veya takım liderliği gibi sosyal beceriler hakkında bilgi eksikliği."
+    "Backend geliştirme konusunda deneyim eksikliği.",
+    "Test otomasyonu veya CI/CD süreçleri hakkında belirtilen bir deneyim bulunmamaktadır.",
+    "Mobil uygulama geliştirme (React Native, Flutter vb.) deneyimi eksikliği.",
+    "Bulut platformları (AWS, Azure, GCP) veya DevOps araçları hakkında bilgi eksikliği.",
+    "Proje yönetimi veya liderlik deneyimi belirtilmemiştir."
   ],
   "role_scores": {
     "backend_developer": 15,
     "frontend_developer": 95,
     "fullstack_developer": 45,
-    "mobile_developer": 20,
-    "devops_engineer": 10,
-    "cloud_engineer": 10,
-    "machine_learning_engineer": 5,
-    "data_scientist": 5,
-    "data_engineer": 5,
-    "data_analyst": 5,
-    "bi_analyst": 5,
-    "database_administrator": 5,
-    "cybersecurity_specialist": 5,
-    "systems_administrator": 5,
+    "mobile_developer": 15,
+    "devops_engineer": 5,
+    "cloud_engineer": 5,
+    "machine_learning_engineer": 0,
+    "data_scientist": 0,
+    "data_engineer": 0,
+    "data_analyst": 0,
+    "bi_analyst": 0,
+    "database_administrator": 0,
+    "cybersecurity_specialist": 0,
+    "systems_administrator": 0,
     "ui_ux_designer": 35,
-    "graphic_designer": 5,
+    "graphic_designer": 0,
     "product_manager": 10,
     "project_manager": 10,
     "business_analyst": 10,
-    "digital_marketing_specialist": 5,
-    "hr_specialist": 5,
-    "customer_success_specialist": 5
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
   }
 }
