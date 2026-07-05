@@ -1,0 +1,65 @@
+{
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Redux",
+    "Git",
+    "Redux Toolkit",
+    "REST API Integration",
+    "GraphQL API Integration",
+    "Responsive Web Design",
+    "State Management"
+  ],
+  "experience_years": 2.0,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Hacettepe Üniversitesi",
+      "department": "Bilgisayar Bilimleri",
+      "graduation_year": 2022
+    }
+  ],
+  "strengths": [
+    "Modern frontend teknolojilerinde (React, Next.js, Redux) güçlü yetkinlik.",
+    "Responsive web arayüzleri tasarlama ve geliştirme deneyimi.",
+    "API entegrasyonu (REST, GraphQL) konusunda bilgi ve deneyim.",
+    "Sürüm kontrol sistemleri (Git) kullanımı.",
+    "Bilgisayar Bilimleri alanında üniversite eğitimi."
+  ],
+  "gaps": [
+    "Backend geliştirme konusunda deneyim eksikliği.",
+    "Test otomasyonu veya CI/CD süreçleri hakkında belirtilen bir deneyim bulunmamaktadır.",
+    "Mobil uygulama geliştirme (React Native, Flutter vb.) deneyimi eksikliği.",
+    "Bulut platformları (AWS, Azure, GCP) veya DevOps araçları hakkında bilgi eksikliği.",
+    "Proje yönetimi veya liderlik deneyimi belirtilmemiştir."
+  ],
+  "role_scores": {
+    "backend_developer": 15,
+    "frontend_developer": 95,
+    "fullstack_developer": 45,
+    "mobile_developer": 15,
+    "devops_engineer": 5,
+    "cloud_engineer": 5,
+    "machine_learning_engineer": 0,
+    "data_scientist": 0,
+    "data_engineer": 0,
+    "data_analyst": 0,
+    "bi_analyst": 0,
+    "database_administrator": 0,
+    "cybersecurity_specialist": 0,
+    "systems_administrator": 0,
+    "ui_ux_designer": 35,
+    "graphic_designer": 0,
+    "product_manager": 10,
+    "project_manager": 10,
+    "business_analyst": 10,
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
+  }
+}

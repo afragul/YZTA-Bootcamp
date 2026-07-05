@@ -1,0 +1,29 @@
+{
+  "skills": ["Python", "FastAPI", "React", "JavaScript", "SQL", "Git"],
+  "experience_years": 1.5,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "İstanbul Teknik Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "graduation_year": 2025
+    }
+  ],
+  "strengths": [
+    "Full-stack web geliştirme temelleri güçlü",
+    "FastAPI ile REST API geliştirme deneyimi var",
+    "İyi derecede algoritma ve veri yapıları bilgisi"
+  ],
+  "gaps": [
+    "Machine Learning projelerinde deneyim eksikliği (ML kütüphaneleri bilgisi zayıf)",
+    "Docker ve CI/CD süreçlerinde pratik eksikliği",
+    "Büyük veri veya bulut bilişim (AWS/GCP) tecrübesi bulunmuyor"
+  ],
+  "role_scores": {
+    "Backend Developer": 85,
+    "Frontend Developer": 70,
+    "Machine Learning Engineer": 40,
+    "Data Scientist": 45,
+    "DevOps Engineer": 50
+  }
+}

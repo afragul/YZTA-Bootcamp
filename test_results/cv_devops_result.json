@@ -1,0 +1,72 @@
+{
+  "skills": [
+    "AWS",
+    "Terraform",
+    "Docker",
+    "Kubernetes",
+    "Ansible",
+    "Jenkins",
+    "Prometheus",
+    "Grafana",
+    "Linux",
+    "Bash",
+    "Git",
+    "GitHub Actions",
+    "CI/CD",
+    "Infrastructure as Code (IaC)",
+    "Cloud Infrastructure Management",
+    "Monitoring",
+    "EC2",
+    "S3",
+    "RDS"
+  ],
+  "experience_years": 2.0,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Yıldız Teknik Üniversitesi",
+      "department": "Matematik Mühendisliği",
+      "graduation_year": 2022
+    }
+  ],
+  "strengths": [
+    "Güçlü bulut altyapısı yönetimi deneyimi (AWS, EC2, S3, RDS).",
+    "Infrastructure as Code (IaC) prensiplerine hakimiyet ve uygulama becerisi (Terraform).",
+    "Kapsamlı CI/CD pipeline tasarımı ve uygulaması bilgisi (Jenkins, GitHub Actions).",
+    "Container orkestrasyonu ve yönetimi becerisi (Kubernetes, Docker).",
+    "Sistem izleme ve loglama araçları deneyimi (Prometheus, Grafana).",
+    "Linux işletim sistemi ve Bash scripting konularında yetkinlik.",
+    "Versiyon kontrol sistemleri (Git) kullanımı konusunda deneyimli."
+  ],
+  "gaps": [
+    "Siber güvenlik alanında spesifik bir deneyim veya sertifika belirtilmemiş.",
+    "Veritabanı yönetimi (DBA) konusunda derinlemesine bilgi eksikliği (RDS kullanımı belirtilse de DBA rolü için yeterli değil).",
+    "Yazılım geliştirme (kodlama) dilleri konusunda (Bash dışında) bilgi eksikliği.",
+    "Farklı bulut sağlayıcıları (Azure, GCP) deneyimi belirtilmemiş.",
+    "Network mühendisliği veya gelişmiş ağ yapılandırmaları hakkında detaylı bilgi eksikliği."
+  ],
+  "role_scores": {
+    "backend_developer": 10,
+    "frontend_developer": 0,
+    "fullstack_developer": 5,
+    "mobile_developer": 0,
+    "devops_engineer": 95,
+    "cloud_engineer": 90,
+    "machine_learning_engineer": 0,
+    "data_scientist": 0,
+    "data_engineer": 20,
+    "data_analyst": 0,
+    "bi_analyst": 0,
+    "database_administrator": 25,
+    "cybersecurity_specialist": 15,
+    "systems_administrator": 80,
+    "ui_ux_designer": 0,
+    "graphic_designer": 0,
+    "product_manager": 10,
+    "project_manager": 15,
+    "business_analyst": 0,
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "skills": [
+    "Python",
+    "FastAPI",
+    "Django",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "RabbitMQ",
+    "Git",
+    "Mikroservis Mimarisi",
+    "Asenkron Görev Kuyrukları",
+    "API Geliştirme"
+  ],
+  "experience_years": 1.5,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Ege Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "graduation_year": 2023
+    }
+  ],
+  "strengths": [
+    "Güçlü Python ve web framework (FastAPI, Django) bilgisi.",
+    "Veritabanı (PostgreSQL, Redis) ve mesajlaşma kuyruğu (RabbitMQ) deneyimi.",
+    "Docker ile konteynerizasyon ve mikroservis mimarisi uygulama becerisi.",
+    "Celery ile asenkron görev yönetimi tecrübesi.",
+    "E-ticaret platformu API geliştirme deneyimi.",
+    "Git versiyon kontrol sistemini etkin kullanma."
+  ],
+  "gaps": [
+    "Frontend teknolojilerinde (JavaScript, React/Vue/Angular) belirtilen bir deneyim eksikliği.",
+    "Bulut platformları (AWS, Azure, GCP) veya CI/CD araçları hakkında bilgi eksikliği.",
+    "Test otomasyonu veya güvenlik pratikleri hakkında detay verilmemiş.",
+    "Proje yönetimi veya iş analizi gibi soft skill'ler hakkında bilgi eksikliği.",
+    "Deneyim süresi (1.5 yıl) nispeten kısa olup, daha kıdemli roller için ek tecrübe gerekebilir.",
+    "Mobil geliştirme, veri bilimi, makine öğrenimi gibi alanlarda deneyim eksikliği."
+  ],
+  "role_scores": {
+    "backend_developer": 95,
+    "frontend_developer": 10,
+    "fullstack_developer": 30,
+    "mobile_developer": 5,
+    "devops_engineer": 40,
+    "cloud_engineer": 20,
+    "machine_learning_engineer": 15,
+    "data_scientist": 15,
+    "data_engineer": 35,
+    "data_analyst": 20,
+    "bi_analyst": 15,
+    "database_administrator": 40,
+    "cybersecurity_specialist": 5,
+    "systems_administrator": 10,
+    "ui_ux_designer": 0,
+    "graphic_designer": 0,
+    "product_manager": 10,
+    "project_manager": 10,
+    "business_analyst": 10,
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
+  }
+}

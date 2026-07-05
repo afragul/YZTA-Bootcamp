@@ -1,0 +1,75 @@
+{
+  "skills": [
+    "Python",
+    "PyTorch",
+    "TensorFlow",
+    "Scikit-learn",
+    "MLflow",
+    "OpenCV",
+    "Git",
+    "Hugging Face Transformers",
+    "Triton Server",
+    "Görüntü Sınıflandırma",
+    "Nesne Tespiti",
+    "NLP (Doğal Dil İşleme)",
+    "Model Geliştirme",
+    "Deney Takibi",
+    "Model Dağıtımı",
+    "Derin Öğrenme",
+    "Makine Öğrenimi"
+  ],
+  "experience_years": 1.0,
+  "education": [
+    {
+      "degree": "Lisans",
+      "school": "Koç Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "graduation_year": 2024
+    },
+    {
+      "degree": "Yüksek Lisans",
+      "school": "Koç Üniversitesi",
+      "department": "Yapay Zeka",
+      "graduation_year": 2024
+    }
+  ],
+  "strengths": [
+    "Güçlü makine öğrenimi ve derin öğrenme bilgisi (PyTorch, TensorFlow, Scikit-learn).",
+    "Görüntü işleme ve doğal dil işleme alanlarında pratik deneyim.",
+    "Model geliştirme, deney takibi (MLflow) ve model dağıtımı (Triton Server) konularında yetkinlik.",
+    "AI start-up deneyimi ile hızlı öğrenme ve adaptasyon yeteneği.",
+    "Güncel ML kütüphaneleri ve araçlarına hakimiyet (Hugging Face Transformers).",
+    "Akademik altyapısı (Bilgisayar Mühendisliği Lisans, Yapay Zeka Yüksek Lisans)."
+  ],
+  "gaps": [
+    "Sınırlı profesyonel tam zamanlı iş deneyimi (sadece 1 yıl stajyerlik).",
+    "Dağıtık sistemler, büyük veri işleme veya bulut platformları (AWS, Azure, GCP) gibi daha geniş MLOps veya veri mühendisliği becerileri eksikliği.",
+    "Yazılım geliştirme prensipleri (SOLID, tasarım desenleri) veya daha geniş sistem mimarisi bilgisi belirtilmemiş.",
+    "Front-end veya back-end geliştirme becerileri belirtilmemiş.",
+    "Proje yönetimi veya liderlik deneyimi belirtilmemiş."
+  ],
+  "role_scores": {
+    "backend_developer": 15,
+    "frontend_developer": 0,
+    "fullstack_developer": 5,
+    "mobile_developer": 0,
+    "devops_engineer": 30,
+    "cloud_engineer": 10,
+    "machine_learning_engineer": 95,
+    "data_scientist": 85,
+    "data_engineer": 15,
+    "data_analyst": 25,
+    "bi_analyst": 10,
+    "database_administrator": 0,
+    "cybersecurity_specialist": 0,
+    "systems_administrator": 0,
+    "ui_ux_designer": 0,
+    "graphic_designer": 0,
+    "product_manager": 10,
+    "project_manager": 5,
+    "business_analyst": 10,
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
+  }
+}
