@@ -65,19 +65,15 @@ NextGenCV
   | **Toplam Tamamlanan** | **100** | |
 
 - **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü Slack/WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
-  ![Daily Scrum 1](<img width="667" height="724" alt="1" src="https://github.com/user-attachments/assets/4ed8c8ac-83f2-47b8-850c-6ba3642fcd27" />
-)
-  ![Daily Scrum 2](<img width="672" height="292" alt="2" src="https://github.com/user-attachments/assets/a3adf0fd-2e35-4abf-8018-3854a89cca1e" />
-)
-  ![Daily Scrum 2](<img width="669" height="556" alt="3" src="https://github.com/user-attachments/assets/1c33e6f7-9337-47a8-b1b4-98551b017b5b" />
-)
+  <img width="1156" height="1254" alt="Image" src="https://github.com/user-attachments/assets/7817d3cf-1662-4b82-8c32-a6507c5c5b18" />
+  <img width="1229" height="965" alt="Image" src="https://github.com/user-attachments/assets/b49defa7-af4b-4aa8-bbc6-552ea33b7026" />
 
 - **Sprint Board Update:** Sprint 1 board ekran görüntüsü:
- ![Sprint 1 Board](./sprint_board.jpeg)
+<img width="1600" height="1192" alt="Image" src="https://github.com/user-attachments/assets/10f2c705-8283-4df9-bc54-63669a775491" />
 
 - **Ürün Durumu:** Uygulamanın Sprint 1 sonundaki durumundan ekran görüntüleri (CLI analiz çıktısı, FastAPI Swagger `/docs`, örnek CV analiz JSON response'u):
-  ![Ürün Ekran Görüntüsü 1](ProjectManagement/Sprint1Documents/product_ss1.png)
-  ![Ürün Ekran Görüntüsü 2](ProjectManagement/Sprint1Documents/product_ss2.png)
+  <img width="942" height="722" alt="Image" src="https://github.com/user-attachments/assets/6d8453a1-9c81-4421-a195-0a5cd0a97eee" />
+<img width="394" height="918" alt="Image" src="https://github.com/user-attachments/assets/85208d88-9b21-4127-a730-f9ed1cd456ec" />
 
 
 
