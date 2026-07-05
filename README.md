@@ -1,296 +1,112 @@
-# AI Çekirdek (Kişi 2) Geliştirme Yol Haritası & Proje Durumu
+# Takım İsmi
 
-Bu doküman, **AI Destekli Kariyer Asistanı** projesinde **Kişi 2 (AI Çekirdek)** rolünün yaptığı çalışmaları ve önümüzdeki haftalarda yapacağı görevleri takip etmek amacıyla hazırlanmıştır.
+CodeCrafters
 
----
+# Ürün İle İlgili Bilgiler
 
-## 📊 Genel Durum Özeti
+*   Yazılım ve yapay zeka alanında kariyer hedefleyen öğrencilerin ve teknoloji sektörüne yeni adım atan adayların CV'lerini analiz ederek; yazılım, tasarım, yönetim, pazarlama ve insan kaynakları gibi 22 farklı meslek rolüne göre uygunluk puanlaması yapan, gelişim alanlarını (eksikleri) çıkaran, semantik iş ilanlarıyla eşleştirme sunan ve kişiselleştirilmiş öğrenme yolları üreten akıllı kariyer danışmanlığı uygulaması.
 
-| Hafta | Tema | Durum | Açıklama |
-| :--- | :--- | :---: | :--- |
-| **Hafta 1** | Kurulum, Tasarım & Mock Veri | 🟢 Tamamlandı | Şema ve mock veriler donduruldu, test ortamı hazırlandı. |
-| **Hafta 2** | CV Analizi (Prompt v1) | 🟢 Tamamlandı | Modüler cv_service.py yazıldı, 5 örnek CV ile toplu testler yapıldı. |
-| **Hafta 3** | Skorlama & Eksik Analizi | 🟡 Sıradaki | Rol uygunluk gerekçeleri ve eksik analizi detaylandırılması. |
-| **Hafta 4** | Chat Beyin & İyileştirme | ⚪ Beklemede | Kariyer Koçu sistem promptu ve edge case kontrolleri. |
-| **Hafta 5** | Kalite, Dokümantasyon & Sunum | ⚪ Beklemede | Prompt test tabloları ve demo senaryosu hazırlığı. |
 
----
+## Takım Elemanları
 
-## 🟢 Hafta 1: Kurulum & API Kontratı (Tamamlandı)
-- [x] Masaüstünde `ai_core_module` çalışma klasörünün oluşturulması.
-- [x] Pydantic ile veri şemasının tasarlanması ([schema.py](file:///C:/Users/TUF/Desktop/ai_core_module/schema.py)).
-- [x] Ekip entegrasyonu için mock veri setinin üretilmesi ([mock_data.json](file:///C:/Users/TUF/Desktop/ai_core_module/mock_data.json)).
-- [x] Gemini API bağlantısı için test scriptinin yazılması ([test_prompt.py](file:///C:/Users/TUF/Desktop/ai_core_module/test_prompt.py)).
-- [x] Ortam değişkenleri dosyasının yapılandırılması ([.env](file:///C:/Users/TUF/Desktop/ai_core_module/.env)).
-- [x] Sanal ortam (`venv`) oluşturulması.
-- [x] `.gitignore` dosyasının eklenmesi (güvenli paylaşım için).
+| <div align="center">Name</div>   | <div align="center">Title</div>  | <div align="center">Socials</div>     |
+| :---------- | :---------- | :----------: |
+| Afragül Tığ     | Product Owner     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/afragul-tig/)   | 
+| Tolga Duy     | Scrum Master     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/tolga-duy/) |
+| Ekin Karıncalı      | Developer      | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in//)   |
+| Muhammed Behlül Alar      | Developer     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/muhammed-behlül-alar/)    |
 
+## Ürün İsmi
 
----
+NextGenCV
 
-## 🟢 Hafta 2: CV Analizi & Yapısal Veri (Tamamlandı)
-- [x] Kişi 1 (Backend) ile entegre çalışacak LLM servis sınıfının (`cv_service.py`) yazılması.
-- [x] **Prompt v1 Tasarımı:** CV metninden kişisel bilgiler, eğitim, deneyim ve yetenekleri hatasız ayıklayan promptun hazırlanması.
-- [x] Gemini API **Structured JSON Output** (Pydantic şeması) özelliğinin aktifleştirilip schema.py ile eşleştirilmesi.
-- [x] Farklı formatlardaki 5 örnek CV üzerinde promptun kararlılığının ve puanlamasının test edilmesi.
+## Ürün Açıklaması
 
----
+*   Yazılım ve yapay zeka alanında kariyer hedefleyen öğrencilerin ve yeni adayların CV'lerini analiz ederek en uygun yazılım rollerine göre puanlama yapan, gelişim alanlarını (eksikleri) çıkaran, semantik iş ilanlarıyla eşleştirme sunan ve kişiselleştirilmiş öğrenme yolları üreten akıllı kariyer danışmanlığı uygulaması.
 
-## 🟡 Hafta 3: Rol Skorlama & Eksik Analizi (Sıradaki)
-- [ ] **Prompt v2 Tasarımı:** Adayın hedef rollere (ML, Backend, Frontend vb.) 0-100 arası uygunluk skorunun hesaplanması.
-- [ ] Belirlenen skorların gerekçelerinin (reasoning) açıklanması.
-- [ ] **Eksik Analizi (Gap Analysis):** Adayın seçtiği hedef role göre hangi becerilerde eksik kaldığının ("Docker tecrübesi zayıf" vb.) tespiti.
-- [ ] Çıktıların Kişi 1'in ana orkestrasyon API'sine bağlanması.
+## Ürün Özellikleri
 
----
+*   **CV Yükleme ve Ayrıştırma:** PDF/DOCX formatındaki öz geçmişlerin taranarak yapısal verilere dönüştürülmesi.
+*   **CV Analizi ve Rol Skorlama:** LLM (Gemini/OpenAI) ile adayın yazılım geliştirme, yapay zeka/veri, tasarım, ürün yönetimi, pazarlama ve insan kaynakları gibi 22 farklı sektörel rol için 0-100 arası uygunluk skorunun hesaplanması ve eksik analizi yapılması.
+*   **Semantik İş Eşleştirme:** ChromaDB vektör veri tabanı kullanılarak adayın profiline en uygun iş ilanlarının listelenmesi.
+*   **Akıllı Öğrenme Yolu (Agent):** Tespit edilen eksiklere göre haftalık/günlük kişiselleştirilmiş kaynak ve ders çalışma planı oluşturulması.
+*   **AI Kariyer Koçu (Chatbot):** Adayın kendi CV'si ve analiz raporu bağlamında kariyer tavsiyeleri alabileceği interaktif sohbet robotu.
 
-## ⚪ Hafta 4: Chat Beyin & Prompt İyileştirme
-- [ ] AI Kariyer Koçu (Chatbot) için sistem promptunun (System Instruction) yazılması.
-- [ ] Chatbot'un sadece CV analizi ve RAG'den gelen iş ilanları bağlamında konuşmasının sınırlandırılması.
-- [ ] **Edge Case Kontrolleri:** Çok kısa CV, boş/anlamsız yüklemeler veya zararlı girdiler (prompt injection) için koruma katmanları eklenmesi.
-- [ ] Token optimizasyonu yapılarak API maliyetlerinin düşürülmesi.
+## Hedef Kitle
 
----
+*   YZTA (Yapay Zeka Teknoloji Akademisi) mezunları
+*   Üniversite öğrencileri (Bilgisayar Mühendisliği, Yazılım vb.)
+*   Yazılım sektörüne geçiş yapmak isteyen kariyer değiştiriciler
+*   CV'sini güçlendirmek ve eksiklerini kapatmak isteyen junior geliştiriciler
 
-## ⚪ Hafta 5: Kalite, Dokümantasyon & Sunum
-- [ ] Promptlar için girdi -> beklenen çıktı -> gerçek çıktı tablolarının oluşturulması (Mini Evaluation Table).
-- [ ] Geliştirilen promptların ve AI mimarisinin detaylı dokümante edilmesi.
-- [ ] Jüri sunumu ve demo senaryosu için "wow" etkisi yaratacak örnek bir CV analiz çıktısının hazırlanması.
+## Product Backlog URL
+[Miro Backlog Board](https://miro.com/app/board/uXjVH-sutSw=/)
 
----
+# Sprint 1
 
-## 🛠️ Nasıl Çalıştırılır?
-1. `.env` dosyasına `GEMINI_API_KEY` değerinizi ekleyin.
-2. Bağımlılıkları kurun:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Test scriptini çalıştırın:
-   ```bash
-   python test_prompt.py
-   ```
+ **Sprint Notları:** Bu sprintte projenin çekirdek altyapısı (GitHub reposu, SQLite şeması, sanal ortam) kurulmuş; CV analizi, rol skorlama ve semantik iş eşleştirme (RAG) katmanları geliştirilerek yerel testlerle (CLI + FastAPI mock endpoint) doğrulanmıştır. User Story'ler ID'lendirilmiş ve task'lere bölünmüştür.
+- **Sprint içinde tamamlanması tahmin edilen puan:** 100 Puan
+  <!-- Not: Toplam Product Backlog puanı 300 olarak belirlenmiş, 3 sprint'e ~100'er puan olacak şekilde dağıtılmıştır. Kendi tahminlerinizle güncelleyin. -->
+- **Puan tamamlama mantığı:** Proje boyunca tamamlanması hedeflenen toplam iş yükü **300 puan** olarak tahmin edilmiştir. Bu yük 3 sprint'e eşit ağırlıkta (~100'er puan) bölünmüştür. Sprint 1'de temel altyapı ve çekirdek AI özellikleri (CV analizi, rol skorlama, RAG eşleştirme) önceliklendirilerek hedeflenen 100 puan tamamlanmıştır. Story puanları, sprint toplam puanının yarısını (50) geçmeyecek şekilde tutulmuştur.
+- **Backlog düzeni ve Story seçimleri:** Backlog, ilk yapılacak story'lere göre önceliklendirilmiştir. Miro board'da **mavi kartlar User Story'leri**, **kırmızı kartlar ise bu story'lere ait yapılacak işleri (task)** temsil eder. Sprint'e, kapasiteyi aşmayacak şekilde en yüksek değerli story'ler seçilmiştir. Zaman kısıtı nedeniyle canlı web kazıma (scraping) PBI'ları kapsam dışı bırakılıp **Rejected** sütununa taşınmış; onun yerine Excel veri seti üzerinden ChromaDB'ye veri yüklemesi tercih edilmiştir.
+- **Tahmini puan tamamlama tablosu (Sprint 1 – Done):**
+  | User Story / İş | Puan | Durum |
+  |---|---|---|
+  | Proje Kurulumu, Altyapı ve Temizlik | 8 | ✅ Done |
+  | GitHub Reposu ve Altyapı Kurulumu | 5 | ✅ Done |
+  | SQLite ve DB Şemasının Tasarlanması | 8 | ✅ Done |
+  | Proje Temizliği ve Bağımlılıkların Birleştirilmesi | 5 | ✅ Done |
+  | CV Analiz Modülü | 13 | ✅ Done |
+  | Gemini API Entegrasyonu ve Veri Şeması | 13 | ✅ Done |
+  | CVAnalysisService ve Testlerin Koşturulması | 13 | ✅ Done |
+  | RAG İş Eşleştirme Katmanı | 13 | ✅ Done |
+  | Excel Veri Setinin ChromaDB'ye Ingest Edilmesi | 8 | ✅ Done |
+  | Semantik İş Arama Algoritmasının Yazılması | 14 | ✅ Done |
+  | **Toplam Tamamlanan** | **100** | |
 
+- **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü Slack/WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
+  ![Daily Scrum 1](<img width="667" height="724" alt="1" src="https://github.com/user-attachments/assets/4ed8c8ac-83f2-47b8-850c-6ba3642fcd27" />
+)
+  ![Daily Scrum 2](<img width="672" height="292" alt="2" src="https://github.com/user-attachments/assets/a3adf0fd-2e35-4abf-8018-3854a89cca1e" />
+)
+  ![Daily Scrum 2](<img width="669" height="556" alt="3" src="https://github.com/user-attachments/assets/1c33e6f7-9337-47a8-b1b4-98551b017b5b" />
+)
 
+- **Sprint Board Update:** Sprint 1 board ekran görüntüsü:
+  ![Sprint 1 Board](<img width="2316" height="1726" alt="Sprint 1 Board" src="https://github.com/user-attachments/assets/79ba482a-4881-4edc-9188-1c3c174d623e" />
+)
+- **Ürün Durumu:** Uygulamanın Sprint 1 sonundaki durumundan ekran görüntüleri (CLI analiz çıktısı, FastAPI Swagger `/docs`, örnek CV analiz JSON response'u):
+  ![Ürün Ekran Görüntüsü 1](ProjectManagement/Sprint1Documents/product_ss1.png)
+  ![Ürün Ekran Görüntüsü 2](ProjectManagement/Sprint1Documents/product_ss2.png)
 
 
 
+*   **Sprint Review:** 
+    *   **Alınan Kararlar:** Veritabanı (SQLite) oluşturulması, kullanıcı kaydı ve giriş işlemlerinde e-posta ile toplanacak veriler için gerekli görülmüştür. Fakat bir yandan da CV analiz çıktılarının veritabanında tek tek ayrı sütunlar halinde saklanması yerine `role_scores_json` ve `skills_json` şeklinde JSON formatında saklanması mimariyi sadeleştirmek amacıyla uygun bulunmuştur. Canlı web kazıma (scraping) işlemi zaman kısıtından dolayı elenmiş, onun yerine Excel veri seti üzerinden ChromaDB veri yüklemesi yapılması kesinleştirilmiştir. Bu sebeple canlı scraping PBI'ları kapsam dışı bırakılmıştır. Çıkan ürünün yerel analiz testlerinde (CLI) ve FastAPI mock endpoint testlerinde hiçbir problem görülmemiştir.
+    *   **Ekstra Koyulması Gereken Özellikler:** Adayın hedeflerine uygun kaynaklar sunan bir *Akıllı Öğrenme Yolu Agent'ı* ve adayın kendi analizi bağlamında konuşabileceği hafızalı bir *AI Kariyer Koçu Chatbot'u* ek özellikler olarak belirlenmiş ve gelecek sprint iş listesine eklenmiştir.
+    *   **Sprint Review Katılımcıları:** Muhammed Behlül Alar, Tolga Duy, Afragül Tığ, Ekin Karıncalı.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*   **Sprint Retrospective**
 
-# Backend — Hafta 1 (Kişi 1)
+    *   Sprint 1 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerlendirme toplantısı sonucunda ortaya çıkan kazanımlar, karşılaşılan zorluklar ve aksiyon planımız şu şekildedir:
 
-Bu branch (`feature/kisi1-hafta1-backend`), **AI Kariyer Asistanı** projesinin backend iskeletini içerir.  
-Amaç: Ekip arkadaşlarının (Kişi 2–4 ve Frontend) entegrasyona başlayabilmesi için **dondurulmuş API kontratı** ve çalışan temel endpoint'ler sunmaktır.
+### 🟢 Neler İyi Gitti? (Başarılar)
+*   **Paralel Geliştirme:** API sözleşmesinin (API Contract) ilk günlerde dondurulması ve mock API yanıtlarının hazırlanması sayesinde Frontend (React) ve Backend (FastAPI) ekipleri birbirini beklemeden tamamen bağımsız ve paralel çalışabildi.
+*   **Hata Yönetimi ve Çözüm Hızı:** Gemini Developer API'nin `additionalProperties` (dinamik sözlük) kısıtlaması nedeniyle aldığımız hata, `RoleScores` yapısını statik bir Pydantic modeline dönüştürerek hızlıca çözüldü. Bu sayede hem API kısıtlaması aşıldı hem de 22 rolün tamamı için isabetli puanlama garantilendi.
+*   **Rol Kapsamının Genişletilmesi:** Başlangıçtaki 5 temel yazılım rolü, veritabanı analizimiz doğrultusunda İK, yönetim, pazarlama ve tasarımı da kapsayan 22 farklı sektörel role çıkartılarak uygulamanın pazar değeri artırıldı.
 
----
+### 🔴 Nelerde Zorlandık / Neler Geliştirilebilir? (Zorluklar)
+*   **Klasör ve Mimaride Mükerrerlik:** Dosya yollarının (kök dizin ile `backend` klasörü) çakışması ve aynı şemaların iki farklı dosyada (`schema.py` ve `cv_analysis.py`) tanımlanması kod entegrasyonu aşamasında kafa karışıklığına yol açtı.
+*   **Paket Bağımlılıkları Yönetimi:** Proje başlangıcında iki adet `requirements.txt` dosyasının bulunması sanal ortamda sürüm çakışmalarına neden oldu.
+*   **Statik Analiz Uyarıları:** Dinamik import yolları (`sys.path.append`) nedeniyle VS Code (Pylance) üzerinde kod editörünün kütüphaneleri tanıyamaması ve sarı hata çizgileri oluşturması geliştirici deneyimini olumsuz etkiledi.
 
-## Branch'i çekme
+### 🚀 Alınan Aksiyonlar ve Çözümler (Action Items)
+*   **Mimari Sadeleştirme:** Kök dizindeki mükerrer şema ve servis dosyaları silindi. Tüm servisler ve veri modelleri backend içerisindeki standart klasör yapılarına taşındı.
+*   **Bağımlılıkların Birleştirilmesi:** Projeden mükerrer requirements.txt dosyası kaldırılarak kök dizinde tek bir dosya altında birleştirildi ve sanal ortam (`venv`) güncellendi.
+*   **VS Code Yapılandırması:** Proje köküne `.vscode/settings.json` dosyası eklenerek editörün importları otomatik çözmesi sağlandı ve tüm statik analiz uyarıları giderildi.
+*   **Gelecek Sprint Hedefi:** Dosya yükleme anında tetiklenecek PDF/DOCX metin ayrıştırıcı (parser) servisini yazıp FastAPI ve AI entegrasyonunu tamamlayarak mock akışı canlı akışa dönüştürmek.
 
-```bash
-git clone https://github.com/afragul/YZTA-Bootcamp.git
-cd YZTA-Bootcamp
-git checkout feature/kisi1-hafta1-backend
-```
 
----
+# Sprint 2
+# Sprint 3
 
-## Kurulum
-
-### 1. Sanal ortam (önerilir)
-
-```bash
-cd backend
-python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-```
-
-### 2. Bağımlılıkları yükle
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Ortam değişkenleri (opsiyonel — Hafta 1 için zorunlu değil)
-
-ChromaDB / Gemini servisleri (`services/ingest_jobs.py`, `services/search_jobs.py`) için:
-
-```bash
-# backend/.env
-GEMINI_API_KEY=your_key_here
-```
-
-> Hafta 1 API endpoint'leri mock veri döndürür; `.env` olmadan da `/health` ve `/cv/upload` çalışır.
-
----
-
-## API'yi çalıştırma
-
-```bash
-cd backend
-uvicorn main:app --reload
-```
-
-Sunucu varsayılan olarak **http://127.0.0.1:8000** adresinde ayağa kalkar.
-
----
-
-## API dokümantasyonuna erişim
-
-| Adres | Açıklama |
-|---|---|
-| http://127.0.0.1:8000/docs | **Swagger UI** — endpoint'leri tarayıcıdan test edin |
-| http://127.0.0.1:8000/redoc | ReDoc — okunabilir API dokümantasyonu |
-| http://127.0.0.1:8000/openapi.json | OpenAPI şeması (JSON) |
-
-Swagger UI'da **Try it out** ile doğrudan istek atabilirsiniz.
-
----
-
-## Aktif endpoint'ler (Hafta 1)
-
-### `GET /health`
-
-Servisin ayakta olup olmadığını kontrol eder.
-
-**Örnek istek:**
-```bash
-curl http://127.0.0.1:8000/health
-```
-
-**Örnek cevap:**
-```json
-{
-  "status": "ok",
-  "service": "ai-kariyer-asistani-backend"
-}
-```
-
----
-
-### `POST /cv/upload` *(mock)*
-
-CV dosyası yükler. **Hafta 1'de gerçek analiz yapılmaz** — ekip entegrasyonu için sabit mock JSON döner.
-
-**Örnek istek:**
-```bash
-curl -X POST http://127.0.0.1:8000/cv/upload \
-  -F "file=@ornek_cv.pdf"
-```
-
-**Örnek cevap yapısı:**
-```json
-{
-  "cv_id": "uuid-string",
-  "filename": "ornek_cv.pdf",
-  "status": "completed",
-  "message": "Mock yanit - Hafta 1 entegrasyon kontrati",
-  "analysis": {
-    "skills": ["Python", "FastAPI", "..."],
-    "experience_years": 1.5,
-    "education": [{ "degree": "...", "school": "...", "department": "...", "graduation_year": 2025 }],
-    "strengths": ["..."],
-    "gaps": ["..."],
-    "role_scores": {
-      "backend_developer": 85,
-      "frontend_developer": 70,
-      "machine_learning_engineer": 40,
-      "data_scientist": 45,
-      "devops_engineer": 50
-    }
-  },
-  "top_matches": [
-    {
-      "title": "Backend Developer (Python/FastAPI)",
-      "job_domain": "Backend",
-      "work_type": "Remote",
-      "job_location": "Istanbul",
-      "match_percent": 88.5,
-      "description": "..."
-    }
-  ]
-}
-```
-
----
-
-## API kontratı (ekip için referans)
-
-Tüm JSON şemaları `schemas/` klasöründe tanımlıdır:
-
-| Dosya | İçerik |
-|---|---|
-| `schemas/cv_analysis.py` | Kişi 2 — CV analiz çıktısı (`CVAnalysisOutput`, `RoleScores`) |
-| `schemas/api_contract.py` | Tüm endpoint request/response modelleri |
-
-### Ekip entegrasyon notları
-
-| Kişi | Modül | Kontrat alanı |
-|---|---|---|
-| **Kişi 2** | CV Analiz | `analysis` objesi → `CVAnalysisOutput` |
-| **Kişi 3** | Rol Skorlama | `analysis.role_scores` |
-| **Kişi 4** | RAG / İş Eşleştirme | `top_matches[]` → `JobMatchItem` |
-| **Frontend** | Upload UI | `POST /cv/upload` multipart form (`file` alanı) |
-
-> Hafta 3'te orkestrasyon endpoint'i de aynı JSON yapısını tek seferde döndürecek.
-
----
-
-## Proje klasör yapısı
-
-```
-backend/
-├── main.py                  # FastAPI uygulama girişi
-├── routers/
-│   ├── health.py            # GET /health
-│   └── upload.py            # POST /cv/upload (mock)
-├── schemas/
-│   ├── api_contract.py      # Endpoint kontratları
-│   └── cv_analysis.py         # CV analiz şeması
-├── models/                  # SQLAlchemy taslak modeller (Hafta 2'de aktif)
-│   ├── user.py
-│   ├── cv.py
-│   ├── analysis.py
-│   ├── job_match.py
-│   └── learning_plan.py
-├── services/
-│   ├── mock_responses.py    # Mock upload cevabı
-│   ├── embedding.py         # ChromaDB embedding (Kişi 4)
-│   ├── ingest_jobs.py       # İş ilanı yükleme (Kişi 4)
-│   └── search_jobs.py       # Semantik arama (Kişi 4)
-└── data/
-    └── jobs_dataset.xlsx
-```
-
----
-
-## Gelecek haftalar (plan)
-
-| Hafta | Kişi 1 görevleri |
-|---|---|
-| **Hafta 2** | Gerçek dosya upload (PDF/DOCX), SQLite + SQLAlchemy CRUD, Auth (JWT) |
-| **Hafta 3** | Orkestrasyon endpoint (upload → analiz → RAG → DB → JSON) |
-| **Hafta 4** | Chat endpoint, loading/polling, hata yönetimi |
-| **Hafta 5** | Docker, deploy, production ayarları |
-
----
-
-## Sorun giderme
-
-**`ModuleNotFoundError: No module named 'routers'`**  
-Komutu `backend/` klasörü içinden çalıştırın:
-```bash
-cd backend && uvicorn main:app --reload
-```
-
-**Port meşgul**  
-Farklı port kullanın:
-```bash
-uvicorn main:app --reload --port 8001
-```
-
-**Bağımlılık hatası**  
-Sanal ortamın aktif olduğundan emin olun:
-```bash
-source .venv/bin/activate
-pip install -r requirements.txt
-```
