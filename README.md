@@ -73,8 +73,8 @@ NextGenCV
 )
 
 - **Sprint Board Update:** Sprint 1 board ekran görüntüsü:
-  ![Sprint 1 Board](<img width="2316" height="1726" alt="Sprint 1 Board" src="https://github.com/user-attachments/assets/79ba482a-4881-4edc-9188-1c3c174d623e" />
-)
+ ![Sprint 1 Board](./sprint_board.jpeg)
+
 - **Ürün Durumu:** Uygulamanın Sprint 1 sonundaki durumundan ekran görüntüleri (CLI analiz çıktısı, FastAPI Swagger `/docs`, örnek CV analiz JSON response'u):
   ![Ürün Ekran Görüntüsü 1](ProjectManagement/Sprint1Documents/product_ss1.png)
   ![Ürün Ekran Görüntüsü 2](ProjectManagement/Sprint1Documents/product_ss2.png)
