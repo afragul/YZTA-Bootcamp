@@ -8,3 +8,11 @@ fastapi
 uvicorn[standard]
 python-multipart
 sqlalchemy
+
+# CV ayristirma (Kisi 2)
+pdfplumber
+python-docx
+
+# Test
+pytest
+reportlab
