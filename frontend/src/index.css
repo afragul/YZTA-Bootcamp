@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* ============================================================
+   NextGenCV — Tasarım Sistemi (tek kaynak)
+   Palet buradan yönetilir. Bileşenlerde hex yazmayın,
+   sadece primary-50 / primary-200 / ... kullanın.
+   ============================================================ */
+@theme {
+  /* Ana mavi ölçek (açıktan koyuya) */
+  --color-primary-50:  #F6FAFD; /* sayfa arka planı */
+  --color-primary-200: #B3CFE5; /* border, chip, muted */
+  --color-primary-500: #4A7FA7; /* link, hover, focus */
+  --color-primary-800: #1A3D63; /* marka, primary buton, başlık */
+  --color-primary-950: #0A1931; /* ana metin, koyu yüzey */
+
+  /* Nötrler (border/disabled için — palette dokunmadan) */
+  --color-ink:   #0A1931;
+  --color-muted: #5B6B7A;
+
+  /* Durum renkleri (hata/başarı — mavi dışı tek istisna) */
+  --color-danger:  #C0392B;
+  --color-success: #2E7D5B;
+
+  /* Yazı tipi */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Yumuşak köşe (kartlardaki gibi) */
+  --radius-card: 1rem;
+}
+
+/* Global temeller */
+html {
+  font-family: var(--font-sans);
+}
+body {
+  margin: 0;
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-950);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Klavye ile gezenler için görünür focus (erişilebilirlik) */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
