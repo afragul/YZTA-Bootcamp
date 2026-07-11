@@ -9,15 +9,16 @@
     "Tableau",
     "PowerBI",
     "Git",
-    "Veri Analizi",
-    "Makine Öğrenimi",
-    "Veri Görselleştirme"
+    "Keşifsel Veri Analizi (EDA)",
+    "Müşteri Kaybı (Churn) Modelleme",
+    "Segmentasyon Modelleme",
+    "İnteraktif Dashboard Geliştirme"
   ],
   "experience_years": 1.0,
   "education": [
     {
       "degree": "Lisans",
-      "school": "ODTÜ",
+      "school": "Orta Doğu Teknik Üniversitesi",
       "department": "İstatistik",
       "graduation_year": 2019
     },
@@ -29,28 +30,27 @@
     }
   ],
   "strengths": [
-    "Güçlü veri analizi ve makine öğrenimi modelleme becerileri (EDA, müşteri kaybı, segmentasyon).",
-    "Çeşitli veri bilimi kütüphanelerine hakimiyet (Pandas, NumPy, Scikit-learn).",
-    "Veri görselleştirme araçlarını etkin kullanma (Tableau, PowerBI).",
-    "SQL bilgisi ile büyük veri kümeleri üzerinde çalışma yeteneği.",
-    "Hem istatistiksel temel hem de pratik veri analitiği eğitimi.",
-    "Versiyon kontrol sistemleri bilgisi (Git)."
+    "Güçlü veri analizi ve modelleme becerileri (EDA, churn, segmentasyon)",
+    "Çeşitli veri bilimi araçlarına hakimiyet (Python, SQL, R, Pandas, Scikit-learn)",
+    "Veri görselleştirme ve raporlama yeteneği (Tableau, PowerBI)",
+    "İstatistik ve veri analitiği alanında sağlam akademik altyapı",
+    "Gerçek dünya iş problemlerine çözüm üretme deneyimi (müşteri kaybı, segmentasyon)"
   ],
   "gaps": [
-    "Deneyim süresi henüz sınırlı (1 yıl).",
-    "Derin öğrenme (Deep Learning) veya büyük veri teknolojileri (Spark, Hadoop) gibi ileri seviye konulara dair belirtilen bir deneyim yok.",
-    "Dağıtık sistemler veya bulut platformları (AWS, Azure, GCP) üzerinde deneyim belirtilmemiş.",
-    "Model deployment ve MLOps süreçleri hakkında deneyim eksikliği.",
-    "İletişim, sunum ve proje yönetimi gibi sosyal beceriler veya liderlik deneyimi belirtilmemiş."
+    "Deneyim süresi henüz sınırlı (1 yıl)",
+    "Derin öğrenme (Deep Learning) veya büyük veri teknolojileri (Spark, Hadoop) gibi ileri seviye konulara dair belirtilen bir beceri eksikliği",
+    "Bulut platformları (AWS, Azure, GCP) veya dağıtık sistemler üzerinde deneyim belirtilmemiş",
+    "Mühendislik pratikleri (CI/CD, MLOps) hakkında bilgi veya deneyim eksikliği olabilir",
+    "Proje yönetimi veya liderlik deneyimi belirtilmemiş"
   ],
   "role_scores": {
-    "backend_developer": 20,
+    "backend_developer": 5,
     "frontend_developer": 0,
-    "fullstack_developer": 5,
+    "fullstack_developer": 0,
     "mobile_developer": 0,
     "devops_engineer": 10,
     "cloud_engineer": 5,
-    "machine_learning_engineer": 75,
+    "machine_learning_engineer": 85,
     "data_scientist": 95,
     "data_engineer": 40,
     "data_analyst": 90,
@@ -60,8 +60,8 @@
     "systems_administrator": 0,
     "ui_ux_designer": 0,
     "graphic_designer": 0,
-    "product_manager": 10,
-    "project_manager": 5,
+    "product_manager": 15,
+    "project_manager": 10,
     "business_analyst": 60,
     "digital_marketing_specialist": 0,
     "hr_specialist": 0,

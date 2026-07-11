@@ -1,9 +1,20 @@
 import os
 import json
+import time
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from pydantic import ValidationError
 from schemas.cv_analysis import CVAnalysisOutput
+
+
+class CVAnalysisError(Exception):
+    """CV analizinin (Gemini cagrisi + JSON parse + sema dogrulama) basarisiz oldugunu belirtir."""
+
+
+MAX_ATTEMPTS = 3
+BACKOFF_BASE_SECONDS = 1.0
+
 
 # .env dosyasından çevresel değişkenleri yükle
 load_dotenv(override=True)
@@ -59,14 +70,16 @@ class CVAnalysisService:
             
         return remove_additional_properties(raw_schema)
 
-    def analyze_cv(self, cv_text: str) -> dict:
-        """
-        Ham CV metnini alır, yapılandırılmış şemaya göre analiz eder,
-        belirlenen 22 hedef rol için skorlama yapar ve JSON/Sözlük olarak döner.
+    def _attempt_analysis(self, cv_text: str) -> dict:
+        """Tek bir Gemini cagrisi yapar, ciktiyi semaya gore dogrular, dict dondurur.
+
+        Cagri / JSON parse / dogrulama hatalarini YAKALAMAZ; retry mantigi
+        analyze_cv'ye aittir. Basarili donus her zaman CVAnalysisOutput semasina
+        uygun bir dict'tir.
         """
         response_schema = self._get_clean_schema()
-        
-        # Yapay zekaya 22 rolün tamamını analiz etmesini söyleyen sistem talimatı
+
+        # Yapay zekaya 22 rolun tamamini analiz etmesini soyleyen sistem talimati
         system_instruction = (
             "Sen profesyonel bir Kariyer ve İK Asistanı yapay zekasısın. Görevin, sana verilen "
             "CV metnini titizlikle incelemek ve belirtilen JSON şemasına uygun şekilde analiz etmektir.\n\n"
@@ -85,18 +98,42 @@ class CVAnalysisService:
             "Her bir alan için kesinlikle sayısal bir puan hesaplamalı ve boş bırakmamalısın."
         )
 
-        try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=f"Lütfen aşağıdaki CV metnini analiz et ve sonucu dön:\n\n{cv_text}",
-                config=types.GenerateContentConfig(
-                    system_instruction=system_instruction,
-                    response_mime_type="application/json",
-                    response_schema=response_schema,
-                    temperature=0.2 # Puanlamanın tutarlı olması için düşük sıcaklık
-                ),
-            )
-            return json.loads(response.text)
-        except Exception as e:
-            print(f"[CVAnalysisService] Analiz hatası: {e}")
-            raise e
+        response = self.client.models.generate_content(
+            model=self.model_name,
+            contents=f"Lütfen aşağıdaki CV metnini analiz et ve sonucu dön:\n\n{cv_text}",
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                response_mime_type="application/json",
+                response_schema=response_schema,
+                temperature=0.2,  # Puanlamanın tutarlı olması için düşük sıcaklık
+            ),
+        )
+
+        data = json.loads(response.text)
+        validated = CVAnalysisOutput(**data)
+        return validated.model_dump()
+
+    def analyze_cv(self, cv_text: str) -> dict:
+        """Ham CV metnini analiz eder; retry + sema dogrulama ile saglam dict dondurur.
+
+        En fazla MAX_ATTEMPTS deneme yapar:
+          - Cikti hatasi (bozuk JSON / semaya uymayan) -> beklemeden tekrar dener.
+          - API hatasi (timeout / 429 / 5xx vb.) -> artan bekleme sonra tekrar dener.
+        Tum denemeler tukenirse CVAnalysisError firlatir (orijinal sebep zincirlenir).
+        """
+        last_error: Exception | None = None
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            try:
+                return self._attempt_analysis(cv_text)
+            except (json.JSONDecodeError, ValidationError) as output_err:
+                # Model bir sonraki denemede duzgun JSON/sema uretebilir; beklemeden dene
+                last_error = output_err
+            except Exception as api_err:
+                # Gecici API hatasi: artan bekleme sonra tekrar dene
+                last_error = api_err
+                if attempt < MAX_ATTEMPTS:
+                    time.sleep(BACKOFF_BASE_SECONDS * attempt)
+
+        raise CVAnalysisError(
+            f"CV analizi {MAX_ATTEMPTS} denemede başarısız: {last_error}"
+        ) from last_error
