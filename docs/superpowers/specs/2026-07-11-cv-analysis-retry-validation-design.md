@@ -81,9 +81,10 @@ Bekleme için `time.sleep` kullanılır (import eklenir).
 Yeni dosya: `tests/test_cv_service.py`. `cv_parser` testleriyle aynı "offline pytest"
 desenine oturur (kota harcamaz, `GEMINI_API_KEY` gerektirmez).
 
-Yöntem: `CVAnalysisService` örneğinin `self.client`'ı **sahte bir client** ile değiştirilir
-(gerçek Gemini yerine önceden programlanmış yanıtlar/hatalar döndürür). `__init__` API anahtarı
-istediği için testte anahtar mock'lanır ya da örnek doğrudan kurulmadan `client` enjekte edilir.
+Yöntem: `__init__` API anahtarı istediği için testte `GEMINI_API_KEY` ortam değişkeni
+`monkeypatch` ile sahte bir değere set edilir, servis normal kurulur, sonra `service.client`
+**sahte bir client** ile değiştirilir (gerçek Gemini yerine önceden programlanmış
+yanıtlar/hatalar döndürür).
 
 Kapsanan senaryolar:
 
