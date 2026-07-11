@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from routers import health, upload
+from routers import health, upload ,chat
 
 app = FastAPI(
     title="AI Kariyer Asistani API",
@@ -10,3 +10,4 @@ app = FastAPI(
 
 app.include_router(health.router)
 app.include_router(upload.router)
+app.include_router(chat.router)

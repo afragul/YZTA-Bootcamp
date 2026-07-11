@@ -1,8 +1,11 @@
 import os
+import sys
 import pandas as pd
 import chromadb
 from dotenv import load_dotenv
 
+# 'embedding' modulu her koşulda bulunsun (standalone + paket import)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from embedding import get_embedding_function  # <-- ORTAK embedding (tek kaynak)
 
 
