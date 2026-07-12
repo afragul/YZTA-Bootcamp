@@ -7,18 +7,11 @@
     "Ansible",
     "Jenkins",
     "Prometheus",
-    "Grafana",
     "Linux",
     "Bash",
     "Git",
-    "GitHub Actions",
-    "CI/CD",
-    "Infrastructure as Code (IaC)",
-    "Cloud Infrastructure Management",
-    "Monitoring",
-    "EC2",
-    "S3",
-    "RDS"
+    "Grafana",
+    "GitHub Actions"
   ],
   "experience_years": 2.0,
   "education": [
@@ -30,43 +23,55 @@
     }
   ],
   "strengths": [
-    "Güçlü bulut altyapısı yönetimi deneyimi (AWS, EC2, S3, RDS).",
-    "Infrastructure as Code (IaC) prensiplerine hakimiyet ve uygulama becerisi (Terraform).",
-    "Kapsamlı CI/CD pipeline tasarımı ve uygulaması bilgisi (Jenkins, GitHub Actions).",
-    "Container orkestrasyonu ve yönetimi becerisi (Kubernetes, Docker).",
-    "Sistem izleme ve loglama araçları deneyimi (Prometheus, Grafana).",
-    "Linux işletim sistemi ve Bash scripting konularında yetkinlik.",
-    "Versiyon kontrol sistemleri (Git) kullanımı konusunda deneyimli."
+    "CloudSys firmasında 2 yıllık somut DevOps Mühendisliği deneyimi",
+    "AWS (EC2, S3, RDS) bulut servislerinde altyapı yönetimi tecrübesi",
+    "Terraform ile Infrastructure as Code (IaC) pratik uygulaması",
+    "Jenkins ve GitHub Actions ile uçtan uca CI/CD süreçleri tasarlama yetkinliği",
+    "Kubernetes, Docker, Prometheus ve Grafana ile konteynerizasyon ve izleme (monitoring) kurulumu"
   ],
   "gaps": [
-    "Siber güvenlik alanında spesifik bir deneyim veya sertifika belirtilmemiş.",
-    "Veritabanı yönetimi (DBA) konusunda derinlemesine bilgi eksikliği (RDS kullanımı belirtilse de DBA rolü için yeterli değil).",
-    "Yazılım geliştirme (kodlama) dilleri konusunda (Bash dışında) bilgi eksikliği.",
-    "Farklı bulut sağlayıcıları (Azure, GCP) deneyimi belirtilmemiş.",
-    "Network mühendisliği veya gelişmiş ağ yapılandırmaları hakkında detaylı bilgi eksikliği."
+    "Yazılım geliştirme dillerine (Python, Go vb.) dair doğrudan bir deneyim veya bilgi belirtilmemiş",
+    "Çoklu bulut (Multi-cloud) veya hibrit bulut mimarileri konusunda deneyim eksikliği"
   ],
   "role_scores": {
-    "backend_developer": 10,
-    "frontend_developer": 0,
-    "fullstack_developer": 5,
-    "mobile_developer": 0,
+    "backend_developer": 35,
+    "frontend_developer": 10,
+    "fullstack_developer": 15,
+    "mobile_developer": 10,
     "devops_engineer": 95,
     "cloud_engineer": 90,
-    "machine_learning_engineer": 0,
-    "data_scientist": 0,
-    "data_engineer": 20,
-    "data_analyst": 0,
-    "bi_analyst": 0,
-    "database_administrator": 25,
-    "cybersecurity_specialist": 15,
-    "systems_administrator": 80,
-    "ui_ux_designer": 0,
-    "graphic_designer": 0,
-    "product_manager": 10,
-    "project_manager": 15,
-    "business_analyst": 0,
-    "digital_marketing_specialist": 0,
-    "hr_specialist": 0,
-    "customer_success_specialist": 0
-  }
+    "machine_learning_engineer": 35,
+    "data_scientist": 35,
+    "data_engineer": 40,
+    "data_analyst": 30,
+    "bi_analyst": 20,
+    "database_administrator": 50,
+    "cybersecurity_specialist": 35,
+    "systems_administrator": 75,
+    "ui_ux_designer": 10,
+    "graphic_designer": 10,
+    "product_manager": 25,
+    "project_manager": 30,
+    "business_analyst": 25,
+    "digital_marketing_specialist": 10,
+    "hr_specialist": 10,
+    "customer_success_specialist": 15
+  },
+  "top_role_reasons": [
+    {
+      "role": "devops_engineer",
+      "score": 95,
+      "reason": "CloudSys firmasında 2 yıl boyunca Jenkins, GitHub Actions, Kubernetes ve Terraform kullanarak aktif olarak DevOps süreçlerini ve CI/CD boru hatlarını yönetmiştir."
+    },
+    {
+      "role": "cloud_engineer",
+      "score": 90,
+      "reason": "AWS (EC2, S3, RDS) servisleri üzerinde bulut altyapısı yönetmiş ve Terraform ile Infrastructure as Code (IaC) prensiplerini uygulamıştır."
+    },
+    {
+      "role": "systems_administrator",
+      "score": 75,
+      "reason": "Linux işletim sistemi, Bash scripting, Kubernetes küme yönetimi ve Prometheus/Grafana ile sistem izleme (monitoring) konularında güçlü pratik deneyime sahiptir."
+    }
+  ]
 }

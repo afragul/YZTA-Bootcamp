@@ -8,18 +8,15 @@
     "Scikit-learn",
     "Tableau",
     "PowerBI",
-    "Git",
-    "Veri Analizi",
-    "Makine Öğrenimi",
-    "Veri Görselleştirme"
+    "Git"
   ],
   "experience_years": 1.0,
   "education": [
     {
       "degree": "Lisans",
-      "school": "ODTÜ",
+      "school": "Orta Doğu Teknik Üniversitesi",
       "department": "İstatistik",
-      "graduation_year": 2019
+      "graduation_year": 2021
     },
     {
       "degree": "Yüksek Lisans",
@@ -29,42 +26,53 @@
     }
   ],
   "strengths": [
-    "Güçlü veri analizi ve makine öğrenimi modelleme becerileri (EDA, müşteri kaybı, segmentasyon).",
-    "Çeşitli veri bilimi kütüphanelerine hakimiyet (Pandas, NumPy, Scikit-learn).",
-    "Veri görselleştirme araçlarını etkin kullanma (Tableau, PowerBI).",
-    "SQL bilgisi ile büyük veri kümeleri üzerinde çalışma yeteneği.",
-    "Hem istatistiksel temel hem de pratik veri analitiği eğitimi.",
-    "Versiyon kontrol sistemleri bilgisi (Git)."
+    "ODTÜ İstatistik ve Sabancı Veri Analitiği mezuniyeti ile çok güçlü bir analitik ve teorik altyapıya sahip olması",
+    "Scikit-learn kullanarak müşteri kaybı (churn) ve segmentasyon gibi doğrudan iş çıktısı üreten makine öğrenmesi modelleri geliştirmiş olması",
+    "Hem veri analizi (Python, SQL, R) hem de veri görselleştirme (Tableau, PowerBI) araçlarında yetkinlik sahibi olması"
   ],
   "gaps": [
-    "Deneyim süresi henüz sınırlı (1 yıl).",
-    "Derin öğrenme (Deep Learning) veya büyük veri teknolojileri (Spark, Hadoop) gibi ileri seviye konulara dair belirtilen bir deneyim yok.",
-    "Dağıtık sistemler veya bulut platformları (AWS, Azure, GCP) üzerinde deneyim belirtilmemiş.",
-    "Model deployment ve MLOps süreçleri hakkında deneyim eksikliği.",
-    "İletişim, sunum ve proje yönetimi gibi sosyal beceriler veya liderlik deneyimi belirtilmemiş."
+    "Sektörel iş deneyiminin henüz 1 yıl ile sınırlı olması",
+    "Büyük veri teknolojileri (Spark, Hadoop) veya bulut platformları (AWS, Azure, GCP) konusunda deneyim eksikliği"
   ],
   "role_scores": {
-    "backend_developer": 20,
-    "frontend_developer": 0,
-    "fullstack_developer": 5,
-    "mobile_developer": 0,
-    "devops_engineer": 10,
-    "cloud_engineer": 5,
+    "backend_developer": 30,
+    "frontend_developer": 10,
+    "fullstack_developer": 15,
+    "mobile_developer": 5,
+    "devops_engineer": 15,
+    "cloud_engineer": 15,
     "machine_learning_engineer": 75,
-    "data_scientist": 95,
-    "data_engineer": 40,
-    "data_analyst": 90,
-    "bi_analyst": 85,
-    "database_administrator": 15,
-    "cybersecurity_specialist": 0,
-    "systems_administrator": 0,
-    "ui_ux_designer": 0,
-    "graphic_designer": 0,
-    "product_manager": 10,
-    "project_manager": 5,
-    "business_analyst": 60,
-    "digital_marketing_specialist": 0,
-    "hr_specialist": 0,
-    "customer_success_specialist": 10
-  }
+    "data_scientist": 85,
+    "data_engineer": 55,
+    "data_analyst": 85,
+    "bi_analyst": 80,
+    "database_administrator": 45,
+    "cybersecurity_specialist": 5,
+    "systems_administrator": 10,
+    "ui_ux_designer": 20,
+    "graphic_designer": 10,
+    "product_manager": 35,
+    "project_manager": 30,
+    "business_analyst": 70,
+    "digital_marketing_specialist": 30,
+    "hr_specialist": 10,
+    "customer_success_specialist": 25
+  },
+  "top_role_reasons": [
+    {
+      "role": "data_scientist",
+      "score": 85,
+      "reason": "AnalyticsHub bünyesinde 1 yıl boyunca Data Scientist olarak çalışmış, Scikit-learn ile churn ve segmentasyon modelleri tasarlamış olması bu rolün gereksinimlerini doğrudan karşılamaktadır."
+    },
+    {
+      "role": "data_analyst",
+      "score": 85,
+      "reason": "SQL ve Pandas kullanarak büyük veri kümeleri üzerinde EDA (Keşifsel Veri Analizi) yapma ve Tableau/PowerBI ile dashboard geliştirme tecrübesi veri analisti rolüyle tam olarak örtüşmektedir."
+    },
+    {
+      "role": "bi_analyst",
+      "score": 80,
+      "reason": "Tableau ve PowerBI araçlarında uzmanlığa sahip olması ve iş birimleri için interaktif dashboardlar geliştirerek veri odaklı karar süreçlerini desteklemiş olması bu rol için güçlü bir kanıttır."
+    }
+  ]
 }

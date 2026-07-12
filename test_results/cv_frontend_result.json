@@ -8,12 +8,7 @@
     "CSS3",
     "Tailwind CSS",
     "Redux",
-    "Git",
-    "Redux Toolkit",
-    "REST API Integration",
-    "GraphQL API Integration",
-    "Responsive Web Design",
-    "State Management"
+    "Git"
   ],
   "experience_years": 2.0,
   "education": [
@@ -25,41 +20,53 @@
     }
   ],
   "strengths": [
-    "Modern frontend teknolojilerinde (React, Next.js, Redux) güçlü yetkinlik.",
-    "Responsive web arayüzleri tasarlama ve geliştirme deneyimi.",
-    "API entegrasyonu (REST, GraphQL) konusunda bilgi ve deneyim.",
-    "Sürüm kontrol sistemleri (Git) kullanımı.",
-    "Bilgisayar Bilimleri alanında üniversite eğitimi."
+    "React ve Next.js ile modern, responsive web arayüzü geliştirme konusunda 2 yıllık somut deneyim",
+    "Redux Toolkit ile state yönetimi ve hem REST hem de GraphQL API entegrasyonu tecrübesi",
+    "TypeScript ve Tailwind CSS gibi güncel frontend teknolojilerine hakimiyet"
   ],
   "gaps": [
-    "Backend geliştirme konusunda deneyim eksikliği.",
-    "Test otomasyonu veya CI/CD süreçleri hakkında belirtilen bir deneyim bulunmamaktadır.",
-    "Mobil uygulama geliştirme (React Native, Flutter vb.) deneyimi eksikliği.",
-    "Bulut platformları (AWS, Azure, GCP) veya DevOps araçları hakkında bilgi eksikliği.",
-    "Proje yönetimi veya liderlik deneyimi belirtilmemiştir."
+    "Backend teknolojileri (Node.js, Python, Java vb.) ve veritabanı yönetimi konularında deneyim eksikliği",
+    "Bulut sistemleri (AWS, Azure) veya DevOps süreçlerine dair bir bilgi/deneyim belirtilmemiş olması"
   ],
   "role_scores": {
     "backend_developer": 15,
     "frontend_developer": 95,
     "fullstack_developer": 45,
-    "mobile_developer": 15,
-    "devops_engineer": 5,
-    "cloud_engineer": 5,
-    "machine_learning_engineer": 0,
-    "data_scientist": 0,
-    "data_engineer": 0,
-    "data_analyst": 0,
-    "bi_analyst": 0,
-    "database_administrator": 0,
-    "cybersecurity_specialist": 0,
-    "systems_administrator": 0,
-    "ui_ux_designer": 35,
-    "graphic_designer": 0,
-    "product_manager": 10,
-    "project_manager": 10,
-    "business_analyst": 10,
-    "digital_marketing_specialist": 0,
-    "hr_specialist": 0,
-    "customer_success_specialist": 0
-  }
+    "mobile_developer": 30,
+    "devops_engineer": 10,
+    "cloud_engineer": 10,
+    "machine_learning_engineer": 5,
+    "data_scientist": 5,
+    "data_engineer": 5,
+    "data_analyst": 10,
+    "bi_analyst": 10,
+    "database_administrator": 10,
+    "cybersecurity_specialist": 5,
+    "systems_administrator": 10,
+    "ui_ux_designer": 55,
+    "graphic_designer": 20,
+    "product_manager": 20,
+    "project_manager": 15,
+    "business_analyst": 15,
+    "digital_marketing_specialist": 15,
+    "hr_specialist": 5,
+    "customer_success_specialist": 15
+  },
+  "top_role_reasons": [
+    {
+      "role": "frontend_developer",
+      "score": 95,
+      "reason": "PixelDesign ajansında React, Next.js, Tailwind CSS ve Redux Toolkit kullanarak 2 yıl boyunca aktif olarak modern web arayüzleri geliştirmiştir."
+    },
+    {
+      "role": "ui_ux_designer",
+      "score": 55,
+      "reason": "Ajans deneyiminde modern, responsive web arayüz tasarımları yapmış olması ve HTML5/CSS3/Tailwind CSS gibi arayüz teknolojilerine hakimiyeti bu rolü desteklemektedir."
+    },
+    {
+      "role": "fullstack_developer",
+      "score": 45,
+      "reason": "Çok güçlü frontend (React, Next.js, TypeScript) ve API entegrasyonu (REST/GraphQL) bilgisine sahip olmasına rağmen, backend tarafında somut bir deneyimi bulunmamaktadır."
+    }
+  ]
 }
