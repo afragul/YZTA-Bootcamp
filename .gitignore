@@ -16,3 +16,7 @@ venv/
 .env
 
 .idea/
+
+# Kisisel gecici test scriptleri
+test_gemini.py
+test_one.py
