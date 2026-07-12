@@ -7,6 +7,18 @@ class EducationItem(BaseModel):
     department: str = Field(description="Bolum adi")
     graduation_year: int = Field(description="Mezuniyet yili")
 
+class RoleReason(BaseModel):
+    """En yuksek skorlu roller icin kisa gerekce - Kisi 3 (Rol Skorlama)."""
+
+    role: str = Field(
+        description="Rolun teknik adi. role_scores icindeki alan adiyla AYNI olmali "
+                    "(orn: machine_learning_engineer)"
+    )
+    score: int = Field(ge=0, le=100, description="role_scores icindeki ayni skor")
+    reason: str = Field(
+        description="Bu skorun 1-2 cumlelik gerekcesi. CV'den SOMUT kanit gosterilmeli."
+    )
+
 
 class RoleScores(BaseModel):
     # Teknoloji & Yazılım Geliştirme (Software Engineering)
@@ -53,3 +65,7 @@ class CVAnalysisOutput(BaseModel):
     strengths: list[str]
     gaps: list[str]
     role_scores: RoleScores
+    top_role_reasons: list[RoleReason] = Field(
+        description="role_scores icinde EN YUKSEK skora sahip 3 rol. "
+                    "Skora gore azalan sirada siralanmali."
+    )

@@ -1,6 +1,5 @@
 from schemas.api_contract import CVUploadResponse, JobMatchItem
-from schemas.cv_analysis import CVAnalysisOutput, EducationItem, RoleScores
-
+from schemas.cv_analysis import CVAnalysisOutput, EducationItem, RoleScores, RoleReason
 
 def build_mock_upload_response(cv_id: str, filename: str) -> CVUploadResponse:
     return CVUploadResponse(
@@ -64,6 +63,26 @@ def build_mock_upload_response(cv_id: str, filename: str) -> CVUploadResponse:
                 hr_specialist=10,
                 customer_success_specialist=25,
             ),
+            top_role_reasons=[                                    # ⭐ YENİ BLOK
+                RoleReason(
+                    role="backend_developer",
+                    score=85,
+                    reason="Python ve FastAPI ile REST API gelistirme deneyimi ve SQL bilgisi "
+                           "bu rolun cekirdek gereksinimlerini karsiliyor.",
+                ),
+                RoleReason(
+                    role="fullstack_developer",
+                    score=80,
+                    reason="Hem React hem FastAPI tarafinda calismis olmasi full-stack rolu icin "
+                           "guclu bir temel sunuyor.",
+                ),
+                RoleReason(
+                    role="frontend_developer",
+                    score=70,
+                    reason="React ve JavaScript deneyimi mevcut; ancak ileri seviye state yonetimi "
+                           "ve test araclarina dair kanit CV'de gorunmuyor.",
+                ),
+            ],
         ),
         top_matches=[
             JobMatchItem(
