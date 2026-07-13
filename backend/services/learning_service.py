@@ -1,45 +1,53 @@
 import json
 import os
+import random
+import time
 
 from dotenv import load_dotenv
 from google import genai
-from google.genai import types
+from google.genai import errors, types
 
 from schemas.learning_plan import LearningPlanOutput, TargetRole
 
 load_dotenv(override=True)
 
+# Rate limit (429) icin yeniden deneme ayarlari
+MAX_DENEME = 3          # toplam deneme sayisi
+TABAN_BEKLEME_SN = 10   # 1. tekrar 10sn, 2. tekrar 20sn (ustel geri cekilme)
+
 # Prompt ve arayuz icin okunabilir rol adlari.
 # 22 rol - TargetRole enum'u ile birebir ayni anahtarlar.
+# NOT: Buradaki metinler prompt'a da giriyor. Gemini girdinin dil stilini taklit
+# ettigi icin BURASI DUZGUN TURKCE OLMAK ZORUNDA (bkz. sistem promptu kural 10).
 ROLE_DISPLAY = {
     # Yazilim gelistirme
-    "backend_developer": "Backend Gelistirici",
-    "frontend_developer": "Frontend Gelistirici",
-    "fullstack_developer": "Full Stack Gelistirici",
-    "mobile_developer": "Mobil Gelistirici",
-    "devops_engineer": "DevOps Muhendisi",
-    "cloud_engineer": "Bulut Muhendisi",
+    "backend_developer": "Backend Geliştirici",
+    "frontend_developer": "Frontend Geliştirici",
+    "fullstack_developer": "Full Stack Geliştirici",
+    "mobile_developer": "Mobil Geliştirici",
+    "devops_engineer": "DevOps Mühendisi",
+    "cloud_engineer": "Bulut Mühendisi",
     # Yapay zeka ve veri
-    "machine_learning_engineer": "Makine Ogrenmesi Muhendisi",
+    "machine_learning_engineer": "Makine Öğrenmesi Mühendisi",
     "data_scientist": "Veri Bilimci",
-    "data_engineer": "Veri Muhendisi",
+    "data_engineer": "Veri Mühendisi",
     "data_analyst": "Veri Analisti",
-    "bi_analyst": "Is Zekasi Analisti",
-    "database_administrator": "Veritabani Yoneticisi",
+    "bi_analyst": "İş Zekası Analisti",
+    "database_administrator": "Veritabanı Yöneticisi",
     # Guvenlik ve sistem
-    "cybersecurity_specialist": "Siber Guvenlik Uzmani",
-    "systems_administrator": "Sistem Yoneticisi",
+    "cybersecurity_specialist": "Siber Güvenlik Uzmanı",
+    "systems_administrator": "Sistem Yöneticisi",
     # Tasarim
-    "ui_ux_designer": "UI/UX Tasarimci",
-    "graphic_designer": "Grafik Tasarimci",
+    "ui_ux_designer": "UI/UX Tasarımcı",
+    "graphic_designer": "Grafik Tasarımcı",
     # Urun ve yonetim
-    "product_manager": "Urun Yoneticisi",
-    "project_manager": "Proje Yoneticisi",
-    "business_analyst": "Is Analisti",
+    "product_manager": "Ürün Yöneticisi",
+    "project_manager": "Proje Yöneticisi",
+    "business_analyst": "İş Analisti",
     # Pazarlama, IK, musteri
-    "digital_marketing_specialist": "Dijital Pazarlama Uzmani",
-    "hr_specialist": "Insan Kaynaklari Uzmani",
-    "customer_success_specialist": "Musteri Basari Uzmani",
+    "digital_marketing_specialist": "Dijital Pazarlama Uzmanı",
+    "hr_specialist": "İnsan Kaynakları Uzmanı",
+    "customer_success_specialist": "Müşteri Başarı Uzmanı",
 }
 
 
@@ -109,6 +117,19 @@ class LearningPathService:
             return target_role.value
         return str(target_role)
 
+    @staticmethod
+    def _gunluk_kota_mi(hata: Exception) -> bool:
+        """
+        429 iki farkli sey olabilir ve COZUMLERI FARKLI:
+          - RPM (dakikalik) asimi -> birkac saniye bekleyince duzelir  -> RETRY ANLAMLI
+          - RPD (gunluk) asimi    -> ertesi gune kadar acilmaz         -> RETRY ANLAMSIZ
+
+        Gunluk kota dolduysa bosuna 30 saniye bekletmeyelim, hemen hata verelim.
+        Google hata govdesinde 'PerDay' / 'RequestsPerDay' gecirir.
+        """
+        mesaj = str(hata)
+        return "PerDay" in mesaj or "RequestsPerDay" in mesaj
+
     def _get_clean_schema(self) -> dict:
         """
         Gemini Developer API 'additionalProperties' alanini kabul etmiyor.
@@ -163,14 +184,22 @@ class LearningPathService:
             "becerileri baska bir alandaysa), gecisi kopru kurarak planla: once "
             "mevcut becerilerinden hangileri hedef rolde ise yariyor onu belirt, "
             "sonra eksikleri kapat.\n"
-            "9. 'summary' alaninda adayin mevcut durumunu ve bu planin onu nereye "
-            "goturecegini 2-3 cumleyle ozetle."
+            "9. ALAKASIZ EKSIKLERI ELE: Verilen eksiklerden hedef rolle ilgisi "
+            "OLMAYANLARI plana koyma. Ancak dolayli olarak ise yariyorsa "
+            "(orn: DevOps icin frontend build ciktisinin dagitimi) o acidan "
+            "degerlendirebilirsin.\n"
+            "10. 'summary' alaninda adayin mevcut durumunu ve bu planin onu nereye "
+            "goturecegini 2-3 cumleyle ozetle.\n"
+            "11. DIL: Ciktinin TAMAMINI duzgun Turkce yaz. Turkce karakterleri "
+            "(ç, ğ, ı, İ, ö, ş, ü) DOGRU kullan: 'guclu' degil 'güçlü', 'ogrenme' "
+            "degil 'öğrenme', 'muhendis' degil 'mühendis'. Teknoloji ve urun "
+            "adlarini (Docker, PyTorch, AWS, Figma) orijinal haliyle birak."
         )
 
     def build_plan(self, target_role, gaps: list[str], skills: list[str]) -> dict:
         """
         Hedef role gore kisisellestirilmis ogrenme plani uretir.
-        TEK rol icin TEK Gemini cagrisi yapar.
+        TEK rol icin TEK Gemini cagrisi yapar (429 durumunda yeniden dener).
 
         Args:
             target_role: TargetRole enum'u VEYA string ("devops_engineer")
@@ -181,7 +210,8 @@ class LearningPathService:
             LearningPlanOutput semasina uygun dict
 
         Raises:
-            ValueError: target_role 22 rolden biri degilse
+            ValueError:  target_role 22 rolden biri degilse
+            ClientError: 429 (gunluk kota) veya diger API hatalari
         """
         rol_kodu = self._normalize_role(target_role)
 
@@ -205,19 +235,57 @@ class LearningPathService:
             "gerekceli ve somut kaynakli bir ogrenme plani uret."
         )
 
-        try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=contents,
-                config=types.GenerateContentConfig(
-                    system_instruction=self._build_system_instruction(),
-                    response_mime_type="application/json",
-                    response_schema=self._get_clean_schema(),
-                    temperature=0.4,  # plan biraz yaratici olabilir ama savrulmasin
-                ),
-            )
-            return json.loads(response.text)
+        # --- Ustel geri cekilme (exponential backoff) ile yeniden deneme ---
+        for deneme in range(MAX_DENEME):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model_name,
+                    contents=contents,
+                    config=types.GenerateContentConfig(
+                        system_instruction=self._build_system_instruction(),
+                        response_mime_type="application/json",
+                        response_schema=self._get_clean_schema(),
+                        temperature=0.4,  # plan yaratici olabilir ama savrulmasin
+                    ),
+                )
+                return json.loads(response.text)
 
-        except Exception as e:
-            print(f"[LearningPathService] Plan uretim hatasi ({rol_kodu}): {e}")
-            raise
+            except errors.ClientError as e:
+                kod = getattr(e, "code", None)
+
+                # 429 disindaki hatalar (400 sema hatasi, 404 model yok...) -> hemen firlat
+                if kod != 429:
+                    print(f"[LearningPathService] API hatasi ({rol_kodu}): {e}")
+                    raise
+
+                # 429 ama GUNLUK kota dolmus -> beklemek anlamsiz, hemen firlat
+                if self._gunluk_kota_mi(e):
+                    print(
+                        f"[LearningPathService] GUNLUK KOTA DOLDU ({rol_kodu}). "
+                        "Yeniden denemek anlamsiz - kota Pasifik saatiyle gece "
+                        "yarisi sifirlanir."
+                    )
+                    raise
+
+                # 429 dakikalik (RPM) asim -> son deneme degilse bekle ve tekrar dene
+                if deneme < MAX_DENEME - 1:
+                    bekle = TABAN_BEKLEME_SN * (2 ** deneme)  # 10sn, 20sn
+                    bekle += random.uniform(0, 2)  # jitter: es zamanli istekler carpismasin
+                    print(
+                        f"[LearningPathService] Rate limit (RPM), {bekle:.1f} sn "
+                        f"bekleniyor... (deneme {deneme + 1}/{MAX_DENEME})"
+                    )
+                    time.sleep(bekle)
+                    continue
+
+                # Denemeler bitti
+                print(
+                    f"[LearningPathService] {MAX_DENEME} deneme sonrasi hala rate "
+                    f"limit ({rol_kodu})."
+                )
+                raise
+
+            except Exception as e:
+                # Ag hatasi, JSON parse hatasi vb.
+                print(f"[LearningPathService] Beklenmeyen hata ({rol_kodu}): {e}")
+                raise
