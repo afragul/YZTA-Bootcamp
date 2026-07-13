@@ -165,8 +165,10 @@ class LearningPathService:
             "2. MANTIKLI SIRA: Once temel/on kosul olan konudan basla. Bir konu "
             "digerinin on kosuluysa once onu koy (Docker'i ogrenmeden Kubernetes'e "
             "gecme; tasarim ilkelerini ogrenmeden tasarim sistemine gecme).\n"
-            "3. TEKRAR ETTIRME: Adayin ZATEN sahip oldugu becerileri plana koyma. "
-            "Sadece eksikleri ve hedef rol icin kritik olan konulari isle.\n"
+            "3. TEKRAR ETTIRME: Adayin ZATEN sahip oldugu becerileri plana koyma.\n"
+            "   ONEMLI: Adayin becerisi olarak SADECE sana verilen 'ADAYIN MEVCUT BECERILERI' "
+            "listesindeki maddeleri sayabilirsin. Listede OLMAYAN bir beceriyi adaya ASLA "
+            "ATFETME ('adayin bildigi X' deme, X listede yoksa).\n"
             "4. HER ADIMDA GEREKCE: 'reason' alaninda bu konunun hedef rolde NE ISE "
             "YARADIGINI ve hangi eksigi kapattigini yaz. 'Bu onemlidir' gibi bos "
             "cumle kurma.\n"
@@ -175,25 +177,39 @@ class LearningPathService:
             "'Figma Community'den bir dashboard klonlayip yeniden tasarla', "
             "'Google Analytics sertifikasi'. 'Bir kurs al', 'Online kaynaklardan "
             "calis' gibi bos oneri YASAK.\n"
-            "6. GERCEKCI YUK: Her hafta 2-4 adim olsun, haftalik toplam sure 10-15 "
-            "saati asmasin. Plan toplam 4-8 hafta arasi olsun.\n"
-            "7. PRATIK ZORUNLU: Sadece izlemek/okumak yetmez. Planda en az bir tane "
-            "'proje' turunde adim OLMALI - is basvurusunda gosterilebilecek somut "
-            "cikti (portfolyo parcasi, vaka calismasi, uygulama, kampanya taslagi).\n"
-            "8. KARIYER GECISI FARKINDALIGI: Aday hedef rolden uzaksa (mevcut "
-            "becerileri baska bir alandaysa), gecisi kopru kurarak planla: once "
-            "mevcut becerilerinden hangileri hedef rolde ise yariyor onu belirt, "
-            "sonra eksikleri kapat.\n"
-            "9. ALAKASIZ EKSIKLERI ELE: Verilen eksiklerden hedef rolle ilgisi "
-            "OLMAYANLARI plana koyma. Ancak dolayli olarak ise yariyorsa "
-            "(orn: DevOps icin frontend build ciktisinin dagitimi) o acidan "
-            "degerlendirebilirsin.\n"
-            "10. 'summary' alaninda adayin mevcut durumunu ve bu planin onu nereye "
-            "goturecegini 2-3 cumleyle ozetle.\n"
+            "6. GERCEKCI YUK: HER hafta (SON HAFTA DAHIL) 2-4 adim olsun. Tek adimlik "
+            "hafta YASAK. Bitirme projesini de alt adimlara bol (orn: 'Altyapiyi kur', "
+            "'Pipeline'i bagla', 'Dokumantasyon yaz'). Haftalik toplam 10-15 saat, "
+            "tek adim 8 saati asmasin. Plan 4-8 hafta olsun.\n"
+            "   'resource_type' alanini DOGRU sec: yazili rehber/dokuman -> 'dokumantasyon', "
+            "YouTube/video ders -> 'video', yapilandirilmis egitim -> 'kurs', "
+            "ELLE URETILEN CIKTI -> 'proje'. Alistirma/pratik cozmek PROJE DEGILDIR. "
+            "Kaynak ucretliyse bunu belirt, ucretsiz oldugundan emin degilsen 'ucretsiz' YAZMA.\n"
+            "7. PRATIK ZORUNLU: Planda en az bir 'proje' adimi OLMALI ve bu adim "
+            "PORTFOLYODA GOSTERILEBILIR somut bir cikti uretmeli (GitHub reposu, "
+            "Figma dosyasi, dashboard, vaka analizi). Kurs alistirmasi cozmek proje "
+            "SAYILMAZ.\n"
+            "9. EKSIKLERI ONEME GORE SIRALA: Verilen eksikler listesinin SIRASINA UYMA. "
+            "Hedef roldeki ONEMINE gore sirala. Rolun cekirdek becerisi olan eksik ONCE "
+            "gelir, cevresel/opsiyonel olan SONRA veya HIC gelmez. "
+            "(Orn: Veri Analisti icin gorsellestirme ve is metrikleri CEKIRDEK; Spark ise "
+            "cevresel - once gorsellestirme gelmeli.) Hedef rolle hic ilgisi olmayan "
+            "eksikleri plana KOYMA.\n"
+            "10. GERCEKCI OZET: 'summary' alaninda ASIRI VAAT VERME. Planin toplam "
+            "suresini dikkate al: 60-80 saatlik bir plan kimseyi 'sektore hazir' yapmaz. "
+            "Bunun yerine planin gercekci ciktisini yaz (orn: 'ilk portfolyo projeni "
+            "olusturmus ve mulakatlarda konusabilecek temel yetkinlige ulasmis olacaksin')."
             "11. DIL: Ciktinin TAMAMINI duzgun Turkce yaz. Turkce karakterleri "
             "(ç, ğ, ı, İ, ö, ş, ü) DOGRU kullan: 'guclu' degil 'güçlü', 'ogrenme' "
             "degil 'öğrenme', 'muhendis' degil 'mühendis'. Teknoloji ve urun "
             "adlarini (Docker, PyTorch, AWS, Figma) orijinal haliyle birak."
+            "12. SADECE BIRINCI EL KAYNAK: Kaynak olarak yalnizca RESMI/BIRINCI EL kaynaklari "
+            "oner: urunun resmi dokumantasyonu, resmi YouTube kanali, resmi egitim platformu "
+            "(AWS Skill Builder, Microsoft Learn, Google Cloud Skills Boost, Figma Help Center, "
+            "freeCodeCamp, Coursera/Udemy gibi BUYUK platformlar).\n"
+            "   Kucuk/bilinmeyen YouTube kanali, kisisel blog, sahis adi ONERME - bunlari "
+            "uydurma riskin yuksek. Bir kaynagin varligindan EMIN DEGILSEN, onun yerine "
+            "o konunun RESMI DOKUMANTASYONUNU oner.\n"
         )
 
     def build_plan(self, target_role, gaps: list[str], skills: list[str]) -> dict:
@@ -250,39 +266,35 @@ class LearningPathService:
                 )
                 return json.loads(response.text)
 
-            except errors.ClientError as e:
+            except errors.APIError as e:
                 kod = getattr(e, "code", None)
 
-                # 429 disindaki hatalar (400 sema hatasi, 404 model yok...) -> hemen firlat
-                if kod != 429:
-                    print(f"[LearningPathService] API hatasi ({rol_kodu}): {e}")
+                # Gecici hatalar: 429 (rate limit) + 5xx (sunucu yogun/hata)
+                gecici = kod == 429 or (isinstance(kod, int) and kod >= 500)
+
+                if not gecici:
+                    print(f"[LearningPathService] API hatasi {kod} ({rol_kodu}): {e}")
                     raise
 
-                # 429 ama GUNLUK kota dolmus -> beklemek anlamsiz, hemen firlat
-                if self._gunluk_kota_mi(e):
+                # 429 ama GUNLUK kota dolmus -> beklemek anlamsiz
+                if kod == 429 and self._gunluk_kota_mi(e):
                     print(
                         f"[LearningPathService] GUNLUK KOTA DOLDU ({rol_kodu}). "
-                        "Yeniden denemek anlamsiz - kota Pasifik saatiyle gece "
-                        "yarisi sifirlanir."
+                        "Kota Pasifik saatiyle gece yarisi sifirlanir."
                     )
                     raise
 
-                # 429 dakikalik (RPM) asim -> son deneme degilse bekle ve tekrar dene
                 if deneme < MAX_DENEME - 1:
-                    bekle = TABAN_BEKLEME_SN * (2 ** deneme)  # 10sn, 20sn
-                    bekle += random.uniform(0, 2)  # jitter: es zamanli istekler carpismasin
+                    bekle = TABAN_BEKLEME_SN * (2 ** deneme) + random.uniform(0, 2)
+                    tur = "Rate limit (RPM)" if kod == 429 else f"Sunucu hatasi ({kod})"
                     print(
-                        f"[LearningPathService] Rate limit (RPM), {bekle:.1f} sn "
-                        f"bekleniyor... (deneme {deneme + 1}/{MAX_DENEME})"
+                        f"[LearningPathService] {tur}, {bekle:.1f} sn bekleniyor... "
+                        f"(deneme {deneme + 1}/{MAX_DENEME})"
                     )
                     time.sleep(bekle)
                     continue
 
-                # Denemeler bitti
-                print(
-                    f"[LearningPathService] {MAX_DENEME} deneme sonrasi hala rate "
-                    f"limit ({rol_kodu})."
-                )
+                print(f"[LearningPathService] {MAX_DENEME} deneme sonrasi basarisiz ({rol_kodu}).")
                 raise
 
             except Exception as e:
