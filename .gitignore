@@ -16,3 +16,7 @@ venv/
 .env
 
 .idea/
+
+# Kisisel gecici deneme scriptleri (Kisi 3)
+test_one.py
+test_gemini.py

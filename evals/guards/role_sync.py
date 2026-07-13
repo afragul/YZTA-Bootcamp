@@ -1,7 +1,10 @@
-import os
 import sys
+from pathlib import Path
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend"))
+# Repo kokunu sys.path'e ekle (scripti nasil calistirirsan calistir bulsun)
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from evals._paths import BACKEND  # noqa: F401  (backend'i sys.path'e ekler)
 
 from schemas.cv_analysis import RoleScores
 from schemas.learning_plan import TargetRole

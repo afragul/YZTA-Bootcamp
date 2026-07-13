@@ -1,23 +1,22 @@
 import json
 import os
+import re
 import sys
 import time
-import re
+from pathlib import Path
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from evals._paths import TEST_RESULTS, LEARNING_PLANS
 
 from services.learning_service import LearningPathService, rank_roles
 
 # (analiz sonucu dosyasi, hedef rol) - hedef rol TargetRole'un 22 degerinden biri
 SENARYOLAR = [
-    # 1) Duz senaryo: ML CV'si -> ML plani (dashboard'da otomatik uretilecek olan)
-    ("test_results/cv_ml_engineer_result.json", "machine_learning_engineer"),
-    # 2) KARIYER DEGISIMI: Backend CV'si -> DevOps plani (URUNUN ASIL DEGERI)
-    ("test_results/cv_backend_result.json", "devops_engineer"),
-    # 3) YENI: 22 role acilinca eklenen rol -> Veri Analisti (eskiden plani YOKTU)
-    ("test_results/cv_ml_engineer_result.json", "data_analyst"),
-    # 4) TEKNIK OLMAYAN ROL -> prompt saglam mi? Docker/SQL onermiyor ya?
-    ("test_results/cv_backend_result.json", "ui_ux_designer"),
+    ("cv_ml_engineer_result.json", "machine_learning_engineer"),
+    ("cv_backend_result.json", "devops_engineer"),
+    ("cv_ml_engineer_result.json", "data_analyst"),
+    ("cv_backend_result.json", "ui_ux_designer"),
 ]
 
 # Cagrilar arasi bekleme (RPM limitine takilmamak icin)
@@ -112,20 +111,19 @@ def teknik_sizinti_bul(plan: dict) -> list:
 
 def main():
     service = LearningPathService()
-    os.makedirs("learning_plans", exist_ok=True)
-
     ozet = []
 
     for i, (dosya, hedef_rol) in enumerate(SENARYOLAR, start=1):
-        with open(dosya, "r", encoding="utf-8") as f:
+        dosya_yolu = os.path.join(TEST_RESULTS, dosya)
+        with open(dosya_yolu, "r", encoding="utf-8") as f:
             analiz = json.load(f)
 
         gaps = analiz.get("gaps", [])
         skills = analiz.get("skills", [])
         role_scores = analiz.get("role_scores", {})
 
-        ad = os.path.basename(dosya).replace("_result.json", "")
-        cikti = f"learning_plans/{ad}__{hedef_rol}.json"
+        ad = dosya.replace("_result.json", "")
+        cikti = os.path.join(LEARNING_PLANS, f"{ad}__{hedef_rol}.json")
 
         print("=" * 92)
         print(f"SENARYO {i}  |  CV: {os.path.basename(dosya)}  ->  HEDEF: {hedef_rol}")
