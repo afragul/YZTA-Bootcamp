@@ -181,9 +181,10 @@ class LearningPathService:
             "Kitap -> 'kitap'. Coursera/Udemy/Microsoft Learn/AWS Skill Builder gibi "
             "yapilandirilmis egitim -> 'kurs'. Resmi dokuman/rehber/tutorial -> "
             "'dokumantasyon'. Adayin ELIYLE URETECEGI cikti -> 'proje'.\n"
-            "   - UCRET ETIKETI ZORUNLU: her kaynagin sonuna '(ucretsiz)' veya "
-            "'(ucretli)' yaz. Emin degilsen '(ucretli olabilir)' yaz. Ucretli bir "
-            "kaynagi ucretsizmis gibi ASLA sunma.\n"
+            "   - UCRET ETIKETI ZORUNLU: her kaynagin sonuna TAM OLARAK su etiketlerden "
+            "birini yaz: '(ücretsiz)' veya '(ücretli)'. Emin degilsen '(ücretli olabilir)' "
+            "yaz. Etiketi Turkce karakterlerle yaz - 'ucretsiz' DEGIL, '(ücretsiz)'. "
+            "Ucretli bir kaynagi ucretsizmis gibi ASLA sunma.\n"
             "6. GERCEKCI YUK: HER hafta (SON HAFTA DAHIL) 2-4 adim olsun. Tek adimlik "
             "hafta YASAK. Bitirme projesini de alt adimlara bol. Haftalik toplam sure "
             "10-15 saati, tek adim 8 saati asmasin. Plan 4-8 hafta arasi olsun.\n"
@@ -211,8 +212,11 @@ class LearningPathService:
             "kanali, taninmis egitim platformlari (AWS Skill Builder, Microsoft Learn, "
             "Google Cloud Skills Boost, Figma Help Center, freeCodeCamp, Coursera, Udemy, "
             "Kaggle Learn, SQLZoo). Kucuk/bilinmeyen YouTube kanali, kisisel blog veya "
-            "sahis adi ONERME - uydurma riskin cok yuksek. Bir kaynagin GERCEKTEN VAR "
-            "OLDUGUNDAN emin degilsen, onun yerine o konunun RESMI DOKUMANTASYONUNU oner."
+            "SAHIS/KISI ADI TASIYAN KANAL ONERME. Kanal adinda insan ismi geciyorsa "
+            "(orn: 'Alex The Analyst', 'Jose Portilla') ONERME - populer olsa bile. "
+            "Onun yerine ayni konunun RESMI DOKUMANTASYONUNU veya kurumsal kanalini "
+            "(freeCodeCamp, Figma, AWS, Microsoft Learn) oner.\n"
+            "OLDUGUNDAN emin degilsen, o konunun RESMI DOKUMANTASYONUNU oner."
         )
 
     def build_plan(self, target_role, gaps: list[str], skills: list[str]) -> dict:
