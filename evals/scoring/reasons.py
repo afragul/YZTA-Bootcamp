@@ -1,13 +1,17 @@
 import json
 import os
+import sys
+from pathlib import Path
 
-RESULTS_DIR = "test_results"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-for fname in os.listdir(RESULTS_DIR):
+from evals._paths import TEST_RESULTS
+
+for fname in os.listdir(TEST_RESULTS):
     if not fname.endswith(".json"):
         continue
 
-    with open(os.path.join(RESULTS_DIR, fname), "r", encoding="utf-8") as f:
+    with open(os.path.join(TEST_RESULTS, fname), "r", encoding="utf-8") as f:
         data = json.load(f)
 
     print("=" * 70)
