@@ -59,3 +59,14 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     reply: str
     session_id: str
+
+
+class ChatSessionInitRequest(BaseModel):
+    """Orkestrasyon (Kisi 1) analiz + eslesmeyi verip koc oturumu acar."""
+
+    analysis: CVAnalysisOutput
+    top_matches: list[JobMatchItem]
+
+
+class ChatSessionInitResponse(BaseModel):
+    session_id: str
