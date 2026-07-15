@@ -7,9 +7,7 @@
     "Redis",
     "Docker",
     "RabbitMQ",
-    "Git",
-    "Mikroservis Mimarisi",
-    "Celery"
+    "Git"
   ],
   "experience_years": 1.5,
   "education": [
@@ -21,41 +19,54 @@
     }
   ],
   "strengths": [
-    "Güçlü backend geliştirme deneyimi (FastAPI, Django, Python)",
-    "Veritabanı yönetimi ve önbellekleme bilgisi (PostgreSQL, Redis)",
-    "Konteynerizasyon ve dağıtık sistemler deneyimi (Docker, Mikroservis Mimarisi)",
-    "Asenkron görev yönetimi ve mesaj kuyrukları bilgisi (Celery, RabbitMQ)",
-    "Versiyon kontrol sistemlerine hakimiyet (Git)"
+    "FastAPI ve Django frameworkleri ile güçlü Python backend geliştirme yetkinliği.",
+    "Redis ve Celery kullanarak asenkron görev kuyrukları ve önbellekleme mekanizmaları kurabilme becerisi.",
+    "Docker ve mikroservis mimarisi ile ölçeklenebilir API'ler tasarlama deneyimi."
   ],
   "gaps": [
-    "Sınırlı genel profesyonel deneyim (1.5 yıl)",
-    "Frontend teknolojileri konusunda belirtilen bir beceri eksikliği",
-    "Bulut platformları (AWS, Azure, GCP) deneyimi belirtilmemiş",
-    "Test otomasyonu ve CI/CD süreçleri hakkında detay eksikliği",
-    "Veri bilimi, makine öğrenimi veya ileri düzey veri mühendisliği becerileri belirtilmemiş"
+    "[backend_developer] Büyük ölçekli projelerde birim testleri (unit tests) ve CI/CD süreçlerinin yönetimi konusunda somut deneyim eksikliği.",
+    "[devops_engineer] Kubernetes gibi konteyner orkestrasyon araçları ve AWS/GCP gibi bulut platformlarında pratik deneyim eksikliği.",
+    "[database_administrator] PostgreSQL üzerinde ileri düzey sorgu optimizasyonu, replikasyon ve veri tabanı yedekleme stratejileri konusunda derinlemesine uzmanlık eksikliği."
   ],
   "role_scores": {
-    "backend_developer": 90,
+    "backend_developer": 85,
     "frontend_developer": 10,
-    "fullstack_developer": 40,
-    "mobile_developer": 5,
-    "devops_engineer": 60,
-    "cloud_engineer": 20,
-    "machine_learning_engineer": 10,
-    "data_scientist": 10,
+    "fullstack_developer": 35,
+    "mobile_developer": 10,
+    "devops_engineer": 50,
+    "cloud_engineer": 40,
+    "machine_learning_engineer": 25,
+    "data_scientist": 20,
     "data_engineer": 45,
     "data_analyst": 25,
-    "bi_analyst": 20,
+    "bi_analyst": 15,
     "database_administrator": 50,
-    "cybersecurity_specialist": 5,
-    "systems_administrator": 30,
-    "ui_ux_designer": 0,
-    "graphic_designer": 0,
-    "product_manager": 10,
-    "project_manager": 10,
-    "business_analyst": 10,
-    "digital_marketing_specialist": 0,
-    "hr_specialist": 0,
-    "customer_success_specialist": 0
-  }
+    "cybersecurity_specialist": 15,
+    "systems_administrator": 25,
+    "ui_ux_designer": 5,
+    "graphic_designer": 5,
+    "product_manager": 20,
+    "project_manager": 20,
+    "business_analyst": 25,
+    "digital_marketing_specialist": 5,
+    "hr_specialist": 5,
+    "customer_success_specialist": 10
+  },
+  "top_role_reasons": [
+    {
+      "role": "backend_developer",
+      "score": 85,
+      "reason": "FastAPI, Django, PostgreSQL ve Docker kullanarak 1.5 yıl boyunca e-ticaret API'leri ve mikroservis mimarileri geliştirmiştir."
+    },
+    {
+      "role": "devops_engineer",
+      "score": 50,
+      "reason": "Docker, RabbitMQ ve Celery gibi araçlarla asenkron görev kuyrukları ve mikroservis altyapıları kurma deneyimine sahiptir."
+    },
+    {
+      "role": "database_administrator",
+      "score": 50,
+      "reason": "PostgreSQL veri tabanı yönetimi ve Redis cache entegrasyonu ile veri depolama ve önbelleğe alma mekanizmaları tasarlamıştır."
+    }
+  ]
 }

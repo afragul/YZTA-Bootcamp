@@ -8,67 +8,72 @@
     "OpenCV",
     "Git",
     "Hugging Face Transformers",
-    "Triton Server",
-    "Derin Öğrenme",
-    "Makine Öğrenimi",
-    "Görüntü İşleme",
-    "Doğal Dil İşleme (NLP)",
-    "Model Geliştirme",
-    "Model Dağıtımı",
-    "Deney Takibi"
+    "Triton Server"
   ],
   "experience_years": 1.0,
   "education": [
-    {
-      "degree": "Lisans",
-      "school": "Koç Üniversitesi",
-      "department": "Bilgisayar Mühendisliği",
-      "graduation_year": 2024
-    },
     {
       "degree": "Yüksek Lisans",
       "school": "Koç Üniversitesi",
       "department": "Yapay Zeka",
       "graduation_year": 2024
+    },
+    {
+      "degree": "Lisans",
+      "school": "Koç Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "graduation_year": 2022
     }
   ],
   "strengths": [
-    "Güçlü makine öğrenimi ve derin öğrenme teorik ve pratik bilgisi (PyTorch, TensorFlow).",
-    "Görüntü işleme (görüntü sınıflandırma, nesne tespiti) ve doğal dil işleme (NLP model fine-tuning) alanlarında deneyim.",
-    "Model geliştirme yaşam döngüsüne hakimiyet (deney takibi ile MLflow, model dağıtımı ile Triton Server).",
-    "Akademik olarak sağlam bir altyapı (Bilgisayar Mühendisliği Lisans ve Yapay Zeka Yüksek Lisans).",
-    "AI odaklı bir start-up'ta stajyerlik deneyimi.",
-    "Versiyon kontrol sistemlerine hakimiyet (Git)."
+    "Koç Üniversitesi Yapay Zeka yüksek lisans derecesine sahip olması",
+    "PyTorch ve Hugging Face ile derin öğrenme ve NLP modelleri geliştirme tecrübesi",
+    "MLflow ve Triton Server kullanarak MLOps süreçlerine (deney takibi ve model dağıtımı) hakimiyeti"
   ],
   "gaps": [
-    "Sınırlı tam zamanlı profesyonel iş deneyimi (sadece 1 yıl stajyerlik).",
-    "Bulut platformları (AWS, Azure, GCP) üzerinde deneyim belirtilmemiş.",
-    "Büyük veri teknolojileri (Spark, Hadoop vb.) ile ilgili deneyim eksikliği.",
-    "Yazılım mühendisliği prensipleri, üretim ortamı süreçleri (CI/CD, test) ve sistem mimarisi konularında detaylı deneyim eksikliği.",
-    "SQL veya NoSQL veritabanları ile çalışma deneyimi belirtilmemiş."
+    "[machine_learning_engineer] Büyük ölçekli veri işleme ve Kubernetes gibi bulut orkestrasyon araçlarında deneyim eksikliği.",
+    "[data_scientist] SQL veritabanı yönetimi ve iş zekası araçları (Tableau, PowerBI) ile veri görselleştirme tecrübesinin olmaması.",
+    "[data_analyst] İş analitiği, A/B testleri ve ilişkisel veritabanlarında (SQL) veri sorgulama deneyiminin bulunmaması."
   ],
   "role_scores": {
-    "backend_developer": 20,
-    "frontend_developer": 5,
-    "fullstack_developer": 10,
-    "mobile_developer": 5,
-    "devops_engineer": 35,
-    "cloud_engineer": 15,
-    "machine_learning_engineer": 95,
-    "data_scientist": 80,
-    "data_engineer": 25,
-    "data_analyst": 20,
-    "bi_analyst": 15,
-    "database_administrator": 5,
-    "cybersecurity_specialist": 5,
-    "systems_administrator": 5,
-    "ui_ux_designer": 0,
-    "graphic_designer": 0,
-    "product_manager": 10,
-    "project_manager": 10,
-    "business_analyst": 10,
-    "digital_marketing_specialist": 0,
-    "hr_specialist": 0,
-    "customer_success_specialist": 0
-  }
+    "backend_developer": 40,
+    "frontend_developer": 10,
+    "fullstack_developer": 15,
+    "mobile_developer": 10,
+    "devops_engineer": 45,
+    "cloud_engineer": 35,
+    "machine_learning_engineer": 85,
+    "data_scientist": 75,
+    "data_engineer": 45,
+    "data_analyst": 50,
+    "bi_analyst": 30,
+    "database_administrator": 25,
+    "cybersecurity_specialist": 15,
+    "systems_administrator": 20,
+    "ui_ux_designer": 10,
+    "graphic_designer": 10,
+    "product_manager": 30,
+    "project_manager": 30,
+    "business_analyst": 35,
+    "digital_marketing_specialist": 10,
+    "hr_specialist": 10,
+    "customer_success_specialist": 15
+  },
+  "top_role_reasons": [
+    {
+      "role": "machine_learning_engineer",
+      "score": 85,
+      "reason": "Koç Üniversitesi Yapay Zeka yüksek lisans derecesi ve PyTorch, Hugging Face, Triton Server ile model geliştirip canlıya alma deneyimi bu rolün gereksinimlerini doğrudan karşılamaktadır."
+    },
+    {
+      "role": "data_scientist",
+      "score": 75,
+      "reason": "Python, Scikit-learn ve NLP/görüntü işleme modelleri geliştirme tecrübesi veri bilimi projeleri için güçlü bir temel oluşturmaktadır."
+    },
+    {
+      "role": "data_analyst",
+      "score": 50,
+      "reason": "Python ve Scikit-learn ile veri analizi ve modelleme yapabilme yeteneği temel analitik görevler için uygundur, ancak SQL ve BI araçları eksiktir."
+    }
+  ]
 }

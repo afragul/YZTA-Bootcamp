@@ -1,20 +1,22 @@
-# SDD Progress — analyze_cv retry + doğrulama
+# SDD Progress — geçersiz CV'de güvenli cevap (edge case'ler)
 
-Plan: docs/superpowers/plans/2026-07-11-cv-analysis-retry-validation.md
+Plan: docs/superpowers/plans/2026-07-11-cv-invalid-input-safe-response.md
+Spec: docs/superpowers/specs/2026-07-11-cv-invalid-input-safe-response-design.md
 Branch: cv-isleme-ai-analizi
-BASE (plan öncesi HEAD): d15bccd
+BASE (plan commit'i): ce88995
+Baseline: 20 passed
 
 ## Görevler
-- [x] Task 1: Çıktı doğrulama + CVAnalysisError + dict dönüş
-- [x] Task 2: Retry döngüsü (backoff)
-- [x] Final review: Task 2 reviewer'ı birleşik Task1+2 diff'ini + entegrasyonu denetledi (ayrı final subagent'a gerek kalmadı, 150 satırlık aynı diff)
+- [x] Task 1: InvalidCVError + iki katmanlı geçersiz-girdi savunması — spec ✅, Approved, 23 passed, COMMIT'siz
+
+## Not
+- COMMIT implementer tarafından YAPILMAYACAK (kontrolör/kullanıcı inceledikten sonra).
+- Bu görev tamamen offline test edilebilir (deterministik mantık); canlı çalıştırma gerekmez.
 
 ## Log
-- Task 1: complete — COMMIT YOK (kullanıcı isteği), değişiklikler çalışma ağacında.
-  cv_service.py + tests/test_cv_service.py. `pytest -q` → 17 passed. Reviewer: spec ✅, kalite Approved.
-  Minor bulgular (final review'a taşınacak, aksiyon gerekmez):
-    1. failure testinde 3 outcome — Task 2 retry'ında kullanılacak (plan kaynaklı, bilinçli).
-    2. TDD-şeffaflık notu (süreç gözlemi, kod kusuru değil).
-- Task 2: complete — COMMIT YOK. analyze_cv retry döngüsü + import time/ValidationError + sabitler + 3 test.
-  `pytest -q` → 20 passed. Reviewer: spec ✅, kalite Approved.
-  Minor bulgu (aksiyon isteğe bağlı): ara deneme başarısızlıkları loglanmıyor; ileride logging eklenebilir (brief istemiyordu).
+- Task 1: complete — cv_service.py (InvalidCVError, MIN_CV_TEXT_LENGTH=40, prompt rule 0,
+  _is_effectively_empty, analyze_cv 2 katman) + test_cv_service.py (import, _CV_TEXT/_EMPTY_OUTPUT,
+  5 mevcut test girdisi güncellendi, 3 yeni test). 23 passed. Reviewer spec ✅/Approved.
+  Minor (aksiyon gerekmez): _is_effectively_empty staticmethod olabilir; all([]) boş-dict kenar durumu (pratikte zararsız).
+- Yan gözlem (görev DIŞI): cv_service.py model_name = "gemini-3.5-flash" BASE'de zaten böyleydi,
+  bizim diff'imiz dokunmuyor. Kullanıcıya not düşüldü.
