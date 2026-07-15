@@ -6,7 +6,7 @@ import json
 
 import pytest
 
-from services.cv_service import CVAnalysisService, CVAnalysisError
+from services.cv_service import CVAnalysisService, CVAnalysisError, InvalidCVError
 
 
 # Semaya uygun minimal gecerli analiz JSON'u.
@@ -27,6 +27,21 @@ _VALID_OUTPUT = {
             "reason": "Test amacli ornek gerekce (fixture).",
         }
     ],
+}
+
+
+# Katman 1 uzunluk kontrolunu (MIN_CV_TEXT_LENGTH=40) gecen, gecerli uzunlukta ornek girdi.
+_CV_TEXT = "Ahmet Yilmaz, Backend Developer. Python, FastAPI ve PostgreSQL deneyimi var."
+
+# Modelin 'bu bir CV degil' sinyali: tum alanlar bos/0.
+_EMPTY_OUTPUT = {
+    "skills": [],
+    "experience_years": 0.0,
+    "education": [],
+    "strengths": [],
+    "gaps": [],
+    "role_scores": {},
+    "top_role_reasons": [],
 }
 
 
@@ -69,7 +84,7 @@ def _make_service(monkeypatch, outcomes) -> CVAnalysisService:
 def test_gecerli_cikti_dict_doner(monkeypatch):
     service = _make_service(monkeypatch, [json.dumps(_VALID_OUTPUT)])
 
-    result = service.analyze_cv("herhangi bir CV metni")
+    result = service.analyze_cv(_CV_TEXT)
 
     assert isinstance(result, dict)
     assert result["skills"] == ["Python", "FastAPI"]
@@ -85,7 +100,7 @@ def test_semaya_uymayan_cikti_CVAnalysisError_verir(monkeypatch):
     service = _make_service(monkeypatch, [bad, bad, bad])
 
     with pytest.raises(CVAnalysisError):
-        service.analyze_cv("herhangi bir CV metni")
+        service.analyze_cv(_CV_TEXT)
 
 
 def test_api_hatasi_sonra_basari(monkeypatch):
@@ -94,7 +109,7 @@ def test_api_hatasi_sonra_basari(monkeypatch):
     err = RuntimeError("gecici API hatasi (429)")
     service = _make_service(monkeypatch, [err, json.dumps(_VALID_OUTPUT)])
 
-    result = service.analyze_cv("CV")
+    result = service.analyze_cv(_CV_TEXT)
 
     assert result["skills"] == ["Python", "FastAPI"]
     assert service.client.models.calls == 2
@@ -107,7 +122,7 @@ def test_cikti_hatasi_beklemeden_tekrar_dener(monkeypatch):
     bad = json.dumps({"skills": []})  # ValidationError -> cikti hatasi
     service = _make_service(monkeypatch, [bad, json.dumps(_VALID_OUTPUT)])
 
-    result = service.analyze_cv("CV")
+    result = service.analyze_cv(_CV_TEXT)
 
     assert result["experience_years"] == 3.0
     assert service.client.models.calls == 2
@@ -120,6 +135,36 @@ def test_uc_deneme_de_basarisiz_CVAnalysisError(monkeypatch):
     service = _make_service(monkeypatch, [err, err, err])
 
     with pytest.raises(CVAnalysisError):
-        service.analyze_cv("CV")
+        service.analyze_cv(_CV_TEXT)
 
     assert service.client.models.calls == 3
+
+
+def test_cok_kisa_girdi_gemini_cagirmadan_InvalidCVError(monkeypatch):
+    service = _make_service(monkeypatch, [json.dumps(_VALID_OUTPUT)])
+
+    with pytest.raises(InvalidCVError):
+        service.analyze_cv("Merhaba dunya")  # 40 karakterden kisa
+
+    # Katman 1 API'siz olmali: generate_content hic cagrilmamali
+    assert service.client.models.calls == 0
+
+
+def test_bos_girdi_gemini_cagirmadan_InvalidCVError(monkeypatch):
+    service = _make_service(monkeypatch, [json.dumps(_VALID_OUTPUT)])
+
+    with pytest.raises(InvalidCVError):
+        service.analyze_cv("   ")
+
+    assert service.client.models.calls == 0
+
+
+def test_etkin_bos_cikti_InvalidCVError(monkeypatch):
+    # Yeterince uzun ama CV olmayan metin -> Gemini'ye gider; model bos dondurur
+    non_cv = "Bu bir yemek tarifidir: un, seker ve yumurtayi bir kapta karistirin."
+    service = _make_service(monkeypatch, [json.dumps(_EMPTY_OUTPUT)])
+
+    with pytest.raises(InvalidCVError):
+        service.analyze_cv(non_cv)
+
+    assert service.client.models.calls == 1  # analiz denendi, sonuc bos -> InvalidCVError

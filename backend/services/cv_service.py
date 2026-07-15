@@ -12,6 +12,12 @@ class CVAnalysisError(Exception):
     """CV analizinin (Gemini cagrisi + JSON parse + sema dogrulama) basarisiz oldugunu belirtir."""
 
 
+class InvalidCVError(Exception):
+    """Girdi metninin gecerli bir CV olmadigini belirtir (cok kisa/bos veya alakasiz belge)."""
+
+
+MIN_CV_TEXT_LENGTH = 40
+
 MAX_ATTEMPTS = 3
 BACKOFF_BASE_SECONDS = 1.0
 
@@ -84,6 +90,10 @@ class CVAnalysisService:
             "Sen profesyonel bir Kariyer ve İK Asistanı yapay zekasısın. Görevin, sana verilen "
             "CV metnini titizlikle incelemek ve belirtilen JSON şemasına uygun şekilde analiz etmektir.\n\n"
             "ÖNEMLİ KURALLAR:\n"
+            "0. ÖNCE metnin bir CV/özgeçmiş olup olmadığını değerlendir. Metin bir CV DEĞİLSE "
+            "(örn. tarif, haber, makale, rastgele metin), aşağıdaki kuralları UYGULAMA ve TÜM "
+            "alanları boş/0 döndür: skills=[], experience_years=0, education=[], strengths=[], "
+            "gaps=[], role_scores'ta tüm roller 0, top_role_reasons=[].\n"
             "1. Deneyim yılını sayısal (float) olarak çıkar.\n"
             "2. Eğitim geçmişini listele.\n"
             "3. Adayın sahip olduğu teknik, sektörel ve sosyal (soft skills) becerilerini listele.\n"
@@ -142,26 +152,50 @@ class CVAnalysisService:
         validated = CVAnalysisOutput(**data)
         return validated.model_dump()
 
-    def analyze_cv(self, cv_text: str) -> dict:
-        """Ham CV metnini analiz eder; retry + sema dogrulama ile saglam dict dondurur.
+    def _is_effectively_empty(self, result: dict) -> bool:
+        """Model, metnin CV olmadigini bos/0 ciktiyla sinyalledi mi?
 
-        En fazla MAX_ATTEMPTS deneme yapar:
-          - Cikti hatasi (bozuk JSON / semaya uymayan) -> beklemeden tekrar dener.
-          - API hatasi (timeout / 429 / 5xx vb.) -> artan bekleme sonra tekrar dener.
-        Tum denemeler tukenirse CVAnalysisError firlatir (orijinal sebep zincirlenir).
+        skills bos VE tum role_scores 0 ise etkin bos sayilir (muhafazakar AND).
         """
+        if result.get("skills"):
+            return False
+        role_scores = result.get("role_scores") or {}
+        return all(score == 0 for score in role_scores.values())
+
+    def analyze_cv(self, cv_text: str) -> dict:
+        """Ham CV metnini analiz eder; gecersiz girdide InvalidCVError firlatir.
+
+        Katman 1 (API'siz): cok kisa/bos girdi -> InvalidCVError.
+        Retry + sema dogrulama: gecici hatada tekrar dener (bkz. CVAnalysisError).
+        Katman 2: model CV olmadigini bos ciktiyla sinyallerse -> InvalidCVError.
+        """
+        # Katman 1: Python uzunluk kontrolu (Gemini cagrilmaz)
+        if not cv_text or len(cv_text.strip()) < MIN_CV_TEXT_LENGTH:
+            raise InvalidCVError(
+                "Girdi cok kisa veya bos; gecerli bir CV olarak analiz edilemez."
+            )
+
         last_error: Exception | None = None
         for attempt in range(1, MAX_ATTEMPTS + 1):
             try:
-                return self._attempt_analysis(cv_text)
+                result = self._attempt_analysis(cv_text)
             except (json.JSONDecodeError, ValidationError) as output_err:
                 # Model bir sonraki denemede duzgun JSON/sema uretebilir; beklemeden dene
                 last_error = output_err
+                continue
             except Exception as api_err:
                 # Gecici API hatasi: artan bekleme sonra tekrar dene
                 last_error = api_err
                 if attempt < MAX_ATTEMPTS:
                     time.sleep(BACKOFF_BASE_SECONDS * attempt)
+                continue
+
+            # Katman 2: model metnin CV olmadigini bos ciktiyla sinyalledi mi?
+            if self._is_effectively_empty(result):
+                raise InvalidCVError(
+                    "Metin bir CV gibi analiz edilemedi (alakasiz belge olabilir)."
+                )
+            return result
 
         raise CVAnalysisError(
             f"CV analizi {MAX_ATTEMPTS} denemede başarısız: {last_error}"
