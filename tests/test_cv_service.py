@@ -11,6 +11,8 @@ from services.cv_service import CVAnalysisService, CVAnalysisError
 
 # Semaya uygun minimal gecerli analiz JSON'u.
 # role_scores {} birakilir -> Pydantic 22 rolu 0 default ile doldurur.
+# top_role_reasons ekip kontratinda zorunlu alan (Kisi 3); ic ic RoleReason'i da
+# dogrulasin diye tek gercekci girdiyle verilir.
 _VALID_OUTPUT = {
     "skills": ["Python", "FastAPI"],
     "experience_years": 3.0,
@@ -18,6 +20,13 @@ _VALID_OUTPUT = {
     "strengths": ["Guclu backend temeli"],
     "gaps": ["Docker deneyimi az"],
     "role_scores": {},
+    "top_role_reasons": [
+        {
+            "role": "backend_developer",
+            "score": 0,
+            "reason": "Test amacli ornek gerekce (fixture).",
+        }
+    ],
 }
 
 
