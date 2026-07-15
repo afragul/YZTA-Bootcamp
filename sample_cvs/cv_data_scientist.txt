@@ -1,9 +1,0 @@
-Ad Soyad: Zeynep Çelik
-Eğitim: ODTÜ İstatistik Lisans, Sabancı Üniversitesi Veri Analitiği Mezunu (2023 mezuniyet)
-Deneyim:
-- 1 yıl Data Scientist olarak AnalyticsHub şirketinde çalıştı.
-- SQL ve Pandas ile büyük veri kümeleri üzerinde EDA (Keşifsel Veri Analizi) yaptı.
-- Scikit-learn ile müşteri kaybı (churn) ve segmentasyon modelleri tasarladı.
-- Tableau ve PowerBI ile iş birimleri için interaktif dashboardlar geliştirdi.
-Beceriler: Python, SQL, R, Pandas, NumPy, Scikit-learn, Tableau, PowerBI, Git.
-Hedef Rol: Data Scientist

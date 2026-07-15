@@ -1,8 +1,0 @@
-Ad Soyad: Burak Yılmaz
-Eğitim: Ege Üniversitesi Bilgisayar Mühendisliği Lisans Mezunu (2023 mezuniyet)
-Deneyim: 
-- 1.5 yıl Backend Geliştirici olarak DevTech firmasında çalıştı.
-- FastAPI, PostgreSQL ve Docker kullanarak e-ticaret platformu API'leri geliştirdi.
-- Mikroservis mimarisi, Redis cache entegrasyonu ve Celery ile asenkron görev kuyrukları kurdu.
-Beceriler: Python, FastAPI, Django, PostgreSQL, Redis, Docker, RabbitMQ, Git.
-Hedef Rol: Backend Developer

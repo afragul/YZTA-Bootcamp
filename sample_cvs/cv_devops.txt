@@ -1,9 +1,0 @@
-Ad Soyad: Can Demirci
-Eğitim: Yıldız Teknik Üniversitesi Matematik Mühendisliği Mezunu (2022 mezuniyet)
-Deneyim:
-- 2 yıl DevOps Mühendisi olarak CloudSys firmasında çalıştı.
-- AWS (EC2, S3, RDS) üzerinde bulut altyapısı yönetti, Terraform ile Infrastructure as Code (IaC) uyguladı.
-- Jenkins ve GitHub Actions ile CI/CD boru hatları (pipelines) tasarladı.
-- Kubernetes kümesi (cluster) yönetimi, Prometheus ve Grafana ile izleme (monitoring) kurdu.
-Beceriler: AWS, Terraform, Docker, Kubernetes, Ansible, Jenkins, Prometheus, Linux, Bash, Git.
-Hedef Rol: DevOps Engineer

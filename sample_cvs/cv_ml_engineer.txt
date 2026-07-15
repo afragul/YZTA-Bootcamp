@@ -1,9 +1,0 @@
-Ad Soyad: Kerem Aslan
-Eğitim: Koç Üniversitesi Bilgisayar Mühendisliği Lisans ve Yapay Zeka Yüksek Lisans Mezunu (2024 mezuniyet)
-Deneyim:
-- 1 yıl Machine Learning Engineer Stajyeri olarak DeepMind benzeri bir AI start-up'ında çalıştı.
-- PyTorch kullanarak görüntü sınıflandırma ve nesne tespiti modelleri geliştirdi.
-- Hugging Face Transformers ile NLP modelleri ince ayarı (fine-tuning) yaptı.
-- MLflow ile deney takibi yaptı, Triton Server ile modelleri canlıya aldı.
-Beceriler: Python, PyTorch, TensorFlow, Scikit-learn, MLflow, OpenCV, Git.
-Hedef Rol: Machine Learning Engineer

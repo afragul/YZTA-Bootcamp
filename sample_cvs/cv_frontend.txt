@@ -1,8 +1,0 @@
-Ad Soyad: Merve Kaya
-Eğitim: Hacettepe Üniversitesi Bilgisayar Bilimleri Mezunu (2022 mezuniyet)
-Deneyim:
-- 2 yıl Frontend Geliştirici olarak PixelDesign ajansında çalıştı.
-- React, Next.js ve Tailwind CSS kullanarak modern, responsive web arayüzleri tasarladı.
-- Redux Toolkit ile state yönetimi kurguladı, REST ve GraphQL API entegrasyonu yaptı.
-Beceriler: JavaScript, TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS, Redux, Git.
-Hedef Rol: Frontend Developer

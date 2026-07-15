@@ -1,7 +1,6 @@
-# Backend — Hafta 2 (Kişi 1)
+# Backend — Hafta 3 (Kişi 1)
 
-Bu branch (`feature/kisi1-hafta2-backend`), Hafta 1 iskeletinin uzerine **gercek upload, SQLite CRUD ve JWT auth** ekler.
-Upload akisi: parse (Kisi 2) → analiz (Kisi 2) → RAG eslestirme (Kisi 4) → DB kayit.
+Bu branch (`feature/kisi1-hafta3-backend`), Hafta 2 uzerine **tam orkestrasyon, ogrenme plani endpoint'i ve logging** ekler.
 
 ---
 
@@ -10,7 +9,7 @@ Upload akisi: parse (Kisi 2) → analiz (Kisi 2) → RAG eslestirme (Kisi 4) →
 ```bash
 git clone https://github.com/afragul/YZTA-Bootcamp.git
 cd YZTA-Bootcamp
-git checkout feature/kisi1-hafta2-backend
+git checkout feature/kisi1-hafta3-backend
 ```
 
 ---
@@ -67,7 +66,24 @@ Swagger UI'da **Try it out** ile doğrudan istek atabilirsiniz.
 
 ---
 
-## Aktif endpoint'ler (Hafta 2)
+## Aktif endpoint'ler (Hafta 3)
+
+### `GET /cv/{cv_id}`
+
+Kayitli analiz sonucunu getirir (upload ile ayni JSON yapisi + `role_rankings`).
+
+### `POST /learning-plan`
+
+```json
+{
+  "cv_id": "uuid-from-upload",
+  "target_role": "machine_learning_engineer"
+}
+```
+
+Kisi 3 `LearningPathService` ile hedef role gore plan uretir. Ayni cv_id + rol icin cache'den doner.
+
+---
 
 ### `POST /auth/register`
 
