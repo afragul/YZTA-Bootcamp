@@ -26,7 +26,7 @@ class CVAnalysisService:
         if not api_key:
             raise ValueError("GEMINI_API_KEY ortam değişkeni set edilmemiş! Lütfen .env dosyasını kontrol edin.")
         self.client = genai.Client(api_key=api_key)
-        self.model_name = "gemini-2.5-flash"
+        self.model_name = "gemini-3.5-flash"
         
         # Projede skorlama yapacağımız 22 hedef rol (jobs_dataset.xlsx analizinden türetilmiştir)
         self.target_roles = [
@@ -95,7 +95,23 @@ class CVAnalysisService:
             "   - Tasarım: ui_ux_designer, graphic_designer\n"
             "   - Yönetim & Analiz: product_manager, project_manager, business_analyst\n"
             "   - İş Operasyonları: digital_marketing_specialist, hr_specialist, customer_success_specialist\n"
-            "Her bir alan için kesinlikle sayısal bir puan hesaplamalı ve boş bırakmamalısın."
+            "Her bir alan için kesinlikle sayısal bir puan hesaplamalı ve boş bırakmamalısın.\n"
+            "6. SKORLAMA CETVELİ - her rol için bu ölçütü aynı şekilde uygula:\n"
+            "   - 0-20  : CV'de bu rolle ilgili hiçbir kanıt yok.\n"
+            "   - 21-40 : Çok dolaylı/zayıf ilişki (sadece genel yetenekler örtüşüyor).\n"
+            "   - 41-60 : Temel bilgi var ama pratik proje/deneyim kanıtı yok.\n"
+            "   - 61-80 : İlgili beceriler + en az bir somut proje veya deneyim var.\n"
+            "   - 81-100: Rolün çekirdek becerilerinin çoğu + gerçek iş/proje deneyimi var.\n"
+            "   Puanı DAİMA CV'deki somut kanıta dayandır, tahmin yürütme veya varsayımda bulunma.\n"
+            "7. 'top_role_reasons' alanını doldur: role_scores içindeki EN YÜKSEK skorlu 3 rolü "
+            "skora göre azalan sırada yaz. Her biri için:\n"
+            "   - 'role': role_scores'taki teknik alan adının AYNISI olmalı (orn: machine_learning_engineer)\n"
+            "   - 'score': role_scores'ta verdiğin puanın AYNISI olmalı\n"
+            "   - 'reason': 1-2 cümlelik gerekçe. Gerekçede CV'den SOMUT kanıt göster "
+            "(beceri adı, araç adı, proje veya deneyim). Genel geçer cümle kurma.\n"
+            "   Örnek iyi gerekçe: 'PyTorch ve MLflow ile model geliştirme ve deney takibi deneyimi "
+            "bu rolün çekirdek gereksinimlerini karşılıyor.'\n"
+            "   Örnek kötü gerekçe: 'Aday bu rol için uygundur.' (somut kanıt yok)"
         )
 
         response = self.client.models.generate_content(
