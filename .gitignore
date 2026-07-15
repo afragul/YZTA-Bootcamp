@@ -17,6 +17,6 @@ venv/
 
 .idea/
 
-# Kisisel gecici deneme scriptleri (Kisi 3)
-test_one.py
+# Kisisel gecici test scriptleri
 test_gemini.py
+test_one.py
