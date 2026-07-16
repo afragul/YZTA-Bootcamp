@@ -20,7 +20,7 @@ from google.genai import types
 
 load_dotenv(override=True)
 
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3.5-flash"
 
 # role_scores alan adlari -> okunabilir etiket (baglamda sunmak icin)
 _ROLE_LABELS: dict[str, str] = {
