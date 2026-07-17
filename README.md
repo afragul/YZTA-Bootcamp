@@ -65,7 +65,7 @@ NextGenCV
   | **Toplam Tamamlanan** | **100** | |
 
 - **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü Slack/WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
-  <img width="1156" height="1254" alt="Image" src="https://github.com/user-attachments/assets/7817d3cf-1662-4b82-8c32-a6507c5c5b18" />
+  <img width="1556" height="375" alt="Image" src="https://github.com/user-attachments/assets/09f362c6-e633-449d-90dc-511f55d99cc1" />
   <img width="1229" height="965" alt="Image" src="https://github.com/user-attachments/assets/b49defa7-af4b-4aa8-bbc6-552ea33b7026" />
 
 - **Sprint Board Update:** Sprint 1 board ekran görüntüsü:
