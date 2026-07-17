@@ -1,0 +1,302 @@
+{
+  "cv": "cv_ml_engineer.txt",
+  "kosu_sayisi": 5,
+  "en_yuksek_rol_sabit": true,
+  "en_yuksek_roller": [
+    "machine_learning_engineer",
+    "machine_learning_engineer",
+    "machine_learning_engineer",
+    "machine_learning_engineer",
+    "machine_learning_engineer"
+  ],
+  "ortalama_oynama": 4.09,
+  "max_oynama": 10,
+  "detay": [
+    {
+      "rol": "machine_learning_engineer",
+      "skorlar": [
+        90,
+        85,
+        85,
+        85,
+        95
+      ],
+      "aralik": 10,
+      "ortalama": 88,
+      "std_sapma": 4.0
+    },
+    {
+      "rol": "data_scientist",
+      "skorlar": [
+        80,
+        75,
+        75,
+        75,
+        85
+      ],
+      "aralik": 10,
+      "ortalama": 78,
+      "std_sapma": 4.0
+    },
+    {
+      "rol": "backend_developer",
+      "skorlar": [
+        45,
+        45,
+        40,
+        45,
+        45
+      ],
+      "aralik": 5,
+      "ortalama": 44,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "devops_engineer",
+      "skorlar": [
+        40,
+        40,
+        35,
+        40,
+        40
+      ],
+      "aralik": 5,
+      "ortalama": 39,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "cloud_engineer",
+      "skorlar": [
+        35,
+        35,
+        30,
+        35,
+        30
+      ],
+      "aralik": 5,
+      "ortalama": 33,
+      "std_sapma": 2.45
+    },
+    {
+      "rol": "data_engineer",
+      "skorlar": [
+        50,
+        50,
+        45,
+        50,
+        50
+      ],
+      "aralik": 5,
+      "ortalama": 49,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "data_analyst",
+      "skorlar": [
+        55,
+        55,
+        50,
+        55,
+        55
+      ],
+      "aralik": 5,
+      "ortalama": 54,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "bi_analyst",
+      "skorlar": [
+        25,
+        30,
+        30,
+        30,
+        30
+      ],
+      "aralik": 5,
+      "ortalama": 29,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "database_administrator",
+      "skorlar": [
+        20,
+        25,
+        25,
+        25,
+        25
+      ],
+      "aralik": 5,
+      "ortalama": 24,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "cybersecurity_specialist",
+      "skorlar": [
+        10,
+        10,
+        15,
+        10,
+        15
+      ],
+      "aralik": 5,
+      "ortalama": 12,
+      "std_sapma": 2.45
+    },
+    {
+      "rol": "ui_ux_designer",
+      "skorlar": [
+        10,
+        10,
+        10,
+        5,
+        10
+      ],
+      "aralik": 5,
+      "ortalama": 9,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "graphic_designer",
+      "skorlar": [
+        10,
+        10,
+        10,
+        5,
+        10
+      ],
+      "aralik": 5,
+      "ortalama": 9,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "product_manager",
+      "skorlar": [
+        25,
+        30,
+        25,
+        30,
+        30
+      ],
+      "aralik": 5,
+      "ortalama": 28,
+      "std_sapma": 2.45
+    },
+    {
+      "rol": "project_manager",
+      "skorlar": [
+        25,
+        25,
+        25,
+        30,
+        30
+      ],
+      "aralik": 5,
+      "ortalama": 27,
+      "std_sapma": 2.45
+    },
+    {
+      "rol": "business_analyst",
+      "skorlar": [
+        30,
+        30,
+        30,
+        35,
+        35
+      ],
+      "aralik": 5,
+      "ortalama": 32,
+      "std_sapma": 2.45
+    },
+    {
+      "rol": "hr_specialist",
+      "skorlar": [
+        10,
+        10,
+        10,
+        5,
+        10
+      ],
+      "aralik": 5,
+      "ortalama": 9,
+      "std_sapma": 2.0
+    },
+    {
+      "rol": "frontend_developer",
+      "skorlar": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "aralik": 0,
+      "ortalama": 10,
+      "std_sapma": 0.0
+    },
+    {
+      "rol": "fullstack_developer",
+      "skorlar": [
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "aralik": 0,
+      "ortalama": 15,
+      "std_sapma": 0.0
+    },
+    {
+      "rol": "mobile_developer",
+      "skorlar": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "aralik": 0,
+      "ortalama": 10,
+      "std_sapma": 0.0
+    },
+    {
+      "rol": "systems_administrator",
+      "skorlar": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "aralik": 0,
+      "ortalama": 20,
+      "std_sapma": 0.0
+    },
+    {
+      "rol": "digital_marketing_specialist",
+      "skorlar": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "aralik": 0,
+      "ortalama": 10,
+      "std_sapma": 0.0
+    },
+    {
+      "rol": "customer_success_specialist",
+      "skorlar": [
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "aralik": 0,
+      "ortalama": 15,
+      "std_sapma": 0.0
+    }
+  ]
+}
