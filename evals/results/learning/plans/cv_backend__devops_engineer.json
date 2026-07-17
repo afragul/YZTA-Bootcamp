@@ -1,0 +1,187 @@
+{
+  "target_role": "DevOps Mühendisi",
+  "summary": "Bu plan, güçlü backend ve Docker temeli olan adayın bulut teknolojileri ve CI/CD süreçlerindeki eksiklerini kapatmayı hedefler. Plan sonunda aday, mevcut Python ve Docker bilgisini AWS ve GitHub Actions ile birleştirerek ilk DevOps portfolyo projesini oluşturmuş ve mülakatlarda bu süreçleri savunabilecek temel yetkinliğe ulaşmış olacaktır.",
+  "total_weeks": 6,
+  "weeks": [
+    {
+      "week": 1,
+      "focus": "CI/CD Temelleri ve GitHub Actions ile Otomasyon",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "CI/CD Kavramları ve GitHub Actions Giriş",
+          "reason": "DevOps rolünün merkezinde yer alan sürekli entegrasyon ve sürekli teslimat (CI/CD) süreçlerinin teorisini anlamak ve adayın bildiği Git platformu üzerinde ilk otomasyonu kurmak.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "GitHub Actions Documentation - Quickstart (ücretsiz)",
+          "estimated_hours": 3
+        },
+        {
+          "order": 2,
+          "topic": "Python ve FastAPI/Django Testlerinin Otomasyonu",
+          "reason": "Adayın mevcut Python bilgisini kullanarak, kod her push edildiğinde otomatik testlerin (pytest/unittest) çalıştırılacağı bir CI hattı kurmasını sağlamak.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "GitHub Actions - Building and testing Python (ücretsiz)",
+          "estimated_hours": 4
+        },
+        {
+          "order": 3,
+          "topic": "CI/CD ile Docker Image Oluşturma ve Push Etme",
+          "reason": "Adayın Docker bilgisini CI/CD süreçlerine entegre ederek, başarılı testlerden sonra otomatik olarak Docker imajı üreten bir pipeline tasarlamak.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "GitHub Actions - Publishing Docker images (ücretsiz)",
+          "estimated_hours": 4
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "focus": "AWS Bulut Platformu Temelleri",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "AWS Global Altyapı, IAM ve EC2",
+          "reason": "Bulut platformu eksikliğini gidermek amacıyla sektör standardı olan AWS'in temel servislerini, güvenlik (IAM) ve sanal sunucu (EC2) yönetimini öğrenmek.",
+          "resource_type": "kurs",
+          "resource_suggestion": "AWS Cloud Practitioner Essentials on AWS Skill Builder (ücretsiz)",
+          "estimated_hours": 5
+        },
+        {
+          "order": 2,
+          "topic": "AWS Ağ Yönetimi (VPC) ve RDS Konfigürasyonu",
+          "reason": "Adayın bildiği PostgreSQL veritabanını bulutta güvenli bir ağ (VPC) içinde RDS servisi kullanarak ayağa kaldırma yetkinliği kazanması.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Amazon RDS Getting Started Guide (ücretsiz)",
+          "estimated_hours": 4
+        },
+        {
+          "order": 3,
+          "topic": "AWS CloudWatch ile Loglama ve İzleme",
+          "reason": "Canlıya alınan uygulamaların sağlık durumunu izlemek ve logları takip etmek için DevOps'un temel pratiklerinden biri olan izleme (monitoring) becerisini edinmek.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Amazon CloudWatch User Guide (ücretsiz)",
+          "estimated_hours": 3
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "focus": "Terraform ile Altyapı Kodlama (IaC)",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Terraform Temelleri ve Sözdizimi",
+          "reason": "AWS kaynaklarını manuel oluşturmak yerine kodla yönetmek (Infrastructure as Code) modern DevOps'un standardıdır. Bu adım IaC mantığını kavramayı sağlar.",
+          "resource_type": "kurs",
+          "resource_suggestion": "HashiCorp Developer - Terraform Tutorials (ücretsiz)",
+          "estimated_hours": 4
+        },
+        {
+          "order": 2,
+          "topic": "Terraform ile AWS VPC ve EC2 Kurulumu",
+          "reason": "Önceki hafta öğrenilen AWS ağ ve sunucu bileşenlerini Terraform koduna dökerek otomatik olarak ayağa kaldırma pratiği yapmak.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Terraform Registry - AWS Provider Documentation (ücretsiz)",
+          "estimated_hours": 5
+        },
+        {
+          "order": 3,
+          "topic": "Terraform State Yönetimi",
+          "reason": "Ekip çalışmasında altyapı durumunun tutarlılığını sağlamak için Terraform state yapısını ve best-practice'leri öğrenmek.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "HashiCorp Developer - Terraform State (ücretsiz)",
+          "estimated_hours": 3
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "focus": "Konteyner Dağıtımı ve Gelişmiş CI/CD",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "AWS ECS (Elastic Container Service) Temelleri",
+          "reason": "Adayın Dockerize ettiği uygulamaları AWS üzerinde ölçeklenebilir ve yönetilebilir bir şekilde (ECS Fargate kullanarak) çalıştırmayı öğrenmesi.",
+          "resource_type": "kurs",
+          "resource_suggestion": "AWS Skill Builder - Getting Started with Amazon Elastic Container Service (ücretsiz)",
+          "estimated_hours": 5
+        },
+        {
+          "order": 2,
+          "topic": "GitHub Actions ile AWS ECS Dağıtım Hattı",
+          "reason": "CI/CD sürecini tamamlayarak, kod değişikliği yapıldığında uygulamanın otomatik olarak AWS ECS'e deploy edilmesini sağlamak.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "GitHub Actions - Deploying to Amazon Elastic Container Service (ücretsiz)",
+          "estimated_hours": 5
+        },
+        {
+          "order": 3,
+          "topic": "Gizli Bilgi (Secret) Yönetimi",
+          "reason": "Veritabanı şifreleri ve API anahtarları gibi hassas verilerin CI/CD süreçlerinde ve AWS üzerinde güvenli bir şekilde yönetilmesini sağlamak.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "AWS Secrets Manager User Guide (ücretsiz)",
+          "estimated_hours": 3
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "focus": "Bitirme Projesi - Altyapı ve Hazırlık",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Uygulama Mimarisi ve Tasarımı",
+          "reason": "Adayın mevcut FastAPI/PostgreSQL/Redis stack'ini AWS üzerinde nasıl konumlandıracağını belirlemek ve mimariyi çizmek.",
+          "resource_type": "proje",
+          "resource_suggestion": "FastAPI ve PostgreSQL uygulamasının AWS mimari diyagramının draw.io ile çizilmesi (ücretsiz)",
+          "estimated_hours": 4
+        },
+        {
+          "order": 2,
+          "topic": "Altyapının Terraform ile Kodlanması",
+          "reason": "Projenin çalışacağı VPC, RDS (PostgreSQL), ElastiCache (Redis) ve ECS bileşenlerinin Terraform kodlarının yazılması.",
+          "resource_type": "proje",
+          "resource_suggestion": "AWS VPC, ECS ve RDS kaynaklarını tanımlayan Terraform kodlarının yazılması (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 3,
+          "topic": "Git Flow ve Repository Yapılandırması",
+          "reason": "Profesyonel bir DevOps mühendisi gibi çalışmak için GitHub üzerinde branch koruma kurallarını ve PR süreçlerini ayarlamak.",
+          "resource_type": "proje",
+          "resource_suggestion": "GitHub üzerinde main ve develop dalları için koruma kurallarının yapılandırılması (ücretsiz)",
+          "estimated_hours": 3
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "focus": "Bitirme Projesi - Pipeline ve Canlıya Alım",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "GitHub Actions Pipeline Entegrasyonu",
+          "reason": "Yazılan Terraform altyapısı üzerine, uygulamanın testlerini koşan, imajını alan ve ECS'e deploy eden uçtan uca pipeline'ı kurmak.",
+          "resource_type": "proje",
+          "resource_suggestion": "GitHub Actions ile otomatik test, Dockerize etme ve AWS ECS'e deploy adımlarını içeren YAML dosyasının yazılması (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Canlıya Alım ve İzleme Testleri",
+          "reason": "Uygulamanın canlı ortamda çalıştığını doğrulamak, veritabanı bağlantılarını test etmek ve CloudWatch üzerinden metrikleri incelemek.",
+          "resource_type": "proje",
+          "resource_suggestion": "Uygulamanın AWS üzerinde canlıya alınması ve CloudWatch üzerinde logların doğrulanması (ücretsiz)",
+          "estimated_hours": 4
+        },
+        {
+          "order": 3,
+          "topic": "Portfolyo Dokümantasyonu",
+          "reason": "Yapılan tüm çalışmayı işverenlere sunabilmek için mimari şemayı, kullanılan teknolojileri ve kurulum adımlarını içeren profesyonel bir README hazırlamak.",
+          "resource_type": "proje",
+          "resource_suggestion": "GitHub reposu için mimari şemayı ve kurulum adımlarını içeren detaylı README.md dosyasının hazırlanması (ücretsiz)",
+          "estimated_hours": 4
+        }
+      ]
+    }
+  ]
+}

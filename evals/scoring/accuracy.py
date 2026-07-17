@@ -1,8 +1,11 @@
+import json
 import os
 import sys
-import json
+from pathlib import Path
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
+from evals._paths import SAMPLE_CVS, SCORING_RESULTS
 
 from services.cv_service import CVAnalysisService
 
@@ -21,7 +24,7 @@ def main():
     satirlar = []
 
     for dosya, beklenen_rol in BEKLENEN.items():
-        yol = os.path.join("sample_cvs", dosya)
+        yol = os.path.join(SAMPLE_CVS, dosya)
         with open(yol, "r", encoding="utf-8") as f:
             cv_text = f.read()
 
@@ -61,11 +64,12 @@ def main():
     print("=" * 100)
 
     # Sunumda kullanmak icin diske yaz
-    with open("eval_results.json", "w", encoding="utf-8") as f:
+    cikti_yolu = os.path.join(SCORING_RESULTS, "accuracy.json")
+    with open(cikti_yolu, "w", encoding="utf-8") as f:
         json.dump(
             {"basari_orani": oran, "detay": satirlar}, f, indent=2, ensure_ascii=False
         )
-    print("\nDetayli sonuc: eval_results.json")
+    print("\nDetayli sonuc: accuracy.json")
 
 
 if __name__ == "__main__":

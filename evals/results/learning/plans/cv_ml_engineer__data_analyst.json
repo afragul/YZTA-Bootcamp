@@ -1,0 +1,117 @@
+{
+  "target_role": "Veri Analisti",
+  "summary": "Bu plan, adayın güçlü Python ve makine öğrenmesi altyapısını veri analitiğinin temel taşı olan SQL, bulut sistemleri ve büyük veri teknolojileriyle birleştirmeyi amaçlar. Plan sonunda aday, sektörel deneyim eksikliğini kapatacak ve mülakatlarda teknik yetkinliğini kanıtlayabilecek somut bir portfolyo projesine sahip olacaktır.",
+  "total_weeks": 5,
+  "weeks": [
+    {
+      "week": 1,
+      "focus": "İlişkisel Veritabanları ve SQL Temelleri",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "SQL Temel Sorguları ve Veri Filtreleme",
+          "reason": "Veri analistlerinin en temel görevi veritabanlarından veri çekmektir. Bu adım adayın ilişkisel veritabanı ve SQL konusundaki temel eksikliğini kapatır.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Kaggle Learn - Intro to SQL (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "SQL JOIN İşlemleri ile Veri Birleştirme",
+          "reason": "Gerçek dünya verileri farklı tablolarda tutulur. Veri analistlerinin bu tabloları doğru şekilde birleştirerek analiz yapabilmesi kritik bir gereksinimdir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "SQLZoo - JOIN Tutorial (ücretsiz)",
+          "estimated_hours": 6
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "focus": "İleri Düzey SQL Sorgulama ve Analitik Fonksiyonlar",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "SQL Gruplama ve Agregasyon Fonksiyonları",
+          "reason": "Büyük veri kümelerini özetlemek, ortalama, toplam ve adet gibi metrikleri hesaplamak veri analistlerinin günlük işlerinin merkezindedir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "SQLZoo - SUM and COUNT Tutorial (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Alt Sorgular (Subqueries) ve CTE Kullanımı",
+          "reason": "Karmaşık iş sorularını yanıtlamak için iç içe geçmiş sorgular yazmak ve kodun okunabilirliğini artırmak veri analistleri için zorunludur.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Kaggle Learn - Advanced SQL (ücretsiz)",
+          "estimated_hours": 6
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "focus": "Büyük Veri Teknolojileri ve PySpark Entegrasyonu",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "PySpark ile Büyük Veri Analizine Giriş",
+          "reason": "Adayın büyük veri teknolojileri (Spark) eksikliğini kapatırken, mevcut güçlü Python bilgisinden yararlanarak hızlı öğrenmesini sağlar.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Apache Spark Official Quick Start Guide (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Spark SQL ile Büyük Veri Setlerini Sorgulama",
+          "reason": "Milyonlarca satırlık büyük verileri SQL sorguları kullanarak hızlıca analiz etme yeteneği kazandırır.",
+          "resource_type": "video",
+          "resource_suggestion": "freeCodeCamp - Spark SQL Tutorial (ücretsiz)",
+          "estimated_hours": 6
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "focus": "Bulut Platformlarında Veri Analitiği",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "AWS S3 ve Amazon Athena ile Veri Sorgulama",
+          "reason": "Adayın bulut platformları (AWS) eksikliğini kapatarak, bulut depolama alanlarındaki verileri doğrudan SQL ile sorgulama pratiği kazanmasını sağlar.",
+          "resource_type": "kurs",
+          "resource_suggestion": "AWS Skill Builder - Getting Started with Amazon Athena (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Bulut Veri Ambarı Konseptleri ve BigQuery",
+          "reason": "Modern veri analitiği ekiplerinin kullandığı bulut tabanlı veri ambarı sistemlerinin çalışma mantığını anlamayı sağlar.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Google Cloud Skills Boost - BigQuery Basics (ücretsiz)",
+          "estimated_hours": 5
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "focus": "Portfolyo Projesi ve Sektörel Hazırlık",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "SQL ve PySpark ile Uçtan Uca Veri Analizi Projesi",
+          "reason": "Adayın sektörel tam zamanlı iş deneyimi eksikliğini kapatmak için GitHub üzerinde sergileyebileceği somut ve teknik bir analitik çıktısı üretmesini sağlar.",
+          "resource_type": "proje",
+          "resource_suggestion": "GitHub üzerinde SQL sorguları ve PySpark analiz adımlarını içeren bir Jupyter Notebook projesi oluşturulması (ücretsiz)",
+          "estimated_hours": 8
+        },
+        {
+          "order": 2,
+          "topic": "Proje Dokümantasyonu ve Git ile Yayınlama",
+          "reason": "Adayın mevcut Git bilgisini kullanarak projesini profesyonel bir şekilde belgelemesini ve işverenlere sunulabilir hale getirmesini sağlar.",
+          "resource_type": "proje",
+          "resource_suggestion": "GitHub üzerinde projenin README dosyasının iş analitiği çıktılarıyla detaylandırılarak yazılması (ücretsiz)",
+          "estimated_hours": 5
+        }
+      ]
+    }
+  ]
+}
