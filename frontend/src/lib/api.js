@@ -1,7 +1,9 @@
 // Backend çağrıları buradan yapılacak (şimdilik iskelet).
 // API kontratı (Kişi 1) netleştikçe fonksiyonlar buraya eklenecek.
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+// NOT: Windows'ta "localhost" IPv6 (::1) çözülebilir; backend ise 127.0.0.1
+// (IPv4) dinler → "Failed to fetch". Bu yüzden varsayılan 127.0.0.1.
+const BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 export async function apiGet(path) {
   const res = await fetch(`${BASE_URL}${path}`);
