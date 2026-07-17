@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 
 from schemas.cv_analysis import CVAnalysisOutput
+from schemas.learning_plan import LearningPlanOutput, RankedRole
 
 
 class HealthResponse(BaseModel):
@@ -20,10 +21,7 @@ class JobMatchItem(BaseModel):
 
 
 class CVUploadResponse(BaseModel):
-    """POST /cv/upload mock cevabi (Hafta 1).
-
-    Hafta 3 orkestrasyon endpoint'i ayni yapida tek JSON dondurur.
-    """
+    """POST /cv/upload ve GET /cv/{cv_id} orkestrasyon cevabi."""
 
     cv_id: str
     filename: str
@@ -31,6 +29,27 @@ class CVUploadResponse(BaseModel):
     message: str
     analysis: CVAnalysisOutput
     top_matches: list[JobMatchItem]
+    role_rankings: list[RankedRole] = Field(
+        description="22 rolun skora gore siralanmis listesi (frontend rol secici)"
+    )
+
+
+class LearningPlanRequest(BaseModel):
+    cv_id: str = Field(description="Upload cevabindaki cv_id (UUID)")
+    target_role: str = Field(
+        description="Hedef rol (orn: machine_learning_engineer). TargetRole enum degerleri."
+    )
+
+
+class LearningPlanResponse(BaseModel):
+    cv_id: str
+    target_role: str
+    cached: bool = Field(description="True ise DB'den okundu, yeni Gemini cagrisi yapilmadi")
+    plan: LearningPlanOutput
+
+
+class ErrorResponse(BaseModel):
+    detail: str
 
 
 # --- Gelecek endpoint kontratlari (Hafta 2+) ---
@@ -49,6 +68,11 @@ class LoginRequest(BaseModel):
 class AuthTokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+
+
+class UserResponse(BaseModel):
+    id: int
+    email: str
 
 
 class ChatRequest(BaseModel):

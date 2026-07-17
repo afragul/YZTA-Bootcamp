@@ -52,7 +52,7 @@ def run_test():
     print("Örnek CV analiz ediliyor...")
     try:
         response = client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-3.5-flash',
             contents=f"Aşağıdaki CV metnini analiz et ve sonucu belirtilen JSON şemasına göre doldur:\n\n{sample_cv_text}",
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
