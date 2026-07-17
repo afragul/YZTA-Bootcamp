@@ -21,3 +21,4 @@ venv/
 test_one.py
 test_gemini.py
 prompt_kontrol.txt
+model_listesi.py
