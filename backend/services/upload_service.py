@@ -1,4 +1,3 @@
-import logging
 import os
 from pathlib import Path
 from uuid import uuid4
@@ -7,10 +6,8 @@ from sqlalchemy.orm import Session
 
 from crud import cv_pipeline
 from schemas.api_contract import CVUploadResponse
-from services.cv_parser import CVParseError, extract_text
-from services.cv_service import CVAnalysisError, CVAnalysisService, InvalidCVError
-
-logger = logging.getLogger(__name__)
+from services.cv_parser import extract_text
+from services.cv_service import CVAnalysisService
 
 ALLOWED_EXTENSIONS = {".pdf", ".docx"}
 MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024  # 5 MB
@@ -58,10 +55,8 @@ def process_cv_upload(
     content_type: str | None,
     user_id: int | None = None,
 ) -> CVUploadResponse:
-    """Hafta 3 orkestrasyon: parse → analiz → RAG → DB → tek JSON."""
-    logger.info("upload started filename=%s size=%d user_id=%s", filename, len(file_bytes), user_id)
-
     suffix = _validate_upload(filename, content_type, len(file_bytes))
+
     cv_text = extract_text(file_bytes, filename)
     file_path = _save_file(file_bytes, suffix)
 
@@ -72,20 +67,17 @@ def process_cv_upload(
         raw_text=cv_text,
         user_id=user_id,
     )
-    logger.info("cv saved public_id=%s", cv.public_id)
 
     analyzer = CVAnalysisService()
     analysis_data = analyzer.analyze_cv(cv_text)
-    logger.info("analysis completed public_id=%s", cv.public_id)
 
     top_matches: list[dict] = []
     try:
         from services.search_jobs import search_jobs_from_analysis
 
         top_matches = search_jobs_from_analysis(analysis_data, n=5)
-        logger.info("rag matches=%d public_id=%s", len(top_matches), cv.public_id)
-    except Exception as exc:
-        logger.warning("rag skipped public_id=%s reason=%s", cv.public_id, exc)
+    except Exception:
+        top_matches = []
 
     cv_pipeline.save_analysis_and_matches(
         db,
@@ -104,9 +96,5 @@ def process_cv_upload(
 
 __all__ = [
     "ALLOWED_EXTENSIONS",
-    "CVParseError",
-    "CVAnalysisError",
-    "InvalidCVError",
-    "MAX_FILE_SIZE_BYTES",
     "process_cv_upload",
 ]
