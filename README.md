@@ -13,7 +13,7 @@ CodeCrafters
 | :---------- | :---------- | :----------: |
 | Afragül Tığ     | Product Owner     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/afragul-tig/)   | 
 | Tolga Duy     | Scrum Master     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/tolga-duy/) |
-| Ekin Karıncalı      | Developer      | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in//)   |
+| Ekin Karıncalı      | Developer      | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/ekin-karıncalı-698844295/)   |
 | Muhammed Behlül Alar      | Developer     | [![linkedin](https://github.com/user-attachments/assets/3baa645a-33bc-4786-8327-cb0f92356f0a)](https://www.linkedin.com/in/muhammed-behlül-alar/)    |
 
 ## Ürün İsmi
@@ -65,8 +65,8 @@ NextGenCV
   | **Toplam Tamamlanan** | **100** | |
 
 - **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü Slack/WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
-  <img width="1556" height="375" alt="Image" src="https://github.com/user-attachments/assets/09f362c6-e633-449d-90dc-511f55d99cc1" />
-  <img width="1229" height="965" alt="Image" src="https://github.com/user-attachments/assets/b49defa7-af4b-4aa8-bbc6-552ea33b7026" />
+  <img width="1114" height="1112" alt="Image" src="https://github.com/user-attachments/assets/83c15df1-bebf-423f-a702-fdc8c460c90d" />
+<img width="1217" height="1439" alt="Image" src="https://github.com/user-attachments/assets/429405a0-ab3b-45e7-8fe2-14798c11d93b" />
 
 - **Sprint Board Update:** Sprint 1 board ekran görüntüsü:
 <img width="1600" height="1192" alt="Image" src="https://github.com/user-attachments/assets/10f2c705-8283-4df9-bc54-63669a775491" />
