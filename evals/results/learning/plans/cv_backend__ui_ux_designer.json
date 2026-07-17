@@ -1,0 +1,139 @@
+{
+  "target_role": "UI/UX Tasarımcı",
+  "summary": "Bu plan, güçlü bir backend geçmişi olan adayın mantıksal düşünme ve veri yapısı kurma becerilerini UI/UX tasarım süreçlerine köprülemeyi amaçlar. Plan sonunda, Figma aracını yetkinlikle kullanan, tasarım sistemlerini anlayan ve ilk portfolyo projesini tamamlamış bir seviyeye ulaşacaksın.",
+  "total_weeks": 6,
+  "weeks": [
+    {
+      "week": 1,
+      "focus": "Kullanıcı Deneyimi (UX) Temelleri ve Bilgi Mimarisi",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "UX Tasarım Prensipleri ve Kullanıcı Odaklı Tasarım",
+          "reason": "Backend geliştirici olarak sahip olduğun sistem odaklı bakış açısını, kullanıcı odaklı bir perspektife dönüştürmek ve kullanılabilirlik standartlarını öğrenmek için gereklidir.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Coursera - Google UX Design Professional Certificate (ücretli)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Bilgi Mimarisi (Information Architecture) ve Kullanıcı Akışları",
+          "reason": "Veritabanı şemaları tasarlama becerini, kullanıcıların ekranlar arasında nasıl gezineceğini belirleyen mantıksal akışlara dönüştürmek için gereklidir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Figma Help Center - Guide to Information Architecture (ücretsiz)",
+          "estimated_hours": 5
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "focus": "Arayüz (UI) Tasarım Esasları ve Figma Giriş",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Görsel Tasarım İlkeleri (Tipografi, Renk Teorisi ve Grid Sistemleri)",
+          "reason": "Arayüzlerin estetik ve okunabilir olmasını sağlamak, hiyerarşi kurallarını öğrenerek kullanıcı dostu ekranlar tasarlamak için gereklidir.",
+          "resource_type": "video",
+          "resource_suggestion": "freeCodeCamp - UI / UX Design Tutorial for Beginners (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Figma Temel Araçları ve Arayüzü",
+          "reason": "Sektör standardı olan Figma aracını öğrenerek tasarımları dijital ortama aktarmaya başlamak için gereklidir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Figma Help Center - Get Started with Figma (ücretsiz)",
+          "estimated_hours": 6
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "focus": "Gelişmiş Figma Teknikleri ve Tasarım Sistemleri",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Figma Auto-Layout ve Bileşenler (Components)",
+          "reason": "Esnek, duyarlı ve tekrar kullanılabilir arayüz elemanları tasarlayarak geliştirme süreçlerine uygun çıktılar üretmek için gereklidir.",
+          "resource_type": "video",
+          "resource_suggestion": "Figma Official YouTube Channel - Figma Auto Layout Tutorial (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Tasarım Sistemleri (Design Systems) ve UI Kit Kullanımı",
+          "reason": "Büyük ölçekli projelerde tutarlılığı sağlamak ve backend tarafındaki modüler yapı mantığını tasarıma uyarlamak için gereklidir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Figma Help Center - Guide to Design Systems (ücretsiz)",
+          "estimated_hours": 5
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "focus": "Etkileşimli Prototip Oluşturma ve Kullanılabilirlik Testleri",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Figma ile Gelişmiş Prototipleme ve Mikro Etkileşimler",
+          "reason": "Statik tasarımları canlandırarak gerçek bir uygulama gibi çalışan, test edilebilir prototipler üretmek için gereklidir.",
+          "resource_type": "video",
+          "resource_suggestion": "Figma Official YouTube Channel - Prototyping in Figma (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 2,
+          "topic": "Kullanılabilirlik Testi (Usability Testing) Metotları",
+          "reason": "Tasarlanan arayüzlerin gerçek kullanıcılar tarafından nasıl deneyimlendiğini ölçmek ve geri bildirimlere göre tasarımı iyileştirmek için gereklidir.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Coursera - Conduct UX Research and Test Early Concepts (ücretli)",
+          "estimated_hours": 6
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "focus": "Portfolyo Projesi - Araştırma ve Tel Kafes Tasarımı",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Proje Fikir Geliştirme ve Kullanıcı Araştırması",
+          "reason": "Kendi backend deneyiminden yola çıkarak gerçek bir problemi çözecek bir API yönetim paneli projesini başlatmak için gereklidir.",
+          "resource_type": "proje",
+          "resource_suggestion": "Figma Community üzerinde yayınlanmak üzere bir API Dashboard projesinin kullanıcı araştırma raporunu hazırlama (ücretsiz)",
+          "estimated_hours": 7
+        },
+        {
+          "order": 2,
+          "topic": "Düşük Sadakatli (Low-Fidelity) Tel Kafes Tasarımı",
+          "reason": "Görsel detaylara boğulmadan önce ekran yerleşimlerini ve bilgi hiyerarşisini hızlıca Figma üzerinde kurgulamak için gereklidir.",
+          "resource_type": "proje",
+          "resource_suggestion": "Figma üzerinde projenin tüm ana ekranlarının tel kafes çizimlerini yapma (ücretsiz)",
+          "estimated_hours": 6
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "focus": "Portfolyo Projesi - Yüksek Sadakatli Tasarım ve Teslim",
+      "steps": [
+        {
+          "order": 1,
+          "topic": "Yüksek Sadakatli (High-Fidelity) UI Tasarımı ve Prototip",
+          "reason": "Tel kafes tasarımlarını renk, tipografi ve bileşenlerle nihai arayüz haline getirmek ve etkileşimli prototipini tamamlamak için gereklidir.",
+          "resource_type": "proje",
+          "resource_suggestion": "Figma'da projenin nihai UI tasarımlarını tamamlayıp tıklanabilir prototip haline getirme (ücretsiz)",
+          "estimated_hours": 8
+        },
+        {
+          "order": 2,
+          "topic": "Tasarım Teslimi (Handoff) ve Portfolyo Sunumu",
+          "reason": "Geliştiricilere tasarımın nasıl aktarılacağını öğrenmek ve projeyi Figma Community üzerinde vaka analizi olarak sunmak için gereklidir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Figma Help Center - Developer Handoff Guide (ücretsiz)",
+          "estimated_hours": 5
+        }
+      ]
+    }
+  ]
+}

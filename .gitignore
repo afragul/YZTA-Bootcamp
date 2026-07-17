@@ -21,3 +21,4 @@ backend/data/uploads/
 # Kisisel gecici test scriptleri
 test_gemini.py
 test_one.py
+prompt_kontrol.txt

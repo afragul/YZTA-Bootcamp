@@ -1,114 +1,146 @@
 {
   "target_role": "Makine Öğrenmesi Mühendisi",
-  "summary": "Bu plan, güçlü makine öğrenmesi temellerine sahip olan adayın bulut bilişim (AWS), büyük veri (Spark) ve SQL eksikliklerini kapatmayı hedefler. Plan sonunda aday, teorik eksikliklerini giderip bunları uçtan uca bir portfolyo projesinde birleştirerek sektörel deneyim açığını kapatacaktır.",
+  "summary": "Bu plan, güçlü makine öğrenmesi temellerine (PyTorch, TensorFlow, MLflow) sahip olan adayın bulut bilişim (AWS), büyük veri (Spark) ve SQL eksikliklerini kapatmayı amaçlar. Plan sonunda aday, bu teknolojileri birleştiren somut bir uçtan uca portfolyo projesi üreterek iş görüşmelerinde kendini kanıtlayabilecek temel yetkinliğe ulaşacaktır.",
   "total_weeks": 5,
   "weeks": [
     {
       "week": 1,
-      "focus": "İlişkisel Veritabanları ve SQL Temelleri",
+      "focus": "İlişkisel Veri Tabanları ve SQL Temelleri",
       "steps": [
         {
           "order": 1,
-          "topic": "SQL ve İlişkisel Veritabanı Temelleri",
-          "reason": "Makine öğrenmesi modellerini eğitmek için ham veriler genellikle ilişkisel veritabanlarında saklanır. SQL bilmek, veriyi doğrudan kaynağından çekebilmek için bir makine öğrenmesi mühendisine şarttır.",
+          "topic": "SQL ile Veri Sorgulama ve Filtreleme",
+          "reason": "Makine öğrenmesi modellerini eğitmek için ham veriler genellikle ilişkisel veri tabanlarında tutulur. SQL bilmemek veri çekme aşamasında büyük bir engeldir. Bu adım, adayın veri tabanlarından veri çekmesini sağlayacaktır.",
           "resource_type": "kurs",
-          "resource_suggestion": "Coursera platformundaki UC Davis tarafından sunulan 'SQL for Data Science' eğitimi",
+          "resource_suggestion": "SQLZoo SQL Tutorial (ücretsiz)",
           "estimated_hours": 6
         },
         {
           "order": 2,
-          "topic": "PostgreSQL ve Python Entegrasyonu",
-          "reason": "Üretim ortamındaki ML boru hatlarında (pipeline) veritabanı bağlantıları kod ile yönetilir. Python kullanarak PostgreSQL veritabanına bağlanıp veri çekmek bu sürecin temelidir.",
-          "resource_type": "dokumantasyon",
-          "resource_suggestion": "PostgreSQL resmi dokümantasyonundaki 'Tutorial' bölümü",
+          "topic": "İleri Düzey SQL İşlemleri ve Tablo Birleştirmeler (JOINs)",
+          "reason": "Farklı tablolardaki özellikleri bir araya getirerek eğitim veri seti oluşturmak için JOIN işlemleri kritik öneme sahiptir.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Kaggle Learn - Intro to SQL (ücretsiz)",
           "estimated_hours": 5
+        },
+        {
+          "order": 3,
+          "topic": "SQL Veri Analizi Pratiği",
+          "reason": "Teorik SQL bilgisini gerçekçi veri setleri üzerinde sorgular yazarak pekiştirmek ve veri analitiği becerilerini geliştirmek.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Mode Analytics SQL Tutorial (ücretsiz)",
+          "estimated_hours": 4
         }
       ]
     },
     {
       "week": 2,
-      "focus": "Bulut Bilişim ve AWS ile ML Altyapısı",
+      "focus": "AWS ile Bulut Bilişim ve ML Altyapısı",
       "steps": [
         {
           "order": 1,
-          "topic": "AWS Bulut Altyapısı ve Temel Servisler (S3, EC2)",
-          "reason": "Büyük veri kümelerini saklamak ve modelleri eğitmek için yerel bilgisayarlar yetersiz kalır. AWS S3 veri depolama ve EC2 sanal sunucu yönetimi, ML modellerinin bulutta ölçeklenmesini sağlar.",
+          "topic": "AWS Temel Servisleri (S3, EC2, IAM)",
+          "reason": "Büyük veri setlerini depolamak ve modelleri eğitmek için sanal makineler kullanmak, bulut tabanlı ML mühendisliğinin temelidir.",
           "resource_type": "kurs",
-          "resource_suggestion": "AWS Skill Builder platformundaki 'AWS Cloud Practitioner Essentials' eğitimi",
+          "resource_suggestion": "AWS Skill Builder - AWS Cloud Practitioner Essentials (ücretsiz)",
           "estimated_hours": 6
         },
         {
           "order": 2,
-          "topic": "Amazon SageMaker ile ML Yaşam Döngüsü",
-          "reason": "SageMaker, bulut üzerinde model eğitmeyi, dağıtmayı ve yönetmeyi kolaylaştıran endüstri standardı bir araçtır. Sektördeki ML mühendisliği rollerinde doğrudan talep edilmektedir.",
+          "topic": "AWS SageMaker ile Model Yönetimi",
+          "reason": "SageMaker, makine öğrenmesi modellerini ölçeklenebilir şekilde eğitmek, dağıtmak ve izlemek için sektörde en çok kullanılan bulut servislerinden biridir.",
           "resource_type": "dokumantasyon",
-          "resource_suggestion": "Amazon SageMaker Developer Guide resmi dokümantasyonu",
-          "estimated_hours": 6
+          "resource_suggestion": "Amazon SageMaker Developer Guide (ücretsiz)",
+          "estimated_hours": 5
+        },
+        {
+          "order": 3,
+          "topic": "PyTorch Modelinin AWS S3 ve EC2 Üzerinde Dağıtılması",
+          "reason": "Adayın mevcut PyTorch bilgisini bulut altyapısıyla birleştirerek, modelleri yerel bilgisayar dışında çalıştırabilme yeteneğini kanıtlar.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "PyTorch on AWS Official Guide (ücretsiz)",
+          "estimated_hours": 4
         }
       ]
     },
     {
       "week": 3,
-      "focus": "Büyük Veri Teknolojileri ve PySpark",
+      "focus": "Apache Spark ile Büyük Veri İşleme",
       "steps": [
         {
           "order": 1,
-          "topic": "Apache Spark ve PySpark Temelleri",
-          "reason": "Milyonlarca satırdan oluşan büyük verileri işlemek için Pandas yetersiz kalır. PySpark, dağıtık sistemlerde büyük veriyi hızlıca işleyerek ML modellerine hazır hale getirmeyi sağlar.",
-          "resource_type": "dokumantasyon",
-          "resource_suggestion": "Apache Spark resmi dokümantasyonundaki 'Spark SQL, DataFrames and Datasets Guide' bölümü",
+          "topic": "PySpark Temelleri ve DataFrames",
+          "reason": "Geleneksel kütüphanelerin yetersiz kaldığı büyük veri setlerini işlemek ve dönüştürmek için PySpark sektör standardıdır.",
+          "resource_type": "kurs",
+          "resource_suggestion": "Databricks Academy - Spark Fundamentals (ücretsiz)",
           "estimated_hours": 6
         },
         {
           "order": 2,
-          "topic": "PySpark ile Veri Ön İşleme Pratikleri",
-          "reason": "Büyük veri kümeleri üzerinde özellik mühendisliği (feature engineering) yapmak, ML modellerinin başarısını doğrudan etkiler. PySpark ile bu işlemleri ölçeklenebilir kılmak gerekir.",
-          "resource_type": "kitap",
-          "resource_suggestion": "Jonathan Rioux tarafından yazılan 'Data Analysis with Python and PySpark' kitabı",
-          "estimated_hours": 6
+          "topic": "PySpark MLlib ile Dağıtık Makine Öğrenmesi",
+          "reason": "Büyük veri kümeleri üzerinde makine öğrenmesi modellerini paralel olarak eğitmek, büyük veri odaklı ML rollerinde kritik bir gereksinimdir.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "Apache Spark MLlib Guide (ücretsiz)",
+          "estimated_hours": 5
+        },
+        {
+          "order": 3,
+          "topic": "MLflow ve Spark Entegrasyonu",
+          "reason": "Adayın bildiği MLflow kütüphanesini Spark ile entegre ederek, büyük veri projelerinde model takibi ve sürüm kontrolü yapabilmesini sağlar.",
+          "resource_type": "dokumantasyon",
+          "resource_suggestion": "MLflow Tracking with Apache Spark Guide (ücretsiz)",
+          "estimated_hours": 4
         }
       ]
     },
     {
       "week": 4,
-      "focus": "Uçtan Uca Portfolyo Projesi: Veri Hattı ve Model Eğitimi",
+      "focus": "Uçtan Uca ML Projesi Tasarımı ve Veri Hazırlığı",
       "steps": [
         {
           "order": 1,
-          "topic": "PostgreSQL ve AWS Entegrasyonlu Veri Hattı Kurulumu",
-          "reason": "Sektörel deneyim eksikliğini kapatmanın en iyi yolu, gerçekçi bir senaryo üzerinde çalışmaktır. Bu adımda yerel PostgreSQL'deki veriler AWS S3 üzerine aktarılacaktır.",
+          "topic": "Sistem Mimarisi Tasarımı",
+          "reason": "Sektörel deneyim eksikliğini kapatmak için, SQL, Spark ve AWS bileşenlerini içeren ölçeklenebilir bir ML mimarisi tasarlamak gerekir.",
           "resource_type": "proje",
-          "resource_suggestion": "Yerel PostgreSQL veritabanındaki bir veri kümesini Python scripti ile AWS S3 bucket'ına otomatik yedekleyen bir veri hattı tasarlayın.",
-          "estimated_hours": 6
+          "resource_suggestion": "GitHub üzerinde SQL, Spark ve AWS mimari şemasının çizilmesi ve dokümante edilmesi (ücretsiz)",
+          "estimated_hours": 4
         },
         {
           "order": 2,
-          "topic": "AWS EC2 Üzerinde MLflow ile Model Takibi",
-          "reason": "Adayın MLflow bilgisini bulut ortamına taşıması gerekir. AWS EC2 üzerinde çalışacak bir MLflow sunucusu ile eğitilen modellerin metrikleri merkezi olarak takip edilecektir.",
+          "topic": "SQL ve PySpark ile Veri Ön İşleme Hattı",
+          "reason": "Veri tabanından SQL ile çekilen ham verilerin PySpark kullanılarak temizlenmesi ve model eğitimine hazır hale getirilmesi sürecini uygulamak.",
           "resource_type": "proje",
-          "resource_suggestion": "AWS EC2 üzerinde bir MLflow sunucusu ayağa kaldırın ve PyTorch ile eğittiğiniz bir modelin metriklerini bu sunucuya loglayın.",
-          "estimated_hours": 7
+          "resource_suggestion": "PySpark kullanarak büyük bir veri setini temizleyen ve özellik mühendisliği yapan bir ETL scripti yazılması (ücretsiz)",
+          "estimated_hours": 6
+        },
+        {
+          "order": 3,
+          "topic": "MLflow ile Model Eğitimi ve Takibi",
+          "reason": "Adayın PyTorch/TensorFlow bilgisini kullanarak, hazırlanan büyük veri üzerinde model eğitmesi ve MLflow ile parametreleri kaydetmesi.",
+          "resource_type": "proje",
+          "resource_suggestion": "Eğitilen modelin metriklerinin MLflow sunucusuna kaydedildiği bir eğitim betiği oluşturulması (ücretsiz)",
+          "estimated_hours": 5
         }
       ]
     },
     {
       "week": 5,
-      "focus": "Uçtan Uca Portfolyo Projesi: Büyük Veri ve Dağıtım",
+      "focus": "Model Dağıtımı, AWS Entegrasyonu ve Portfolyo Yayını",
       "steps": [
         {
           "order": 1,
-          "topic": "PySpark ile Büyük Veri İşleme ve Model Çıkarımı",
-          "reason": "Eğitilen modelin büyük veri üzerinde toplu çıkarım (batch inference) yapabilmesi gerekir. Bu adım, adayın Spark ve AWS yetkinliklerini birleştirdiğini kanıtlar.",
+          "topic": "Modelin AWS SageMaker Üzerinde Canlıya Alınması",
+          "reason": "Eğitilen modelin dış dünyadan erişilebilir bir API haline getirilmesi, bir ML mühendisinin en önemli teslimatlarından biridir.",
           "resource_type": "proje",
-          "resource_suggestion": "AWS S3'teki büyük bir veri kümesini PySpark ile okuyup, eğittiğiniz modeli kullanarak toplu tahminleme yapan ve sonuçları tekrar S3'e yazan bir script geliştirin.",
-          "estimated_hours": 7
+          "resource_suggestion": "AWS SageMaker Endpoint kullanarak modelin canlıya alınması ve test edilmesi (ücretsiz)",
+          "estimated_hours": 6
         },
         {
           "order": 2,
-          "topic": "GitHub Portfolyosu ve Proje Dokümantasyonu",
-          "reason": "Sektörel iş deneyimi olmayan adayların fark yaratabilmesi için projelerini üretim standartlarında (clean code, README, mimari şema) sunması şarttır.",
+          "topic": "GitHub Portfolyosu ve Dokümantasyon",
+          "reason": "Sektörel iş deneyimi olmayan adayın, yaptığı bu kapsamlı projeyi işverenlere sunabilmesi için profesyonel bir GitHub reposu hazırlaması şarttır.",
           "resource_type": "proje",
-          "resource_suggestion": "Tüm bu 5 haftalık çalışmayı içeren, mimari şeması çizilmiş, kodları modüler yazılmış ve detaylı bir README dosyasına sahip GitHub reposu oluşturun.",
+          "resource_suggestion": "Projenin tüm kodlarının, mimari şemasının ve kurulum adımlarının GitHub üzerinde README dosyası ile paylaşılması (ücretsiz)",
           "estimated_hours": 5
         }
       ]
