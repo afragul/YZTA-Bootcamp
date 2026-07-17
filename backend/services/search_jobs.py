@@ -14,10 +14,18 @@ load_dotenv()
 _current_dir = os.path.dirname(os.path.abspath(__file__))
 _db_path = os.path.join(_current_dir, "..", "data", "chromadb")
 
-# Modul yuklenirken bir kez baglan (her aramada yeniden acmamak icin)
 _ef = get_embedding_function()
 _client = chromadb.PersistentClient(path=_db_path)
-_collection = _client.get_collection(name="tech_job_postings", embedding_function=_ef)
+_collection = None
+
+
+def _get_collection():
+    global _collection
+    if _collection is None:
+        _collection = _client.get_collection(
+            name="tech_job_postings", embedding_function=_ef
+        )
+    return _collection
 
 
 def _distance_to_percent(distance: float) -> float:
@@ -104,7 +112,7 @@ def search_jobs(cv_text: str, n: int = 5, include_raw: bool = False) -> list[dic
 
     # Sorguyu RETRIEVAL_QUERY task_type ile embed'le, sonra vektorle sorgula.
     query_vec = _ef.embed_query(cv_text)
-    res = _collection.query(
+    res = _get_collection().query(
         query_embeddings=[query_vec],
         n_results=n,
     )

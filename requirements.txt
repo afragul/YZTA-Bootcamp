@@ -2,7 +2,7 @@ pandas
 chromadb
 google-genai>=2.10.0
 python-dotenv>=1.0.0
-pydantic>=2.0.0
+pydantic[email]>=2.0.0
 openpyxl
 fastapi
 uvicorn[standard]
@@ -12,6 +12,11 @@ sqlalchemy
 # CV ayristirma (Kisi 2)
 pdfplumber
 python-docx
+
+# Kimlik dogrulama / JWT (Kisi 1)
+passlib[bcrypt]
+python-jose[cryptography]
+email-validator
 
 # Test
 pytest

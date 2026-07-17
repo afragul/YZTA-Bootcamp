@@ -51,6 +51,11 @@ class AuthTokenResponse(BaseModel):
     token_type: str = "bearer"
 
 
+class UserResponse(BaseModel):
+    id: int
+    email: str
+
+
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1)
     session_id: str | None = None

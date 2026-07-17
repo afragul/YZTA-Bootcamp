@@ -9,11 +9,12 @@ __pycache__/
 # ChromaDB veritabanı klasörü
 backend/data/chromadb/
 
+# SQLite ve yüklenen dosyalar
+backend/data/app.db
+backend/data/uploads/
+
 # OS dosyaları
 .DS_Store
-# Sanal ortam ve local sirlar
-venv/
-.env
 
 .idea/
 
