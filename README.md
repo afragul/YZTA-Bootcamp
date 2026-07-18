@@ -141,6 +141,7 @@ NextGenCV
 <img width="1125" height="207" alt="Image" src="https://github.com/user-attachments/assets/a08982c2-e122-4dfa-b5de-a56702d56af9" />
 
 - **Sprint Board Update:** Sprint 2 board ekran görüntüsü:
+<img width="1349" height="1158" alt="SPRİNT 1 BOARD" src="https://github.com/user-attachments/assets/b713e150-6a7b-40f1-9a99-2f58f2e0a75f" />
 
 
 - **Ürün Durumu:** Uygulamanın Sprint 2 sonundaki durumundan ekran görüntüleri:
