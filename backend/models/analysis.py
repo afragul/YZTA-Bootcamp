@@ -17,6 +17,7 @@ class Analysis(Base):
     strengths_json: Mapped[str] = mapped_column(Text)
     gaps_json: Mapped[str] = mapped_column(Text)
     role_scores_json: Mapped[str] = mapped_column(Text)
+    top_role_reasons_json: Mapped[str] = mapped_column(Text, default="[]")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     cv: Mapped["CV"] = relationship(back_populates="analyses")

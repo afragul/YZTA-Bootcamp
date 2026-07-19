@@ -1,25 +1,51 @@
 import { Link } from "react-router-dom";
 import Card from "../components/ui/Card";
+import AnalysisResult from "../components/AnalysisResult";
+import { useCv } from "../context/CvContext";
 
-// Panel — İSKELET.
-// Bu sayfa herkesin kendi UI'ını taktığı yer:
-//   Kişi 2 → analiz sonuç kartları (güçlü yönler / eksikler)
-//   Kişi 3 → rol skorları (bar/radar) + öğrenme yolu
-//   Kişi 4 → iş eşleşmeleri listesi (yüzdeyle)  ← senin alanın
+// Panel — herkesin kendi UI'ını taktığı yer:
+//   Kişi 2 → analiz sonuç kartları (güçlü yönler / eksikler)  ← BAĞLANDI
+//   Kişi 3 → rol skorları (bar/radar) + öğrenme yolu          (iskelet)
+//   Kişi 4 → iş eşleşmeleri listesi (yüzdeyle)                (iskelet)
 
 export default function Dashboard() {
+  const { result } = useCv();
+
+  // Henüz CV yüklenmemiş → boş durum
+  if (!result) {
+    return (
+      <div>
+        <h1 className="mb-6 text-2xl font-bold text-primary-800">Panel</h1>
+        <Card>
+          <Card.Title>Henüz analiz yok</Card.Title>
+          <p className="mb-4 text-sm text-muted">
+            Analiz sonuçlarını görmek için önce bir CV yükle.
+          </p>
+          <Link
+            to="/upload"
+            className="text-sm font-semibold text-primary-500 hover:text-primary-800"
+          >
+            CV Yükle →
+          </Link>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-primary-800">Panel</h1>
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
+        <h1 className="text-2xl font-bold text-primary-800">Panel</h1>
+        {result.filename && (
+          <span className="text-sm text-muted">{result.filename}</span>
+        )}
+      </div>
 
-      <div className="grid gap-5 md:grid-cols-2">
-        <Card>
-          <Card.Title>CV Analizi</Card.Title>
-          <p className="text-sm text-muted">
-            Güçlü yönler ve eksikler burada listelenecek. (Kişi 2)
-          </p>
-        </Card>
+      {/* Kişi 2 — CV analiz sonuç kartları */}
+      <AnalysisResult analysis={result.analysis} />
 
+      {/* Kişi 3 / Kişi 4 — henüz iskelet (bu planın kapsamı dışında) */}
+      <div className="mt-5 grid gap-5 md:grid-cols-2">
         <Card>
           <Card.Title>Rol Uygunluğu</Card.Title>
           <p className="text-sm text-muted">
@@ -27,20 +53,11 @@ export default function Dashboard() {
           </p>
         </Card>
 
-        {/* Kişi 4 — İş Eşleşmeleri (senin modülün) */}
-        <Card className="md:col-span-2">
+        <Card>
           <Card.Title>İş Eşleşmeleri</Card.Title>
-          <p className="mb-4 text-sm text-muted">
-            CV'ne en uygun ilanlar, eşleşme yüzdesiyle burada listelenecek.
+          <p className="text-sm text-muted">
+            CV'ne en uygun ilanlar, eşleşme yüzdesiyle burada listelenecek. (Kişi 4)
           </p>
-          <div className="flex items-center gap-4 rounded-xl bg-primary-50 p-4">
-            <span className="rounded-lg bg-primary-800 px-2.5 py-1 text-sm font-semibold text-primary-50">
-              %88
-            </span>
-            <span className="text-sm text-primary-950">
-              Örnek: Junior ML Engineer — eşleşme gücü mavi tonuyla gösterilir.
-            </span>
-          </div>
         </Card>
       </div>
 

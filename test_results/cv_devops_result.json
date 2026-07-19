@@ -10,7 +10,10 @@
     "Linux",
     "Bash",
     "Git",
-    "Grafana",
+    "CI/CD",
+    "IaC",
+    "Monitoring",
+    "Cloud Infrastructure Management",
     "GitHub Actions"
   ],
   "experience_years": 2.0,
@@ -23,55 +26,40 @@
     }
   ],
   "strengths": [
-    "CloudSys firmasında 2 yıllık somut DevOps Mühendisliği deneyimi",
-    "AWS (EC2, S3, RDS) bulut servislerinde altyapı yönetimi tecrübesi",
-    "Terraform ile Infrastructure as Code (IaC) pratik uygulaması",
-    "Jenkins ve GitHub Actions ile uçtan uca CI/CD süreçleri tasarlama yetkinliği",
-    "Kubernetes, Docker, Prometheus ve Grafana ile konteynerizasyon ve izleme (monitoring) kurulumu"
+    "DevOps araçları ve metodolojilerinde (AWS, Terraform, Kubernetes, Jenkins, CI/CD) güçlü pratik deneyim",
+    "Bulut altyapısı yönetimi konusunda yetkinlik",
+    "Altyapıyı kod olarak (IaC) uygulama becerisi",
+    "İzleme sistemleri (Prometheus, Grafana) kurulumu ve yönetimi deneyimi",
+    "Linux ve Bash scripting konularında sağlam temel"
   ],
   "gaps": [
-    "Yazılım geliştirme dillerine (Python, Go vb.) dair doğrudan bir deneyim veya bilgi belirtilmemiş",
-    "Çoklu bulut (Multi-cloud) veya hibrit bulut mimarileri konusunda deneyim eksikliği"
+    "DevOps ve bulut dışındaki yazılım geliştirme alanlarında (örneğin, belirli programlama dilleri) sınırlı deneyim",
+    "Veri bilimi, makine öğrenimi veya siber güvenlik gibi uzmanlık alanlarında doğrudan deneyim eksikliği",
+    "Proje veya ürün yönetimi gibi organizasyonel rollerde deneyim belirtilmemiş",
+    "Sosyal becerilere (iletişim, takım çalışması vb.) dair bilgi eksikliği"
   ],
   "role_scores": {
-    "backend_developer": 35,
-    "frontend_developer": 10,
-    "fullstack_developer": 15,
-    "mobile_developer": 10,
+    "backend_developer": 15,
+    "frontend_developer": 5,
+    "fullstack_developer": 10,
+    "mobile_developer": 0,
     "devops_engineer": 95,
     "cloud_engineer": 90,
-    "machine_learning_engineer": 35,
-    "data_scientist": 35,
-    "data_engineer": 40,
-    "data_analyst": 30,
-    "bi_analyst": 20,
-    "database_administrator": 50,
-    "cybersecurity_specialist": 35,
+    "machine_learning_engineer": 5,
+    "data_scientist": 5,
+    "data_engineer": 30,
+    "data_analyst": 10,
+    "bi_analyst": 5,
+    "database_administrator": 35,
+    "cybersecurity_specialist": 20,
     "systems_administrator": 75,
-    "ui_ux_designer": 10,
-    "graphic_designer": 10,
-    "product_manager": 25,
-    "project_manager": 30,
-    "business_analyst": 25,
-    "digital_marketing_specialist": 10,
-    "hr_specialist": 10,
-    "customer_success_specialist": 15
-  },
-  "top_role_reasons": [
-    {
-      "role": "devops_engineer",
-      "score": 95,
-      "reason": "CloudSys firmasında 2 yıl boyunca Jenkins, GitHub Actions, Kubernetes ve Terraform kullanarak aktif olarak DevOps süreçlerini ve CI/CD boru hatlarını yönetmiştir."
-    },
-    {
-      "role": "cloud_engineer",
-      "score": 90,
-      "reason": "AWS (EC2, S3, RDS) servisleri üzerinde bulut altyapısı yönetmiş ve Terraform ile Infrastructure as Code (IaC) prensiplerini uygulamıştır."
-    },
-    {
-      "role": "systems_administrator",
-      "score": 75,
-      "reason": "Linux işletim sistemi, Bash scripting, Kubernetes küme yönetimi ve Prometheus/Grafana ile sistem izleme (monitoring) konularında güçlü pratik deneyime sahiptir."
-    }
-  ]
+    "ui_ux_designer": 0,
+    "graphic_designer": 0,
+    "product_manager": 10,
+    "project_manager": 15,
+    "business_analyst": 10,
+    "digital_marketing_specialist": 0,
+    "hr_specialist": 0,
+    "customer_success_specialist": 0
+  }
 }

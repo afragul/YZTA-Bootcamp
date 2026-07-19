@@ -26,13 +26,14 @@
     }
   ],
   "strengths": [
-    "ODTÜ İstatistik ve Sabancı Veri Analitiği mezuniyeti ile çok güçlü bir analitik ve teorik altyapıya sahip olması",
-    "Scikit-learn kullanarak müşteri kaybı (churn) ve segmentasyon gibi doğrudan iş çıktısı üreten makine öğrenmesi modelleri geliştirmiş olması",
-    "Hem veri analizi (Python, SQL, R) hem de veri görselleştirme (Tableau, PowerBI) araçlarında yetkinlik sahibi olması"
+    "Güçlü istatistik ve veri analitiği akademik altyapısı (ODTÜ İstatistik ve Sabancı Üniversitesi Veri Analitiği).",
+    "Python, SQL ve Scikit-learn ile uçtan uca makine öğrenmesi (churn, segmentasyon) ve EDA süreçlerinde pratik deneyim.",
+    "Tableau ve PowerBI kullanarak iş birimleri için interaktif raporlama ve görselleştirme yetkinliği."
   ],
   "gaps": [
-    "Sektörel iş deneyiminin henüz 1 yıl ile sınırlı olması",
-    "Büyük veri teknolojileri (Spark, Hadoop) veya bulut platformları (AWS, Azure, GCP) konusunda deneyim eksikliği"
+    "[data_scientist] Derin öğrenme (TensorFlow, PyTorch) ve büyük veri araçları (Spark) konusunda somut bir deneyim bulunmuyor.",
+    "[data_analyst] İleri düzey veri ambarı (Data Warehousing) ve ETL süreçleri konusunda pratik iş deneyimi eksik.",
+    "[bi_analyst] Veri modelleme (Star Schema, Snowflake Schema) ve kurumsal düzeyde veri yönetişimi (Data Governance) tecrübesi bulunmuyor."
   ],
   "role_scores": {
     "backend_developer": 30,
@@ -42,37 +43,37 @@
     "devops_engineer": 15,
     "cloud_engineer": 15,
     "machine_learning_engineer": 75,
-    "data_scientist": 85,
+    "data_scientist": 90,
     "data_engineer": 55,
     "data_analyst": 85,
     "bi_analyst": 80,
-    "database_administrator": 45,
+    "database_administrator": 40,
     "cybersecurity_specialist": 5,
     "systems_administrator": 10,
-    "ui_ux_designer": 20,
+    "ui_ux_designer": 15,
     "graphic_designer": 10,
-    "product_manager": 35,
-    "project_manager": 30,
-    "business_analyst": 70,
-    "digital_marketing_specialist": 30,
+    "product_manager": 30,
+    "project_manager": 25,
+    "business_analyst": 65,
+    "digital_marketing_specialist": 20,
     "hr_specialist": 10,
     "customer_success_specialist": 25
   },
   "top_role_reasons": [
     {
       "role": "data_scientist",
-      "score": 85,
-      "reason": "AnalyticsHub bünyesinde 1 yıl boyunca Data Scientist olarak çalışmış, Scikit-learn ile churn ve segmentasyon modelleri tasarlamış olması bu rolün gereksinimlerini doğrudan karşılamaktadır."
+      "score": 90,
+      "reason": "AnalyticsHub bünyesinde Scikit-learn ile churn ve segmentasyon modelleri geliştirmiş olması ve ODTÜ İstatistik mezuniyeti bu rolün gereksinimleriyle doğrudan örtüşmektedir."
     },
     {
       "role": "data_analyst",
       "score": 85,
-      "reason": "SQL ve Pandas kullanarak büyük veri kümeleri üzerinde EDA (Keşifsel Veri Analizi) yapma ve Tableau/PowerBI ile dashboard geliştirme tecrübesi veri analisti rolüyle tam olarak örtüşmektedir."
+      "reason": "SQL ve Pandas ile büyük veri kümeleri üzerinde EDA yapması ve Tableau/PowerBI ile interaktif dashboardlar geliştirmesi güçlü bir veri analisti profili sunmaktadır."
     },
     {
       "role": "bi_analyst",
       "score": 80,
-      "reason": "Tableau ve PowerBI araçlarında uzmanlığa sahip olması ve iş birimleri için interaktif dashboardlar geliştirerek veri odaklı karar süreçlerini desteklemiş olması bu rol için güçlü bir kanıttır."
+      "reason": "İş birimleri için Tableau ve PowerBI kullanarak interaktif dashboardlar tasarlamış olması ve SQL yetkinliği BI analisti rolü için güçlü bir temel oluşturmaktadır."
     }
   ]
 }
