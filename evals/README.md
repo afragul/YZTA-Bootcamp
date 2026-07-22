@@ -21,6 +21,7 @@ python -m evals.guards.role_sync      # 0 çağrı  💚
 python -m evals.scoring.reasons       # 0 çağrı  💚
 python -m evals.scoring.accuracy      # 5 çağrı  💸
 python -m evals.learning.plans        # 4 çağrı  💸 (cache varsa 0)
+python -m evals.coach.quality         # 6 çağrı  💸
 ```
 
 ## Kota uyarısı
@@ -35,6 +36,7 @@ Kota Pasifik saatiyle gece yarısı sıfırlanır.
 | `scoring/accuracy` | **5** 💸 | ML CV'sine ML Engineer mi en yüksek çıkıyor? (doğruluk %) |
 | `scoring/consistency` | **3** 💸 | Aynı CV N kez → skorlar ne kadar oynuyor? |
 | `learning/plans` | **4** 💸 | Plan kalitesi: sıra, kaynak, proje, Türkçe, teknik sızıntı |
+| `coach/quality`      | **6** 💸 | Koç bağlama sadık mı, Türkçe mi, hafıza + uydurma yok mu |
 
 `learning/plans` **cache'li**: `results/learning/plans/` altında dosya varsa
 Gemini'ye gitmez, diskten okur. **Yeniden üretmek için o JSON'ları sil.**

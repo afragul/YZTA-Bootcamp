@@ -1,0 +1,60 @@
+{
+  "analiz": "cv_backend_result.json",
+  "sonda_sayisi": 4,
+  "gecen": 4,
+  "basari_orani": 100.0,
+  "detay": [
+    {
+      "sonda": "baglam",
+      "mesaj": "Bana en uygun ilk 3 rolu ve nedenini kisaca soyle.",
+      "amac": "Cevap adayin gercek becerilerine/eksiklerine deginiyor mu?",
+      "kontroller": {
+        "turkce": true,
+        "dolu": true,
+        "baglam": true
+      },
+      "ozel_aciklama": "Adayin gercek beceri/eksik baglamina degindi",
+      "gecti": true,
+      "cevap": "Harika bir profilin var! Analizlerimize göre senin için en uygun ilk 3 rol, uygunluk yüzdeleri ve nedenleri şu şekilde:\n\n**1. Backend Developer (%85 Uygunluk)**\n*   **Neden:** Python (FastAPI, Django) framework'lerindeki güçlü yetkinliğin, Redis/Celery ile asenkron mimari kurabilmen ve Docker tecrüben seni bu rol için mükemmel bir aday yapıyor. Nitekim sistemimizdeki **Backend Developer (Python/FastAPI)** ilanıyla **%88** gibi çok yüksek bir oranda eşleşiyorsun. \n*   **Gelişim Alanı:** Bu rolde tamamen uzmanlaşmak için birim testleri (unit tests) ve CI/CD süreçlerine odaklanmalısın.\n\n**2. DevOps Engineer (%50 Uygunluk)**\n*   **Neden:** Docker ve mikroservis mimarisi konusundaki pratik deneyimin, altyapı yönetimine geçiş için sana iyi bir temel sağlıyor. Sistemimizdeki **Junior DevOps Engineer** ilanıyla da **%61** oranında eşleşiyorsun.\n*   **Gelişim Alanı:** Bu alanda ilerlemek için Kubernetes gibi konteyner orkestrasyon araçlarını ve AWS/GCP gibi bulut platformlarını öğrenmeye öncelik vermelisin.\n\n**3. Database Administrator (DBA) (%50 Uygunluk)**\n*   **Neden:** Projelerinde aktif olarak PostgreSQL ve Redis kullanmış olman, veri tabanı yönetimi mantığına aşina olduğunu gösteriyor.\n*   **Gelişim Alanı:** Bu roldeki uygunluğunu artırmak için PostgreSQL üzerinde ileri düzey sorgu optimizasyonu, replikasyon ve yedekleme stratejileri üzerine çalışmalısın.\n\nİlk hedefin olan **Backend Developer** rolü için çok güçlü bir altyapın var. Eksiklerini kapatmak için nasıl bir yol izleyebileceğimizi planlayalım mı?"
+    },
+    {
+      "sonda": "hafiza",
+      "mesaj": "Peki bu rollerden birincisi icin ILK ne ogrenmeliyim?",
+      "amac": "Onceki mesajin baglamini hatirliyor + adim adim veriyor mu?",
+      "kontroller": {
+        "turkce": true,
+        "dolu": true,
+        "hafiza": true
+      },
+      "ozel_aciklama": "Adayin gercek beceri/eksik baglamina degindi",
+      "gecti": true,
+      "cevap": "Birinci rolün olan **Backend Developer** seviyeni yukarı taşımak ve ilanlardaki eksiklerini hızla kapatmak için **İLK** öğrenmen gereken konu: **Birim Testleri (Unit Tests)**. \n\nGüçlü Python backend bilgini test kültürüyle birleştirmek seni doğrudan öne geçirecektir. İşte adım adım ve önceliklendirilmiş öğrenme yolun:\n\n### 1. Adım: Python'da Birim Testleri (Unit Testing) — *Hemen Başla*\n*   **Ne öğreneceksin?:** Python'ın en popüler test kütüphanesi olan **`pytest`** ile test yazmayı öğrenmelisin.\n*   **Nasıl uygulayacaksın?:** Mevcut FastAPI veya Django projelerine geri dönüp, yazdığın API uç noktaları (endpoints) ve iş mantıkları (business logic) için test senaryoları yaz. Veri tabanı işlemlerini test etmek için \"mocking\" (taklit etme) kavramını öğren.\n\n### 2. Adım: Temel CI/CD Süreçleri — *Sonraki Adım*\n*   **Ne öğreneceksin?:** Yazdığın testlerin her kod değişikliğinde otomatik çalışmasını sağlamalısın.\n*   **Nasıl uygulayacaksın?:** Projelerini barındırdığın platformda (örneğin GitHub kullanıyorsan **GitHub Actions** ile) çok basit bir pipeline kur. Kodunu her push ettiğinde testlerinin otomatik olarak koştuğunu gör.\n\nBu iki adımı tamamladığında, Backend Developer rolündeki en büyük eksiğini kapatmış ve projelerini profesyonel standartlara taşımış olacaksın! İlk adım olan `pytest` ile başlamaya hazır mısın?"
+    },
+    {
+      "sonda": "ilan",
+      "mesaj": "Eslesen ilanlardan hangisi bana en uygun, yuzde kac?",
+      "amac": "Gercek bir ilan basligina/yuzdesine atif yapiyor mu?",
+      "kontroller": {
+        "turkce": true,
+        "dolu": true,
+        "ilan": true
+      },
+      "ozel_aciklama": "Gercek ilan basligina/yuzdesine atif yapti",
+      "gecti": true,
+      "cevap": "Senin için en uygun iş ilanı, **%88.0** uygunluk oranı ile **Backend Developer (Python/FastAPI)** ilanıdır. \n\n**Neden bu ilan senin için en uygun?**\n*   **Tam İsabet Teknolojiler:** İlanın odaklandığı Python ve FastAPI teknolojileri, senin en güçlü olduğun ve projeler geliştirdiğin alanlar.\n*   **Çalışma Şekli:** Uzaktan (Remote) çalışma modeli sunması da büyük bir avantaj.\n\nBu ilana başvururken elindeki FastAPI, Django ve Docker projelerini ön plana çıkarman şansını çok artıracaktır!"
+    },
+    {
+      "sonda": "uydurma",
+      "mesaj": "Blockchain deneyimim hakkinda ne dusunuyorsun?",
+      "amac": "CV'de olmayan beceriyi adaya ATFETMIYOR mu? (uydurma yasak)",
+      "kontroller": {
+        "turkce": true,
+        "dolu": true,
+        "uydurma": true
+      },
+      "ozel_aciklama": "CV'de olmayan beceriyi atfetmedi (inkar sinyali var)",
+      "gecti": true,
+      "cevap": "Paylaştığın CV analizinde ve profil bilgilerinde **blockchain** ile ilgili herhangi bir deneyim, beceri veya proje yer almıyor. Bu yüzden mevcut verilerine dayanarak blockchain deneyimin hakkında bir yorum yapamıyorum.\n\nEğer bu alanda çalışmaların, akıllı sözleşme (smart contract) yazma deneyimin veya kullandığın teknolojiler (Solidity, Web3.py vb.) varsa benimle paylaşabilirsin. Böylece profilini güncelleyip bu alandaki rollerle uyumunu birlikte değerlendirebiliriz!"
+    }
+  ]
+}
