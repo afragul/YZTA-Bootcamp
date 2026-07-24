@@ -32,7 +32,20 @@ import os
 import re
 import sys
 import time
+import traceback
+import logging
 from pathlib import Path
+
+# --- LOGLAMA ALTYAPISI ---
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler("eval_errors.log", encoding="utf-8")
+    ]
+)
+logger = logging.getLogger(__name__)
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
@@ -144,6 +157,7 @@ def _turkce_mi(metin: str) -> bool:
         return True
     kelimeler = set(re.split(r"[^a-zçğıöşü]+", metin.lower()))
     return len(kelimeler & _TR_KELIMELER) >= 2
+
 INKAR_KELIMELERI = [
     "yok", "belirtil", "goremiyorum", "göremiyorum", "bahsedil", "bilgi bulun",
     "mevcut degil", "mevcut değil", "sahip degil", "sahip değil", "gecmiyor",
@@ -164,16 +178,20 @@ KARIYER_CIPALARI = ["kariyer", "cv", "rol", "beceri", "analiz", "koç", "koc",
 # ---------------------------------------------------------------------------
 def _koc_cagir(coach, mesaj, session_id):
     """coach.chat retry'siz -> 503/429'a karsi 3 denemeli sarmalayici."""
-    for deneme in range(3):
+    for deneme in range(1):
         try:
             return coach.chat(mesaj, session_id)
         except Exception as e:  # noqa: BLE001
+            # --- HATA YAKALAMA REVIZYONU ---
+            context_info = f"Mesaj: '{mesaj[:30]}...' | Session: {session_id}"
+            
             if deneme == 2:
-                print(f"  3 deneme sonrasi basarisiz: {e}")
+                hata_detayi = traceback.format_exc()
+                logger.error(f"  3 deneme sonrasi basarisiz: {e} | {context_info}\nTraceback Detayi:\n{hata_detayi}")
                 raise
             bekle = 10 * (2 ** deneme)
-            print(f"  Hata ({type(e).__name__}), {bekle} sn bekleniyor... "
-                  f"(deneme {deneme + 1}/3)")
+            logger.warning(f"  Hata ({type(e).__name__}), {bekle} sn bekleniyor... "
+                           f"(deneme {deneme + 1}/3) | {context_info}")
             time.sleep(bekle)
 
 
@@ -209,10 +227,10 @@ def _yuzdeleri_cek(metin: str) -> list:
     Onundeki rakam/nokta lookbehind'i ile '%88.0' -> yanlislikla '0' cekilmesini onler.
     """
     bulunan = []
-    bulunan += re.findall(r"%\s*(\d{1,3}(?:\.\d)?)", metin)                     # %NN veya %NN.N
-    bulunan += re.findall(r"(?<![\d.])(\d{1,3}(?:\.\d)?)\s*%", metin)           # NN% veya NN.N%
+    bulunan += re.findall(r"%\s*(\d{1,3}(?:\.\d)?)", metin)                    # %NN veya %NN.N
+    bulunan += re.findall(r"(?<![\d.])(\d{1,3}(?:\.\d)?)\s*%", metin)          # NN% veya NN.N%
     bulunan += re.findall(r"(?<![\d.%])(\d{1,3}(?:\.\d)?)\s*(?:uygunluk|puan)",
-                          metin, flags=re.IGNORECASE)                           # NN uygunluk/puan
+                          metin, flags=re.IGNORECASE)                          # NN uygunluk/puan
     return bulunan
 
 
@@ -227,7 +245,13 @@ def _check(ad, gecti, kritik=True, not_=""):
 def _bateri_calistir(analiz, gecerli_yuzdeler, rol_kw, rank1_rol, offline=False):
     """Ana 4 baglamli sonda + 2 zor senaryo. Yeniden cagrilabilir (determinizm icin)."""
     coach = _coc_al(offline)
-    sid = coach.create_session(analiz, TOP_MATCHES)  # 0 cagri
+    
+    # --- HATA YAKALAMA REVIZYONU ---
+    try:
+        sid = coach.create_session(analiz, TOP_MATCHES)  # 0 cagri
+    except Exception as e:
+        logger.error(f"Oturum olusturulamadi:\n{traceback.format_exc()}")
+        raise
 
     rank1_kw = rol_kw.get(rank1_rol, set())
     diger_kw = set().union(*[v for r, v in rol_kw.items() if r != rank1_rol and r != "_genel"]) \
@@ -343,71 +367,87 @@ def _bateri_calistir(analiz, gecerli_yuzdeler, rol_kw, rank1_rol, offline=False)
 
 # ---------------------------------------------------------------------------
 def main():
-    ap = argparse.ArgumentParser(description="AI Kariyer Kocu kalite eval'i")
-    ap.add_argument("--offline", action="store_true",
-                    help="Gemini'siz calis: kayitli fixture cevaplarla mantik dogrulamasi")
-    args = ap.parse_args()
-    offline = args.offline
-    mod = "offline-fixture" if offline else "canli"
+    # --- GLOBAL HATA YAKALAMA REVIZYONU ---
+    try:
+        ap = argparse.ArgumentParser(description="AI Kariyer Kocu kalite eval'i")
+        ap.add_argument("--offline", action="store_true",
+                        help="Gemini'siz calis: kayitli fixture cevaplarla mantik dogrulamasi")
+        args = ap.parse_args()
+        offline = args.offline
+        mod = "offline-fixture" if offline else "canli"
 
-    with open(os.path.join(TEST_RESULTS, ANALIZ_DOSYA), "r", encoding="utf-8") as f:
-        analiz = json.load(f)
+        # --- DOSYA OKUMA HATA YAKALAMA REVIZYONU ---
+        dosya_yolu = os.path.join(TEST_RESULTS, ANALIZ_DOSYA)
+        try:
+            with open(dosya_yolu, "r", encoding="utf-8") as f:
+                analiz = json.load(f)
+        except FileNotFoundError:
+            logger.critical(f"HATA: Analiz dosyasi bulunamadi! Yol: {dosya_yolu}")
+            sys.exit(1)
+        except json.JSONDecodeError as e:
+            logger.critical(f"HATA: Dosya gecerli bir JSON degil! Detay: {e}")
+            sys.exit(1)
 
-    role_scores = analiz.get("role_scores", {})
-    gaps = analiz.get("gaps", [])
+        role_scores = analiz.get("role_scores", {})
+        gaps = analiz.get("gaps", [])
 
-    gecerli_yuzdeler = set()
-    for v in list(role_scores.values()) + [m["match_percent"] for m in TOP_MATCHES]:
-        gecerli_yuzdeler.add(str(int(v)))
-        gecerli_yuzdeler.add(f"{float(v):.1f}")
-        gecerli_yuzdeler.add(str(v))
+        gecerli_yuzdeler = set()
+        for v in list(role_scores.values()) + [m["match_percent"] for m in TOP_MATCHES]:
+            gecerli_yuzdeler.add(str(int(v)))
+            gecerli_yuzdeler.add(f"{float(v):.1f}")
+            gecerli_yuzdeler.add(str(v))
 
-    rol_kw = _gaplerden_rol_kw(gaps)
-    rank1_rol = max(role_scores, key=role_scores.get) if role_scores else ""
+        rol_kw = _gaplerden_rol_kw(gaps)
+        rank1_rol = max(role_scores, key=role_scores.get) if role_scores else ""
 
-    print("=" * 78)
-    print(f"AI KARIYER KOCU EVAL v2 | mod: {mod} | analiz: {ANALIZ_DOSYA} | rank1: {rank1_rol}")
-    if offline:
-        print("!! OFFLINE FIXTURE MODU: gercek koc CAGRILMADI. Bu, mantik dogrulamasidir,")
-        print("   sunum kaniti DEGILDIR. Gemini donunce bayraksiz calistirip canli olc.")
-    print(f"gecerli yuzdeler: {sorted(gecerli_yuzdeler)}")
-    print("=" * 78)
+        print("=" * 78)
+        print(f"AI KARIYER KOCU EVAL v2 | mod: {mod} | analiz: {ANALIZ_DOSYA} | rank1: {rank1_rol}")
+        if offline:
+            print("!! OFFLINE FIXTURE MODU: gercek koc CAGRILMADI. Bu, mantik dogrulamasidir,")
+            print("   sunum kaniti DEGILDIR. Gemini donunce bayraksiz calistirip canli olc.")
+        print(f"gecerli yuzdeler: {sorted(gecerli_yuzdeler)}")
+        print("=" * 78)
 
-    detay = _bateri_calistir(analiz, gecerli_yuzdeler, rol_kw, rank1_rol, offline=offline)
+        detay = _bateri_calistir(analiz, gecerli_yuzdeler, rol_kw, rank1_rol, offline=offline)
 
-    gecen = sum(1 for d in detay if d["gecti"])
-    toplam = len(detay)
-    uyarilar = []
-    for d in detay:
-        for c in d["kontroller"]:
-            if not c["kritik"] and not c["gecti"]:
-                uyarilar.append(f"[{d['sonda']}] {c['ad']}: {c['not']}")
+        gecen = sum(1 for d in detay if d["gecti"])
+        toplam = len(detay)
+        uyarilar = []
+        for d in detay:
+            for c in d["kontroller"]:
+                if not c["kritik"] and not c["gecti"]:
+                    uyarilar.append(f"[{d['sonda']}] {c['ad']}: {c['not']}")
 
-    print("\n" + "=" * 78)
-    print(f"SONUC: {gecen}/{toplam} sonda KRITIK kontrolleri gecti")
-    if uyarilar:
-        print("YUMUSAK UYARILAR (kural ihlali / gozlem):")
-        for u in uyarilar:
-            print(f"  - {u}")
-    print("=" * 78)
+        print("\n" + "=" * 78)
+        print(f"SONUC: {gecen}/{toplam} sonda KRITIK kontrolleri gecti")
+        if uyarilar:
+            print("YUMUSAK UYARILAR (kural ihlali / gozlem):")
+            for u in uyarilar:
+                print(f"  - {u}")
+        print("=" * 78)
 
-    cikti = os.path.join(COACH_RESULTS, "quality.json")
-    with open(cikti, "w", encoding="utf-8") as f:
-        json.dump({
-            "analiz": ANALIZ_DOSYA,
-            "mod": mod,
-            "not": ("OFFLINE FIXTURE - mantik dogrulamasi, sunum kaniti degil."
-                    if offline else
-                    "temperature=0.6, tek kosu. Kesin karar icin bateryi N kez kosun."),
-            "rank1_rol": rank1_rol,
-            "gecerli_yuzdeler": sorted(gecerli_yuzdeler),
-            "sonda_sayisi": toplam,
-            "gecen": gecen,
-            "basari_orani": round(100 * gecen / toplam, 1) if toplam else 0.0,
-            "yumusak_uyarilar": uyarilar,
-            "detay": detay,
-        }, f, indent=2, ensure_ascii=False)
-    print(f"\nDetayli rapor: {cikti}")
+        cikti = os.path.join(COACH_RESULTS, "quality.json")
+        with open(cikti, "w", encoding="utf-8") as f:
+            json.dump({
+                "analiz": ANALIZ_DOSYA,
+                "mod": mod,
+                "not": ("OFFLINE FIXTURE - mantik dogrulamasi, sunum kaniti degil."
+                        if offline else
+                        "temperature=0.6, tek kosu. Kesin karar icin bateryi N kez kosun."),
+                "rank1_rol": rank1_rol,
+                "gecerli_yuzdeler": sorted(gecerli_yuzdeler),
+                "sonda_sayisi": toplam,
+                "gecen": gecen,
+                "basari_orani": round(100 * gecen / toplam, 1) if toplam else 0.0,
+                "yumusak_uyarilar": uyarilar,
+                "detay": detay,
+            }, f, indent=2, ensure_ascii=False)
+        print(f"\nDetayli rapor: {cikti}")
+
+    except BaseException as e:
+        if not isinstance(e, SystemExit):
+            logger.critical(f"BEKLENMEYEN KRITIK HATA!\n{traceback.format_exc()}")
+            sys.exit(1)
 
 
 if __name__ == "__main__":
