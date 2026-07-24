@@ -54,7 +54,7 @@ Gemini'ye gitmez, diskten okur. **Yeniden üretmek için o JSON'ları sil.**
 | `guards/` | 💚 Bedava, hızlı güvenlik kontrolleri (0 çağrı) |
 | `scoring/` | 🔵 Rol Skorlama yeteneğinin eval'leri |
 | `learning/` | 🟣 Öğrenme Yolu Agent eval'leri |
-| `coach/` | 🟠 AI Kariyer Koçu (Hafta 4'te dolacak) |
+| `coach/` | 🟠 AI Kariyer Koçu (AI Koç kalite eval'i) |
 | `results/` | 📊 Üretilen kanıtlar — **sunum malzemesi** |
 | `_paths.py` | 🔧 Tüm yol ayarları tek yerde |
 

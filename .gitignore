@@ -22,3 +22,4 @@ backend/data/uploads/
 test_gemini.py
 test_one.py
 prompt_kontrol.txt
+eval_errors.log
