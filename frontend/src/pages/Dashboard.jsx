@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import Card from "../components/ui/Card";
 import AnalysisResult from "../components/AnalysisResult";
+import JobMatches from "../components/JobMatches";
 import { useCv } from "../context/CvContext";
 
 // Panel — herkesin kendi UI'ını taktığı yer:
 //   Kişi 2 → analiz sonuç kartları (güçlü yönler / eksikler)  ← BAĞLANDI
 //   Kişi 3 → rol skorları (bar/radar) + öğrenme yolu          (iskelet)
-//   Kişi 4 → iş eşleşmeleri listesi (yüzdeyle)                (iskelet)
+//   Kişi 4 → iş eşleşmeleri listesi (yüzdeyle)                ← BAĞLANDI
 
 export default function Dashboard() {
   const { result } = useCv();
@@ -44,8 +45,8 @@ export default function Dashboard() {
       {/* Kişi 2 — CV analiz sonuç kartları */}
       <AnalysisResult analysis={result.analysis} />
 
-      {/* Kişi 3 / Kişi 4 — henüz iskelet (bu planın kapsamı dışında) */}
-      <div className="mt-5 grid gap-5 md:grid-cols-2">
+      <div className="mt-5 grid items-start gap-5 md:grid-cols-2">
+        {/* Kişi 3 — henüz iskelet */}
         <Card>
           <Card.Title>Rol Uygunluğu</Card.Title>
           <p className="text-sm text-muted">
@@ -53,12 +54,8 @@ export default function Dashboard() {
           </p>
         </Card>
 
-        <Card>
-          <Card.Title>İş Eşleşmeleri</Card.Title>
-          <p className="text-sm text-muted">
-            CV'ne en uygun ilanlar, eşleşme yüzdesiyle burada listelenecek. (Kişi 4)
-          </p>
-        </Card>
+        {/* Kişi 4 — iş eşleşmeleri */}
+        <JobMatches matches={result.top_matches} />
       </div>
 
       <div className="mt-8">
