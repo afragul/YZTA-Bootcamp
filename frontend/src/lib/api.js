@@ -52,3 +52,32 @@ export async function uploadCv(file) {
 export async function getCvResult(cvId) {
   return apiGet(`/cv/${cvId}`);
 }
+
+// --- AI Kariyer Koçu (Kişi 4) ---
+
+// CV analizi + eşleşen ilanlarla RAG bağlamlı bir koç oturumu açar.
+// Dönen session_id sonraki mesajlarda gönderilir → koç bağlamı hatırlar.
+export async function initChatSession(analysis, topMatches) {
+  const res = await fetch(`${BASE_URL}/chat/session`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ analysis, top_matches: topMatches ?? [] }),
+  });
+  if (!res.ok) {
+    throw new Error(await errorDetail(res, `Oturum açılamadı (${res.status}).`));
+  }
+  return res.json();
+}
+
+// Koça mesaj gönderir. sessionId yoksa backend bağlamsız genel oturum açar.
+export async function sendChatMessage(message, sessionId) {
+  const res = await fetch(`${BASE_URL}/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, session_id: sessionId ?? null }),
+  });
+  if (!res.ok) {
+    throw new Error(await errorDetail(res, `Koç cevabı alınamadı (${res.status}).`));
+  }
+  return res.json();
+}
