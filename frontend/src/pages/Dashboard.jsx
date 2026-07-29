@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import Card from "../components/ui/Card";
 import AnalysisResult from "../components/AnalysisResult";
+import RoleScores from "../components/RoleScores";
+import LearningPath from "../components/LearningPath";
 import JobMatches from "../components/JobMatches";
 import { useCv } from "../context/CvContext";
 
 // Panel — herkesin kendi UI'ını taktığı yer:
 //   Kişi 2 → analiz sonuç kartları (güçlü yönler / eksikler)  ← BAĞLANDI
-//   Kişi 3 → rol skorları (bar/radar) + öğrenme yolu          (iskelet)
+//   Kişi 3 → rol skorları (bar/radar) + öğrenme yolu          ← BAĞLANDI
 //   Kişi 4 → iş eşleşmeleri listesi (yüzdeyle)                ← BAĞLANDI
 
 export default function Dashboard() {
@@ -46,17 +48,22 @@ export default function Dashboard() {
       <AnalysisResult analysis={result.analysis} />
 
       <div className="mt-5 grid items-start gap-5 md:grid-cols-2">
-        {/* Kişi 3 — henüz iskelet */}
-        <Card>
-          <Card.Title>Rol Uygunluğu</Card.Title>
-          <p className="text-sm text-muted">
-            Rol skorları ve öğrenme yolu burada. (Kişi 3)
-          </p>
-        </Card>
+        {/* Kişi 3 — rol skorları + skor gerekçeleri */}
+        <RoleScores
+          analysis={result.analysis}
+          rankings={result.role_rankings}
+        />
 
         {/* Kişi 4 — iş eşleşmeleri */}
         <JobMatches matches={result.top_matches} />
       </div>
+
+      {/* Kişi 3 — öğrenme yolu zaman çizelgesi (tam genişlik) */}
+      <LearningPath
+        cvId={result.cv_id}
+        analysis={result.analysis}
+        rankings={result.role_rankings}
+      />
 
       <div className="mt-8">
         <Link

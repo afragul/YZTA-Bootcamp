@@ -53,6 +53,31 @@ export async function getCvResult(cvId) {
   return apiGet(`/cv/${cvId}`);
 }
 
+// --- Öğrenme Planı (Kişi 3) ---
+
+// Kişi 3 — Hedef role için öğrenme planı oluşturur (veya cache'den okur).
+// cv_id: CV'nin veritabanı kimliği
+// targetRole: Hedef rol (snake_case: "devops_engineer", "data_scientist", vb.)
+// Döner: { cv_id, target_role, cached, plan }
+export async function getLearningPlan(cvId, targetRole) {
+  const res = await fetch(`${BASE_URL}/learning-plan`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ cv_id: cvId, target_role: targetRole }),
+  });
+
+  if (!res.ok) {
+    let msg = await errorDetail(res, `Plan oluşturulamadı (${res.status}).`);
+    // 502 (API kota) için özel dostu mesaj (K1 — bekleme süresi beklentisi)
+    if (res.status === 502) {
+      msg = "Plan şu anda üretilemedi, birkaç dakika sonra tekrar dene";
+    }
+    throw new Error(msg);
+  }
+
+  return res.json();
+}
+
 // --- AI Kariyer Koçu (Kişi 4) ---
 
 // CV analizi + eşleşen ilanlarla RAG bağlamlı bir koç oturumu açar.
