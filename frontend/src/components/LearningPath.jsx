@@ -215,7 +215,7 @@ export default function LearningPath({ cvId, analysis, rankings }) {
 
       {/* Hata durumu + "Tekrar dene" butonu */}
       {error && (
-        <div className="mb-4 rounded-lg bg-danger bg-opacity-10 p-4">
+        <div className="mb-4 rounded-lg border border-danger/30 bg-white p-4">
           <p className="mb-2 text-sm font-medium text-danger">{error}</p>
           <Button
             variant="ghost"
