@@ -60,6 +60,13 @@ class CVAnalysisService:
             "Customer Success Specialist"
         ]
 
+        # Statik girdiler bir kez hesaplanir (her cagride yeniden uretme -> tekrarli is azalir).
+        self._response_schema = self._get_clean_schema()
+        self._system_instruction = self._build_system_instruction()
+
+        # Son basarili cagrinin token kullanimi (usage_metadata). Cagri yapilmadan once None.
+        self.last_usage: dict | None = None
+
     def _get_clean_schema(self) -> dict:
         # Pydantic modelinden additionalProperties alanını temizler (Gemini Developer API uyumluluğu için)
         raw_schema = CVAnalysisOutput.model_json_schema()
@@ -76,81 +83,94 @@ class CVAnalysisService:
             
         return remove_additional_properties(raw_schema)
 
+    def _build_system_instruction(self) -> str:
+        """22 rolun tamamini doldurtan sistem talimatini uretir (bir kez, __init__'te).
+
+        Token maliyetini dusurmek icin yogunlastirilmistir; ancak cikti kalitesini
+        belirleyen KIRMIZI CIZGILER korunur: 22 snake_case rol listesi, 0-100 skorlama
+        cetveli, gaps '[rol_adi]' zorunlu bicimi ve top_role_reasons kurallari.
+        """
+        return (
+            "Sen profesyonel bir Kariyer ve İK Asistanı yapay zekasısın. Verilen CV metnini "
+            "incele ve belirtilen JSON şemasına uygun analiz üret. Tüm puan ve gerekçeleri "
+            "CV'deki SOMUT kanıta dayandır; tahmin veya varsayım yapma.\n\n"
+            "KURALLAR:\n"
+            "0. Metin bir CV değilse (tarif, haber, makale, rastgele metin) TÜM alanları boş/0 "
+            "döndür: skills=[], experience_years=0, education=[], strengths=[], gaps=[], tüm "
+            "role_scores=0, top_role_reasons=[].\n"
+            "1. experience_years: deneyim yılı (float). education: eğitim geçmişi. skills: teknik, "
+            "sektörel ve sosyal (soft) becerilerin listesi.\n"
+            "2. strengths: adayın genel güçlü yönleri, net maddeler halinde.\n"
+            "3. gaps: SADECE en yüksek skorlu 3 role özgü eksikler. Her madde İSTİSNASIZ "
+            "'[rol_teknik_adı] ...' ile başlamalı; etiketsiz veya genel zayıflık (örn. 'iletişim "
+            "eksik') YAZMA. Köşeli parantezdeki ad role_scores'taki snake_case adın AYNISI ve en "
+            "yüksek 3 rolden biri olmalı. Aday o rolde güçlü olsa bile onu DAHA İYİ yapacak eksik "
+            "beceri/araç/deneyimi yaz; rol başına en önemli 1-3 eksik, liste kısa ve eyleme dönük. "
+            "Örnek: '[machine_learning_engineer] Üretim ortamında model dağıtımı (MLOps) deneyimi yok'.\n"
+            "4. role_scores: aşağıdaki 22 alanın HEPSİNE 0-100 uygunluk skoru ver, hiçbirini boş "
+            "bırakma:\n"
+            "   backend_developer, frontend_developer, fullstack_developer, mobile_developer, "
+            "devops_engineer, cloud_engineer, machine_learning_engineer, data_scientist, "
+            "data_engineer, data_analyst, bi_analyst, database_administrator, "
+            "cybersecurity_specialist, systems_administrator, ui_ux_designer, graphic_designer, "
+            "product_manager, project_manager, business_analyst, digital_marketing_specialist, "
+            "hr_specialist, customer_success_specialist.\n"
+            "5. Skorlama cetveli (her role aynı uygula): 0-20 ilgili kanıt yok; 21-40 çok "
+            "dolaylı/zayıf ilişki; 41-60 temel bilgi var, proje/deneyim yok; 61-80 ilgili "
+            "beceriler + en az bir somut proje/deneyim; 81-100 çekirdek becerilerin çoğu + gerçek "
+            "iş/proje deneyimi.\n"
+            "6. top_role_reasons: en yüksek skorlu 3 rolü azalan sırada yaz. Her biri için 'role' = "
+            "role_scores'taki snake_case adın AYNISI, 'score' = verdiğin puanın AYNISI, 'reason' = "
+            "CV'den somut kanıt (beceri/araç/proje/deneyim) içeren 1-2 cümle. Genel geçer gerekçe "
+            "(örn. 'Aday bu rol için uygundur') yazma."
+        )
+
     def _attempt_analysis(self, cv_text: str) -> dict:
         """Tek bir Gemini cagrisi yapar, ciktiyi semaya gore dogrular, dict dondurur.
 
         Cagri / JSON parse / dogrulama hatalarini YAKALAMAZ; retry mantigi
         analyze_cv'ye aittir. Basarili donus her zaman CVAnalysisOutput semasina
-        uygun bir dict'tir.
+        uygun bir dict'tir. Yan etki: basarili cagrida self.last_usage guncellenir
+        ve token kullanimi konsola basilir.
         """
-        response_schema = self._get_clean_schema()
-
-        # Yapay zekaya 22 rolun tamamini analiz etmesini soyleyen sistem talimati
-        system_instruction = (
-            "Sen profesyonel bir Kariyer ve İK Asistanı yapay zekasısın. Görevin, sana verilen "
-            "CV metnini titizlikle incelemek ve belirtilen JSON şemasına uygun şekilde analiz etmektir.\n\n"
-            "ÖNEMLİ KURALLAR:\n"
-            "0. ÖNCE metnin bir CV/özgeçmiş olup olmadığını değerlendir. Metin bir CV DEĞİLSE "
-            "(örn. tarif, haber, makale, rastgele metin), aşağıdaki kuralları UYGULAMA ve TÜM "
-            "alanları boş/0 döndür: skills=[], experience_years=0, education=[], strengths=[], "
-            "gaps=[], role_scores'ta tüm roller 0, top_role_reasons=[].\n"
-            "1. Deneyim yılını sayısal (float) olarak çıkar.\n"
-            "2. Eğitim geçmişini listele.\n"
-            "3. Adayın sahip olduğu teknik, sektörel ve sosyal (soft skills) becerilerini listele.\n"
-            "4. İki liste üret:\n"
-            "   - strengths: adayın genel güçlü yönlerini net maddeler halinde belirt.\n"
-            "   - gaps: SADECE adayın en yüksek skorlu 3 rolüne (role_scores'ta en yüksek 3 rol) "
-            "ÖZGÜ eksikleri yaz. Genel veya rol-dışı zayıflık (örn. 'iletişim eksik', 'proje "
-            "yönetimi deneyimi yok', 'X alanında deneyim yok') YAZMA — her eksik, o üç rolden "
-            "BİRİNE ait olmalı.\n"
-            "     ZORUNLU BİÇİM: gaps listesindeki HER madde İSTİSNASIZ '[rol_teknik_adı] ...' "
-            "ile başlamak zorunda; etiketsiz veya genel madde yazma. Köşeli parantezdeki ad, "
-            "role_scores'taki teknik alan adının AYNISI olmalı (snake_case, örn. "
-            "machine_learning_engineer) ve en yüksek 3 rolden biri olmalı. Aday o rolde güçlü "
-            "olsa bile, onu DAHA İYİ yapacak eksik beceri/araç/deneyimi yaz.\n"
-            "     Örnek: '[machine_learning_engineer] Üretim ortamında model dağıtımı (MLOps) "
-            "deneyimi yok'. Her eksiği CV'deki SOMUT kanıta dayandır; tahmin veya varsayımda "
-            "bulunma. Her rol için en önemli 1-3 eksiği yaz; liste kısa ve eyleme dönük kalsın.\n"
-            "5. 'role_scores' altındaki tüm 22 alan için adayın CV'sine göre 0-100 arasında uygunluk skoru ata:\n"
-            "   - Yazılım Geliştirme: backend_developer, frontend_developer, fullstack_developer, mobile_developer, devops_engineer, cloud_engineer\n"
-            "   - Veri & AI Sistemleri: machine_learning_engineer, data_scientist, data_engineer, data_analyst, bi_analyst, database_administrator\n"
-            "   - Altyapı & Güvenlik: cybersecurity_specialist, systems_administrator\n"
-            "   - Tasarım: ui_ux_designer, graphic_designer\n"
-            "   - Yönetim & Analiz: product_manager, project_manager, business_analyst\n"
-            "   - İş Operasyonları: digital_marketing_specialist, hr_specialist, customer_success_specialist\n"
-            "Her bir alan için kesinlikle sayısal bir puan hesaplamalı ve boş bırakmamalısın.\n"
-            "6. SKORLAMA CETVELİ - her rol için bu ölçütü aynı şekilde uygula:\n"
-            "   - 0-20  : CV'de bu rolle ilgili hiçbir kanıt yok.\n"
-            "   - 21-40 : Çok dolaylı/zayıf ilişki (sadece genel yetenekler örtüşüyor).\n"
-            "   - 41-60 : Temel bilgi var ama pratik proje/deneyim kanıtı yok.\n"
-            "   - 61-80 : İlgili beceriler + en az bir somut proje veya deneyim var.\n"
-            "   - 81-100: Rolün çekirdek becerilerinin çoğu + gerçek iş/proje deneyimi var.\n"
-            "   Puanı DAİMA CV'deki somut kanıta dayandır, tahmin yürütme veya varsayımda bulunma.\n"
-            "7. 'top_role_reasons' alanını doldur: role_scores içindeki EN YÜKSEK skorlu 3 rolü "
-            "skora göre azalan sırada yaz. Her biri için:\n"
-            "   - 'role': role_scores'taki teknik alan adının AYNISI olmalı (orn: machine_learning_engineer)\n"
-            "   - 'score': role_scores'ta verdiğin puanın AYNISI olmalı\n"
-            "   - 'reason': 1-2 cümlelik gerekçe. Gerekçede CV'den SOMUT kanıt göster "
-            "(beceri adı, araç adı, proje veya deneyim). Genel geçer cümle kurma.\n"
-            "   Örnek iyi gerekçe: 'PyTorch ve MLflow ile model geliştirme ve deney takibi deneyimi "
-            "bu rolün çekirdek gereksinimlerini karşılıyor.'\n"
-            "   Örnek kötü gerekçe: 'Aday bu rol için uygundur.' (somut kanıt yok)"
-        )
-
         response = self.client.models.generate_content(
             model=self.model_name,
             contents=f"Lütfen aşağıdaki CV metnini analiz et ve sonucu dön:\n\n{cv_text}",
             config=types.GenerateContentConfig(
-                system_instruction=system_instruction,
+                system_instruction=self._system_instruction,
                 response_mime_type="application/json",
-                response_schema=response_schema,
+                response_schema=self._response_schema,
                 temperature=0.2,  # Puanlamanın tutarlı olması için düşük sıcaklık
             ),
         )
 
+        self._record_usage(response)
+
         data = json.loads(response.text)
         validated = CVAnalysisOutput(**data)
         return validated.model_dump()
+
+    def _record_usage(self, response) -> None:
+        """Yanittaki usage_metadata'yi self.last_usage'a yazar ve konsola basar.
+
+        Savunmaci: usage_metadata yoksa (orn. testteki sahte yanit) sessizce gecer,
+        cagriyi bozmaz.
+        """
+        usage = getattr(response, "usage_metadata", None)
+        if usage is None:
+            return
+        prompt_tokens = getattr(usage, "prompt_token_count", None)
+        output_tokens = getattr(usage, "candidates_token_count", None)
+        total_tokens = getattr(usage, "total_token_count", None)
+        self.last_usage = {
+            "prompt_token_count": prompt_tokens,
+            "candidates_token_count": output_tokens,
+            "total_token_count": total_tokens,
+        }
+        print(
+            f"[token] girdi(prompt)={prompt_tokens} "
+            f"çıktı={output_tokens} toplam={total_tokens}"
+        )
 
     def _is_effectively_empty(self, result: dict) -> bool:
         """Model, metnin CV olmadigini bos/0 ciktiyla sinyalledi mi?

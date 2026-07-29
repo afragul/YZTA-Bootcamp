@@ -17,11 +17,13 @@ import { getLearningPlan } from "../lib/api";
 // ============================================================================
 // K5 — Skor bandı → renk token (RoleScores.jsx'teki barRenkSinifi ile aynı)
 // ============================================================================
+// Zemin ve metin rengi birlikte döner; aksi hâlde koyu zeminde koyu yazı
+// okunmaz hâle gelir (Kişi 4'ün JobMatches'teki scoreTone kalıbı).
 function rolRengi(score) {
-  if (score >= 81) return "bg-primary-950";
-  if (score >= 61) return "bg-primary-800";
-  if (score >= 41) return "bg-primary-500";
-  return "bg-primary-200";
+  if (score >= 81) return "bg-primary-950 text-primary-50";
+  if (score >= 61) return "bg-primary-800 text-primary-50";
+  if (score >= 41) return "bg-primary-500 text-white";
+  return "bg-primary-200 text-primary-950";
 }
 
 // resource_type → görünen etiket (ayrı bölümde "resource_type değerleri" listesi var)
@@ -146,13 +148,14 @@ export default function LearningPath({ cvId, analysis, rankings }) {
             return (
               <button
                 key={r.role}
+                type="button"
                 onClick={() => {
                   setSelectedRole(r.role);
                   setError(null); // Hata temizle (yeni rol)
                 }}
                 disabled={loading}
                 className={
-                  "flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all " +
+                  "flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors disabled:opacity-50 " +
                   (isSelected
                     ? "border-2 border-primary-500 bg-primary-50 text-primary-800"
                     : "border border-primary-200 bg-white text-primary-800 hover:border-primary-500")
@@ -160,7 +163,12 @@ export default function LearningPath({ cvId, analysis, rankings }) {
                 aria-pressed={isSelected}
               >
                 <span>{r.display}</span>
-                <span className={"text-xs font-semibold " + rolRengi(r.score)}>
+                <span
+                  className={
+                    "rounded-full px-1.5 py-0.5 text-xs font-bold " +
+                    rolRengi(r.score)
+                  }
+                >
                   {r.score}
                 </span>
               </button>
@@ -171,6 +179,7 @@ export default function LearningPath({ cvId, analysis, rankings }) {
         {/* "Tüm roller" toggle (K2 — 22 butonu birden göstermek boğar) */}
         {kalanRolSayisi > 0 && (
           <button
+            type="button"
             onClick={() => setShowAllRoles(!showAllRoles)}
             className="mt-2 text-sm font-semibold text-primary-500 hover:text-primary-800"
           >
@@ -339,8 +348,9 @@ function PlanTimeline({ plan, cached }) {
 
                       {/* Kaynak önerisi */}
                       {step.resource_suggestion && (
-                        <p className="break-words text-xs text-primary-700">
-                          <span className="font-medium">Kaynak:</span> {step.resource_suggestion}
+                        <p className="break-words text-xs text-primary-800">
+                          <span className="font-medium">Kaynak:</span>{" "}
+                          {step.resource_suggestion}
                         </p>
                       )}
                     </li>
