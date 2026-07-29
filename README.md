@@ -211,7 +211,7 @@ Sprint 2 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerl
 
 ---
 
-# Teknik Dokümantasyon — Rol Skorlama & Öğrenme Yolu Agent (Kişi 3)
+# Teknik Dokümantasyon — Rol Skorlama & Öğrenme Yolu Agent
 
 > Bu bölüm modülün **nasıl çalıştığını** anlatır. *Neden böyle tasarlandığı*
 > (elenen alternatifler, gerekçeler) ayrı bir karar günlüğünde:
@@ -268,7 +268,7 @@ Bu bantlar frontend'e de yansır: rol skorları bar grafiğinde bant renkleriyle
 
 Hedef rol + eksikler → hafta hafta, kaynaklı, gerekçeli çalışma planı.
 
-**Kod:** `backend/services/learning_service.py` (saf Gemini işi) +
+**Kod:** `backend/services/learning_service.py` (saf Gemini) +
 `backend/services/learning_plan_service.py` (orkestrasyon)
 **Şema:** `backend/schemas/learning_plan.py` · **Endpoint:** `POST /learning-plan`
 
