@@ -26,6 +26,46 @@
 
   /* Yumuşak köşe (kartlardaki gibi) */
   --radius-card: 1rem;
+
+  /* AI bekleme animasyonları (AiLoader bileşeni kullanır) */
+  --animate-tarama: tarama 2.4s ease-in-out infinite;
+  --animate-nabiz-yumusak: nabiz-yumusak 2s ease-in-out infinite;
+}
+
+/* CV üzerinde aşağı-yukarı süzülen tarama ışını.
+   Değerler SVG kullanıcı birimidir (viewBox 0 0 120 120). */
+@keyframes tarama {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(68px);
+  }
+}
+
+/* Halkaların yumuşak nefes alışı — animate-ping'den daha sakin */
+@keyframes nabiz-yumusak {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+/* Hareket azaltma tercihi olan kullanıcılar için animasyonları durdur */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Global temeller */
