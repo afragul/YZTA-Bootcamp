@@ -208,3 +208,199 @@ Sprint 2 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerl
 
 
 # Sprint 3
+
+---
+
+# Teknik Dokümantasyon — Rol Skorlama & Öğrenme Yolu Agent
+
+> Bu bölüm modülün **nasıl çalıştığını** anlatır. *Neden böyle tasarlandığı*
+> (elenen alternatifler, gerekçeler) ayrı bir karar günlüğünde:
+> [`docs/kisi3-kararlar.md`](docs/kisi3-kararlar.md).
+> Kalite ölçümlerinin özeti: [`evals/results/OZET.md`](evals/results/OZET.md).
+
+Modül üç yetenekten oluşur: **(1) Rol Skorlama**, **(2) Öğrenme Yolu Agent'ı**,
+**(3) AI Kariyer Koçu sistem promptu**. Üçü de `gemini-3.5-flash` kullanır.
+
+## 1. Rol Skorlama
+
+CV metnini 22 meslek rolüne göre 0-100 arası puanlar ve en yüksek 3 rol için
+gerekçe üretir.
+
+**Kod:** `backend/services/cv_service.py` · **Şema:** `backend/schemas/cv_analysis.py`
+
+**Çıktı sözleşmesi (`CVAnalysisOutput`):**
+
+| Alan | Tip | Açıklama |
+|---|---|---|
+| `role_scores` | `RoleScores` | 22 rolün her biri için 0-100 tam sayı |
+| `top_role_reasons` | `RoleReason[]` | En yüksek 3 rol: `{role, score, reason}` |
+| `gaps` | `string[]` | Rol etiketli eksikler: `"[devops_engineer] Kubernetes deneyimi yok"` |
+| `skills`, `strengths`, `experience_years`, `education` | — | Kişi 2'nin analiz alanları |
+
+**Skorlama cetveli** — puan sezgiyle değil, prompt'taki bu ölçütle verilir:
+
+| Bant | Anlam | Ölçüt |
+|---|---|---|
+| 81-100 | Güçlü aday | Çekirdek becerilerin çoğu + gerçek iş/proje deneyimi |
+| 61-80 | Uygun | İlgili beceriler + en az bir somut proje/deneyim |
+| 41-60 | Geliştirilebilir | Temel bilgi var, pratik kanıt yok |
+| 21-40 | Zayıf | Çok dolaylı ilişki, sadece genel yetenekler örtüşüyor |
+| 0-20 | Alakasız | CV'de bu rolle ilgili kanıt yok |
+
+Bu bantlar frontend'e de yansır: rol skorları bar grafiğinde bant renkleriyle gösterilir
+(81+ en koyu → 20 ve altı en açık).
+
+**Teknik notlar:**
+- `temperature=0.2` — puanlamanın tutarlı olması için düşük tutuldu.
+  Ölçülen kararlılık: aynı CV 5 koşuda ortalama **4.09 puan** oynuyor, 1. sıradaki rol
+  **5/5 koşuda sabit** kaldı.
+- `MAX_ATTEMPTS = 3` — çağrı/JSON parse/şema doğrulama hataları için yeniden deneme.
+- Structured output: `CVAnalysisOutput` şeması Gemini'ye `response_schema` olarak
+  verilir. Gemini Developer API `additionalProperties` alanını reddettiği için şema
+  `_get_clean_schema()` ile özyinelemeli temizlenir.
+
+> ⚠️ **Sessiz kırılma tuzağı:** `RoleScores` alanlarının `default=0` değeri var,
+> dolayısıyla şemada **hiçbiri `required` değil**. 22 rolü gerçekten doldurtan tek şey
+> prompt'un kapanış cümlesidir. Bir rolü prompt metninden çıkarırsanız hata **vermez**,
+> sessizce `0` döner.
+
+## 2. Öğrenme Yolu Agent'ı
+
+Hedef rol + eksikler → hafta hafta, kaynaklı, gerekçeli çalışma planı.
+
+**Kod:** `backend/services/learning_service.py` (saf Gemini) +
+`backend/services/learning_plan_service.py` (orkestrasyon)
+**Şema:** `backend/schemas/learning_plan.py` · **Endpoint:** `POST /learning-plan`
+
+**Katman ayrımı:** `LearningPathService` DB, HTTP veya `cv_id` bilmez —
+`build_plan(target_role, gaps, skills) → dict` imzasıyla saf bir servistir.
+DB'den okuma, cache kontrolü ve `cv_id` çözümleme `learning_plan_service.py`'nin işidir.
+
+**İstek / cevap:**
+
+```jsonc
+// POST /learning-plan
+{ "cv_id": "uuid", "target_role": "devops_engineer" }
+
+// Cevap
+{
+  "cv_id": "uuid", "target_role": "devops_engineer",
+  "cached": false,                    // true → DB'den geldi, Gemini'ye gidilmedi
+  "plan": {
+    "summary": "...", "total_weeks": 6,
+    "weeks": [{
+      "week": 1, "focus": "Haftanın ana odağı",
+      "steps": [{
+        "order": 1, "topic": "Docker temelleri",
+        "reason": "Bu adım neden gerekli...",
+        "resource_type": "dokumantasyon",     // kurs · dokumantasyon · video · kitap · proje
+        "resource_suggestion": "Docker resmî dokümantasyonu (ücretsiz)",
+        "estimated_hours": 6
+      }]
+    }]
+  }
+}
+```
+
+**12 kurallı sistem promptu** — her kural gözlenen bir hatanın karşılığıdır:
+
+| # | Kural | Ne sağlar |
+|---|---|---|
+| 1 | Alana uyum | Teknik olmayan rolde (İK, tasarım) yazılım terimi geçmez |
+| 2 | Mantıklı sıra | Ön koşul konu önce gelir |
+| 3 | Tekrar/uydurma yasağı | Adayın sahip olduğu beceri plana konmaz; **verilen `skills` dışında beceri atfedilemez** |
+| 4 | Gerekçe zorunlu | Her adımda "bu ne işe yarar" |
+| 5 | Somut kaynak + doğru tip | Tek kaynak, `resource_type` kesin eşleme, **`(ücretsiz)`/`(ücretli)` etiketi zorunlu** |
+| 6 | Gerçekçi yük | Haftada 2-4 adım, 10-15 saat; plan 4-8 hafta |
+| 7 | Proje zorunlu | En az bir **portfolyoda gösterilebilir** çıktı |
+| 8 | Kariyer geçişi köprüsü | Mevcut becerilerden hangisi işe yarıyor, önce o |
+| 9 | Eksikleri öneme göre sırala | Çekirdek eksik önce, alakasız olan hiç |
+| 10 | Gerçekçi özet | "production-ready", "uzman" **yasak** |
+| 11 | Düzgün Türkçe | `ç ğ ı İ ö ş ü` doğru; ürün adları orijinal |
+| 12 | Yalnızca birinci-el kaynak | Resmî dokümantasyon/kurumsal platform; **şahıs adı taşıyan kanal önerilemez** |
+
+**Rol sıralama — `rank_roles(role_scores)`:**
+
+22 rolü skora göre sıralar, frontend'in rol seçicisini besler:
+
+```python
+[{"rank": 1, "role": "machine_learning_engineer",
+  "display": "Makine Öğrenmesi Mühendisi", "score": 85, "auto": True}, ...]
+```
+
+`rank=1` → `auto=True` (panel açılınca planı otomatik üretilir) ·
+`rank=2..22` → `auto=False` ("Plan oluştur" butonu arkasında bekler).
+
+**Neden tembel (lazy)?** 22 rol × ~15 sn = 5,5 dakika bekleme **ve** günlük ücretsiz
+kotanın (~20 istek) tamamı. Üç katmanlı koruma: (1) yalnızca rank 1 otomatik,
+(2) `(cv_id, target_role)` DB cache → `cached: true`, (3) frontend bileşen state'inde
+saklama.
+
+**Retry stratejisi (`MAX_DENEME=3`, `TABAN_BEKLEME_SN=10`):**
+
+| Durum | Davranış |
+|---|---|
+| 429 (dakikalık limit) veya 5xx | Üstel geri çekilme: 10sn → 20sn (+ jitter), 3 deneme |
+| 429 **ama** gövdede `PerDay`/`RequestsPerDay` | **Günlük kota** — beklemek anlamsız, anında hata |
+| Diğer hatalar (şema vb.) | Hiç tekrarlanmaz |
+
+`temperature=0.4` — aynı hedefe birden fazla geçerli yol olduğu için plan yaratıcı
+olabilir, ama savrulmasın diye düşük tutuldu.
+
+## 3. AI Kariyer Koçu sistem promptu
+
+**Kod:** `backend/services/coach_service.py` (`_SYSTEM_PERSONA`) ·
+**Endpoint'ler:** `POST /chat/session`, `POST /chat`
+
+Koç, CV analizi + eşleşen ilanları metinsel bağlama çevirip (`_build_context()`)
+**yalnızca bu bağlama dayanarak** cevap verir. Oturum hafızası bellek-içidir
+(`_sessions` dict); sunucu yeniden başlayınca sıfırlanır.
+
+Ölçüm: **6/6 prob geçti (%100)**. En kritik kontrol `sayi_grounding` — koçun
+"%88 eşleşen ilan" derken bu sayıyı gerçekten bağlamdan alıp almadığını denetler.
+Sonuç: **uydurma yüzde yok.**
+
+## 4. Rol listesi DÖRT yerde tanımlı — senkron zorunlu
+
+Bir hedef rol eklemek/yeniden adlandırmak **dördünü birden** gerektirir:
+
+| # | Yer | Ne tanımlar |
+|---|---|---|
+| 1 | `schemas/cv_analysis.py` → `RoleScores` | Skorların JSON şekli |
+| 2 | `cv_service.py` → `system_instruction` | Gemini'ye 22 rolü doldurtan tek şey |
+| 3 | `schemas/learning_plan.py` → `TargetRole` | Planın kabul ettiği roller |
+| 4 | `services/learning_service.py` → `ROLE_DISPLAY` | Görünen Türkçe adlar |
+
+Senkron kayması **sessizdir** (hata vermez, skor `0` döner / buton çalışmaz).
+Bu yüzden rol düzenleyen her PR'dan önce:
+
+```bash
+python -m evals.guards.role_sync
+```
+
+0 Gemini çağrısı, ~1 saniye. `RoleScores` alanları == `TargetRole` değerleri ==
+`ROLE_DISPLAY` anahtarları eşitliğini doğrular.
+
+## 5. Frontend bağlantısı
+
+| Bileşen | Dosya | Besleyen alan |
+|---|---|---|
+| Rol skorları grafiği + gerekçeler | `frontend/src/components/RoleScores.jsx` | `role_rankings`, `analysis.top_role_reasons` |
+| Rol seçici + öğrenme yolu çizelgesi | `frontend/src/components/LearningPath.jsx` | `role_rankings`, `cv_id` |
+| API çağrısı | `frontend/src/lib/api.js` → `getLearningPlan(cvId, targetRole)` | `POST /learning-plan` |
+
+Frontend, plan üretiminin 10-15 saniye sürdüğünü kullanıcıya açıkça bildirir
+("10-15 saniye sürebilir"), `cached: true` gelen planlarda "Kayıtlı plan" notu gösterir.
+
+## 6. Kalite ölçümleri (özet)
+
+| Yetenek | Eval | Sonuç |
+|---|---|---|
+| Skorlama doğruluğu | `scoring/accuracy` | **5/5 (%100)** |
+| Skor kararlılığı | `scoring/consistency` | 1. rol **5/5 sabit**, ort. oynama 4.09 |
+| Gerekçe tutarlılığı | `scoring/reasons` | **15/15** (0 çağrı 💚) |
+| Plan kalitesi | `learning/plans` | **4/4 senaryo** |
+| Koç kalitesi | `coach/quality` | **6/6 (%100)** |
+| Rol senkronu | `guards/role_sync` | **22 == 22 == 22** (0 çağrı 💚) |
+
+Ayrıntılı tablolar ve ham çıktılar: [`evals/results/OZET.md`](evals/results/OZET.md)
