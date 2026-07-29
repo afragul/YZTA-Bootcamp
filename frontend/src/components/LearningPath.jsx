@@ -284,7 +284,7 @@ function PlanTimeline({ plan, cached }) {
       {/* Haftalar — dikey çizgi + hafta düğümleri */}
       <div className="relative space-y-6 pl-12">
         {/* Dikey çizgi (absolute) */}
-        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-primary-200" />
+        <div className="absolute bottom-0 left-[13px] top-0 w-0.5 bg-primary-200" />
 
         {plan.weeks.map((week, weekIndex) => {
           const weekHours = week.steps.reduce(
@@ -296,8 +296,15 @@ function PlanTimeline({ plan, cached }) {
             <div key={weekIndex} className="space-y-3">
               {/* Hafta başlığı + düğüm */}
               <div className="relative">
-                {/* Daire düğüm (absolute, çizginin üstüne) */}
-                <div className="absolute left-[-42px] top-1 h-6 w-6 rounded-full border-2 border-primary-500 bg-white" />
+                {/* Daire düğüm — hafta numarası içinde, dikey çizginin üstüne oturur.
+                    left-[-48px]: üst kapsayıcının pl-12 (48px) boşluğunu geri alır,
+                    böylece 28px'lik dairenin merkezi çizginin merkeziyle çakışır. */}
+                <div
+                  aria-hidden
+                  className="absolute left-[-48px] top-0 flex h-7 w-7 items-center justify-center rounded-full border-2 border-primary-500 bg-white text-xs font-bold text-primary-800"
+                >
+                  {week.week}
+                </div>
 
                 <div className="flex items-baseline justify-between">
                   <h4 className="font-semibold text-primary-800">
