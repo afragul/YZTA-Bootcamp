@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
+import AiLoader, { CV_ASAMALARI } from "../components/AiLoader";
 import { uploadCv } from "../lib/api";
 import { useCv } from "../context/CvContext";
 
@@ -54,20 +55,25 @@ export default function Upload() {
           className="hidden"
         />
 
-        {/* Sürükle-bırak / seçim alanı */}
-        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-primary-200 bg-primary-50 py-14 text-center">
-          <p className="text-sm font-medium text-primary-800">
-            {file ? file.name : "Dosyanı buraya bırak"}
-          </p>
-          <p className="text-xs text-muted">PDF · DOCX · en fazla 5 MB</p>
-          <Button
-            variant="secondary"
-            onClick={() => inputRef.current?.click()}
-            disabled={loading}
-          >
-            {file ? "Dosyayı değiştir" : "Dosya seç"}
-          </Button>
-        </div>
+        {/* Analiz sürerken seçim alanının yerini aşamalı yükleyici alır —
+            15-25 saniyelik beklemede ekranın donmuş görünmemesi için. */}
+        {loading ? (
+          <AiLoader baslik={`${file?.name ?? "CV"} analiz ediliyor`} asamalar={CV_ASAMALARI} />
+        ) : (
+          /* Sürükle-bırak / seçim alanı */
+          <div className="flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-primary-200 bg-primary-50 py-14 text-center">
+            <p className="text-sm font-medium text-primary-800">
+              {file ? file.name : "Dosyanı buraya bırak"}
+            </p>
+            <p className="text-xs text-muted">PDF · DOCX · en fazla 5 MB</p>
+            <Button
+              variant="secondary"
+              onClick={() => inputRef.current?.click()}
+            >
+              {file ? "Dosyayı değiştir" : "Dosya seç"}
+            </Button>
+          </div>
+        )}
 
         {error && (
           <p className="mt-4 rounded-lg border border-danger bg-white px-3 py-2 text-sm text-danger">

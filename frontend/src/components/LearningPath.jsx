@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
+import AiLoader, { PLAN_ASAMALARI } from "./AiLoader";
 import { getLearningPlan } from "../lib/api";
 
 // Kişi 3 — Rol seçici + öğrenme yolu zaman çizelgesi.
@@ -203,13 +204,15 @@ export default function LearningPath({ cvId, analysis, rankings }) {
         </div>
       )}
 
-      {/* K1 — Bekleme durumu: 10-15 saniye uyarısı */}
+      {/* K1 — Bekleme durumu: aşamalı yükleyici (10-15 saniye sürüyor) */}
       {loading && (
-        <div className="mb-4 rounded-lg bg-primary-50 p-4">
-          <p className="mb-1 text-sm font-medium text-primary-800">
-            …planı hazırlanıyor
-          </p>
-          <p className="text-xs text-muted">10-15 saniye sürebilir.</p>
+        <div className="mb-4">
+          <AiLoader
+            baslik={`${
+              rankings.find((r) => r.role === selectedRole)?.display ?? "Hedef rol"
+            } planı hazırlanıyor`}
+            asamalar={PLAN_ASAMALARI}
+          />
         </div>
       )}
 
