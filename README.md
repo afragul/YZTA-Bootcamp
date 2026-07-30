@@ -209,6 +209,84 @@ Sprint 2 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerl
 
 # Sprint 3
 
+ **Sprint Notları:** Bu sprintte ürün **çalışan bir backend'den kullanılabilir bir uygulamaya** dönüştürüldü. Sprint 2 sonunda backend'in tamamı canlıydı ancak panelde yalnızca CV analiz kartları bağlıydı; bu sprintte kalan üç yetenek — **rol skorları**, **öğrenme yolu** ve **iş eşleşmeleri** — arayüze bağlanarak yükle → analiz → panel → plan → koç akışı uçtan uca tamamlandı. Rol skorlama tarafında en yüksek 8 rol, skor bandına göre renklendirilmiş yatay bar grafiğiyle ve en yüksek 3 rol için CV'den somut kanıt gösteren gerekçelerle sunuldu. Öğrenme Yolu Agent'ının çıktısı hafta hafta düğümlerden oluşan bir zaman çizelgesine dönüştürüldü; `rank_roles()` çıktısını kullanan rol seçici bağlandı ve kota gerçeğine uygun **üç katmanlı tembel yükleme** hayata geçirildi: yalnızca birinci sıradaki rolün planı otomatik üretiliyor, kalan 21 rol buton arkasında bekliyor, üretilen planlar hem veritabanında (`cached: true`) hem bileşen state'inde saklanarak aynı rol ikinci kez istendiğinde Gemini'ye hiç gidilmiyor. Kullanıcı deneyiminde sprintin ayırt edici çıktısı **aşamalı yükleme göstergesi** oldu: Gemini çağrıları 10-25 saniye sürdüğü için pasif bir "Analiz ediliyor…" yazısı uygulamanın donduğu izlenimi veriyordu; bunun yerine backend'in gerçekten yürüttüğü pipeline adımları (dosya doğrulama → metin çıkarma → yapay zeka analizi → RAG eşleştirme → kayıt) kullanıcıya sırayla gösterildi. Backend tek bir HTTP cevabı döndürdüğü için gerçek ilerleme bilinemez; bu nedenle **bilerek yüzde gösterilmedi**, yalnızca gerçek geçen süre sayacı ve o an çalıştığı tahmin edilen adım sunuldu, son adım asla "tamamlandı" işaretlenmedi. AI Kariyer Koçu güvenlik ve kalite açısından sertleştirildi: promptuna **rol kilidi** kuralı eklenerek prompt injection denemelerine direnç kazandırıldı, `chat()` çağrısına 429/5xx için üstel geri çekilmeli yeniden deneme konuldu ve koçun bağlama sadakati altı problu bir eval bataryasıyla ölçüldü. Bu bataryanın en değerli kontrolü **sayı temellendirmesi (number grounding)** oldu: koç "%88 eşleşen ilan" derken bu sayıyı gerçekten bağlamdan alıp almadığı denetlendi ve uydurma yüzde bulunmadı (6/6, %100). Semantik eşleştirme tarafında iş ilanı veri seti 200'den **247 ilana** çıkarılarak 22 hedef rolün tamamında örnek bulunması sağlandı; daha önce hiç ilanı olmayan kategoriler (ör. `digital_marketing_specialist` 0 → 7) dolduruldu, eksik `job_domain` alanları düzeltildi ve tekrar eden kayıt/boş açıklama kontrolü yapıldı — zenginleştirme sonrası örnek CV'lerde en iyi eşleşmeler %94-98 aralığına çıktı. Analiz çekirdeğinde **token/maliyet optimizasyonu** yapıldı: her çağrıda yeniden üretilen yanıt şeması ve sistem talimatı servis başlatılırken bir kez hesaplanacak şekilde önbelleğe alındı, sistem promptu çıktı kalitesini belirleyen kırmızı çizgiler (22 rol listesi, skorlama cetveli, `gaps` biçimi) korunarak yoğunlaştırıldı ve `usage_metadata` üzerinden token kullanımı ölçülebilir hâle getirildi. Son olarak sprintin kalite kanıtları tek bir yerde toplandı: skorlama + agent katmanının teknik dokümantasyonu, tasarım kararlarının gerekçelerini kayda alan bir karar günlüğü ve altı eval'in "girdi → beklenen → gerçek" biçiminde birleştirildiği özet tablo yazıldı.
+- **Sprint içinde tamamlanması tahmin edilen puan:** 100 Puan
+  <!-- Not: Toplam Product Backlog puanı 300 olarak belirlenmiş, 3 sprint'e ~100'er puan olacak şekilde dağıtılmıştır. -->
+- **Puan tamamlama mantığı:** Proje boyunca hedeflenen toplam iş yükü **300 puan** olarak tahmin edilmiş ve 3 sprint'e eşit ağırlıkta (~100'er puan) bölünmüştür. Sprint 3'te öncelik, Sprint 2 review'ında gelecek sprinte bırakılan işlerdi: arayüzün kalan modüllerinin canlı backend'e bağlanması, responsive düzen ve loading/hata/empty state'ler, iş ilanı veri setinin zenginleştirilmesi, token/maliyet optimizasyonu, her modülün dokümantasyonu ve uygulamanın canlıya alınması. Bu işlerin **deploy dışındaki tamamı** teslim edilmiştir.
+- **Backlog düzeni ve Story seçimleri:** Miro board'da **mavi kartlar User Story'leri**, **kırmızı kartlar ise bu story'lere ait yapılacak işleri (task)** temsil eder. Sprint 3'e, ürünü demo edilebilir bütünlüğe taşıyan story'ler öncelikle alınmıştır: kullanıcının gördüğü üç eksik modülün bağlanması, uzun AI beklemelerinin yönetilmesi ve kalite kanıtlarının belgelenmesi. Deploy (backend için Docker + Render/Railway, frontend için Vercel) story'si sprint içinde kapatılamamıştır; gerekçesi ve planı aşağıda "Sprint Review" ve "Alınan Aksiyonlar" bölümlerinde açıklanmıştır.
+- **Tahmini puan tamamlama tablosu (Sprint 3):**
+  | User Story / İş | Puan | Durum |
+  |---|---|---|
+  | **Rol Skorlama & Öğrenme Yolu Arayüzü** | **21** | ✅ Done |
+  | Rol skorları görselleştirmesi: en yüksek 8 rol, skor bandına göre renklendirme + skor gerekçeleri | 5 | ✅ Done |
+  | Öğrenme yolu zaman çizelgesi: hafta düğümleri, adım kartları, proje adımı vurgusu | 8 | ✅ Done |
+  | Rol seçici (`rank_roles()`) + üç katmanlı tembel yükleme (auto / buton / cache) | 5 | ✅ Done |
+  | `POST /learning-plan` arayüz bağlantısı (`getLearningPlan`) + 502 dostu hata mesajı | 3 | ✅ Done |
+  | **Kullanıcı Deneyimi: Uzun AI Beklemelerinin Yönetimi** | **8** | ✅ Done |
+  | Aşamalı yükleme göstergesi (`AiLoader`): gerçek pipeline adımları + geçen süre sayacı | 5 | ✅ Done |
+  | Tarama animasyonu (SVG + CSS, bağımlılıksız) + `prefers-reduced-motion` desteği | 3 | ✅ Done |
+  | **AI Kariyer Koçu: Güvenlik & Kalite** | **13** | ✅ Done |
+  | Koç promptuna rol kilidi kuralı (prompt injection direnci) | 5 | ✅ Done |
+  | `chat()` için 429/5xx üstel geri çekilmeli yeniden deneme | 3 | ✅ Done |
+  | Koç kalite eval'i: 6 prob (bağlam sadakati, sayı temellendirmesi, hafıza, injection) → 6/6 | 5 | ✅ Done |
+  | **Semantik Eşleştirme: Veri Seti Zenginleştirme** | **13** | ✅ Done |
+  | İş ilanı veri seti 200 → 247; 22 rolün tamamında örnek sağlanması, boş kategorilerin doldurulması | 8 | ✅ Done |
+  | Veri temizliği (eksik `job_domain`, tekrar eden id / boş açıklama kontrolü) + eşleşme doğrulaması (%94-98) | 5 | ✅ Done |
+  | **İş Eşleşmeleri & Chat Arayüzü** | **13** | ✅ Done |
+  | İş eşleşmeleri carousel'ı: tek kart + ok navigasyonu + "Tümünü göster" liste görünümü | 5 | ✅ Done |
+  | AI Koç chat arayüzü: `/chat/session` ile RAG bağlamlı oturum, `sessionStorage` ile kalıcı hafıza | 8 | ✅ Done |
+  | **Analiz Çekirdeği: Token / Maliyet Optimizasyonu** | **11** | ✅ Done |
+  | Yanıt şeması ve sistem talimatının servis başlangıcında bir kez hesaplanması (çağrı başına tekrarlı iş kaldırıldı) | 8 | ✅ Done |
+  | `usage_metadata` üzerinden token kullanım ölçümü (`last_usage`) | 3 | ✅ Done |
+  | **Dokümantasyon & Kalite Kanıtları** | **13** | ✅ Done |
+  | Skorlama + agent katmanının teknik dokümantasyonu (README bölümü) | 5 | ✅ Done |
+  | Karar günlüğü (`docs/kisi3-kararlar.md`): 10 başlıkta tasarım kararı ve gerekçesi | 5 | ✅ Done |
+  | Birleşik eval özet tablosu (`evals/results/OZET.md`): 6 eval, girdi → beklenen → gerçek | 3 | ✅ Done |
+  | **Canlıya Alma (Deploy)** | **8** | ⏳ Devam ediyor |
+  | Backend Docker + Render/Railway, frontend Vercel, CORS ve prod ortam değişkenleri | 8 | ⏳ Devam ediyor |
+  | **Toplam Tamamlanan** | **92** | |
+  | **Toplam Planlanan** | **100** | |
+
+- **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü Slack/WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
+  <!-- TODO: Sprint 3 WhatsApp/Slack ekran görüntülerini buraya ekleyin -->
+
+- **Sprint Board Update:** Sprint 3 board ekran görüntüsü:
+  <!-- TODO: Miro board'un Sprint 3 sonundaki ekran görüntüsünü buraya ekleyin -->
+
+- **Ürün Durumu:** Uygulamanın Sprint 3 sonundaki durumundan ekran görüntüleri (panel: rol skorları + iş eşleşmeleri, öğrenme yolu zaman çizelgesi, aşamalı yükleme göstergesi, AI koç sohbeti):
+  <!-- TODO: Panel, öğrenme yolu, yükleme göstergesi ve chat ekran görüntülerini buraya ekleyin -->
+
+*   **Sprint Review:**
+    *   **Alınan Kararlar:** Öğrenme planı üretiminin kota maliyeti nedeniyle **tembel (lazy) yükleme** kalıcı mimari karar olarak benimsenmiştir; 22 rolün planını önden üretmek tek CV yüklemesinde günlük ücretsiz kotanın tamamını yakacağı için reddedilmiştir. Uzun AI beklemelerinde kullanıcıya **yüzdeli ilerleme çubuğu gösterilmemesi** kararlaştırılmıştır: backend tek bir HTTP cevabı döndürdüğü için gerçek ilerleme bilinemez ve uydurma bir yüzde kullanıcıyı yanıltır; bunun yerine gerçek pipeline adımları ve gerçek geçen süre gösterilmektedir. Demo'da öğrenme planının **canlı üretilmemesi**, önceden üretilip dondurulmuş planın kullanılması kararlaştırılmıştır (plan servisi `temperature=0.4` ile çalıştığı için aynı hedefe farklı geçerli yollar üretebiliyor ve 503 riski bulunuyor). Deploy story'si, backend tarafında CORS'un ortam değişkenine taşınmasını ve kalıcı depolama (SQLite veritabanı + yüklenen dosyalar) çözümünü gerektirdiği için sprint içinde kapatılamamış, Sprint 3 sonrası ilk iş olarak planlanmıştır.
+    *   **Ürün Bütünlüğü:** Sprint 3 sonunda kullanıcı akışının tamamı çalışır durumdadır: CV yükleme → analiz → panel (analiz kartları + rol skorları + iş eşleşmeleri) → hedef rol seçimi → öğrenme planı → AI koç sohbeti. Offline birim testleri 23/23 geçmekte, rol senkron guard'ı 22/22/22 doğrulamaktadır.
+    *   **Sprint Review Katılımcıları:** Muhammed Behlül Alar, Tolga Duy, Afragül Tığ, Ekin Karıncalı.
+
+*   **Sprint Retrospective**
+
+    *   Sprint 3 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerlendirme toplantısı sonucunda ortaya çıkan kazanımlar, karşılaşılan zorluklar ve aksiyon planımız şu şekildedir:
+
+###  Neler İyi Gitti? (Başarılar)
+*   **Ürün Uçtan Uca Tamamlandı:** Sprint 2'de backend'in tamamı canlı olmasına rağmen panelde yalnızca analiz kartları bağlıydı. Bu sprintte kalan üç modül (rol skorları, öğrenme yolu, iş eşleşmeleri) bağlanarak ürün ilk kez baştan sona kullanılabilir hâle geldi.
+*   **Beklemenin Anlamlı Hâle Getirilmesi:** 10-25 saniyelik Gemini beklemeleri, backend'in gerçek pipeline adımlarını gösteren aşamalı bir göstergeyle yönetildi. Kullanıcı artık "uygulama dondu mu?" diye düşünmüyor, sistemin ne yaptığını görüyor.
+*   **Dürüst Arayüz Kararı:** Gerçek ilerleme bilinemediği için sahte yüzde göstermek yerine yalnızca doğrulanabilir bilgi (gerçek geçen süre + gerçek pipeline adımları) sunuldu. Son adım hiçbir zaman "tamamlandı" işaretlenmedi.
+*   **Ölçülmüş Koç Güvenliği:** Prompt injection direnci ve bağlam sadakati göz kararıyla değil eval'le doğrulandı. Sayı temellendirmesi kontrolü, koçun bağlamda olmayan bir yüzde uydurmadığını kanıtladı (6/6).
+*   **Veri Seti Kapsamının Tamamlanması:** İş ilanı veri seti 22 hedef rolün **tamamını** kapsayacak şekilde genişletildi; daha önce hiç ilanı olmayan roller için "skor veriliyor ama eşleşme gelmiyor" tutarsızlığı ortadan kalktı.
+*   **Maliyet Bilinci:** Analiz çekirdeğinde çağrı başına tekrarlanan şema/prompt üretimi kaldırılıp token kullanımı ölçülebilir hâle getirilerek kota tüketimi kontrol altına alındı.
+
+###  Nelerde Zorlandık / Neler Geliştirilebilir? (Zorluklar)
+*   **Günlük Kota Sınırı:** `gemini-3.5-flash` ücretsiz kotasının günlük ~20 istekle sınırlı olması, canlı eval koşularını ve arayüz testlerini ciddi biçimde yavaşlattı. Bir kullanıcı akışı bile en az iki çağrı (analiz + plan) tükettiği için geliştirme sırasında sık sık kota beklendi.
+*   **Deploy Bağımlılık Zinciri:** Canlıya alma tek bir işten ibaret değil: CORS'un ortam değişkenine taşınması, kalıcı depolama (ücretsiz host'lar diski her yeniden başlatmada siliyor) ve ChromaDB indeksinin sunucuda yeniden kurulması gerekiyor. Bu zincir sprint sonuna sığmadı.
+*   **Paylaşılan Frontend Dosyalarında Çakışma:** `Dashboard.jsx` ve `api.js` üç kişinin birden dokunduğu dosyalar olduğu için merge çakışmaları yaşandı; her iki tarafın katkısını koruyacak şekilde elle birleştirme gerekti.
+*   **Tarayıcı Testinde Kota Tüketimi:** Arayüz durumlarını (yükleniyor / hata / boş) gerçek isteklerle denemek kotayı hızla tükettiği için testlerin sahte cevaplarla yapılması gerekti.
+
+###  Alınan Aksiyonlar ve Çözümler (Action Items)
+*   **Üç Katmanlı Cache:** Aynı planın tekrar tekrar üretilmesini önlemek için veritabanında `(cv_id, target_role)` cache'i, bileşen state'inde plan saklama ve `useRef` ile tek seferlik otomatik yükleme birlikte uygulandı; böylece rol seçiciyle gezinirken Gemini'ye hiç ek istek gitmiyor.
+*   **Sahte Cevapla Arayüz Testi:** Yükleme/hata/boş durumları kota harcamadan doğrulamak için tarayıcıda geçici sahte cevaplar kullanıldı; aşama ilerlemesi, hizalama ve 375px davranışı bu yolla ölçülerek doğrulandı.
+*   **Paylaşılan Dosyalarda Minimum Müdahale:** `Dashboard.jsx` gibi ortak dosyalarda değişiklik yalnızca bileşen bağlama satırlarıyla sınırlı tutuldu; her modülün mantığı kendi bileşen dosyasında toplandı.
+*   **Kalite Kanıtlarının Tek Yerde Toplanması:** Dağınık eval çıktıları `evals/results/OZET.md` altında tek tabloya indirildi; her ölçümün kaç Gemini çağrısı yaktığı da belgelenerek kota koruması sağlandı.
+*   **Sprint Sonrası İlk İş — Canlıya Alma:** Deploy zincirinin sırası netleştirildi: (1) CORS'un `ALLOWED_ORIGINS` ortam değişkenine taşınması, (2) backend için Dockerfile + Render/Railway servisi, (3) kalıcı depolama (Postgres veya persistent disk), (4) sunucuda ChromaDB indeksinin kurulması, (5) frontend için `vercel.json` (SPA yönlendirmesi) ve `VITE_API_URL` ile Vercel dağıtımı.
+*   **Kota Riskine Karşı Önlem:** Demo ve jüri sunumu sırasında kotanın tükenmemesi için ücretli katmana geçiş veya demo verisinin önceden üretilip dondurulması kararlaştırıldı.
+
 ---
 
 # Teknik Dokümantasyon — Rol Skorlama & Öğrenme Yolu Agent
