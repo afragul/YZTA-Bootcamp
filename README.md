@@ -247,14 +247,26 @@ Sprint 2 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerl
   | **Toplam Tamamlanan** | **92** | |
   | **Toplam Planlanan** | **100** | |
 
-- **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü Slack/WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
-  <!-- TODO: Sprint 3 WhatsApp/Slack ekran görüntülerini buraya ekleyin -->
+- **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
+  <img width="581" height="477" alt="image" src="https://github.com/user-attachments/assets/dd8c4f1d-fa56-4f65-9470-38cc1e885e20" />
+  <img width="680" height="102" alt="image" src="https://github.com/user-attachments/assets/a0998a7c-b85e-40b4-924c-eda49f56b695" />
+  <img width="1136" height="232" alt="image" src="https://github.com/user-attachments/assets/f58b435c-d3bc-4358-860e-cbd20c4b8843" />
 
 - **Sprint Board Update:** Sprint 3 board ekran görüntüsü:
-  <!-- TODO: Miro board'un Sprint 3 sonundaki ekran görüntüsünü buraya ekleyin -->
+  <img width="1310" height="1192" alt="image" src="https://github.com/user-attachments/assets/e5b78c8e-8348-42f4-a981-306b67e82fb6" />
 
-- **Ürün Durumu:** Uygulamanın Sprint 3 sonundaki durumundan ekran görüntüleri (panel: rol skorları + iş eşleşmeleri, öğrenme yolu zaman çizelgesi, aşamalı yükleme göstergesi, AI koç sohbeti):
-  <!-- TODO: Panel, öğrenme yolu, yükleme göstergesi ve chat ekran görüntülerini buraya ekleyin -->
+- **Ürün Durumu:** Uygulamanın Sprint 3 sonundaki durumundan ekran görüntüleri:
+<img width="1912" height="908" alt="Ekran görüntüsü 2026-07-31 011411" src="https://github.com/user-attachments/assets/826f3c7b-a809-41a3-81c1-f3e52bd4ca8e" />
+<img width="860" height="525" alt="Ekran görüntüsü 2026-07-31 011443" src="https://github.com/user-attachments/assets/caeef999-b9b3-45b5-b324-aaf44b9b9e40" />
+<img width="876" height="565" alt="Ekran görüntüsü 2026-07-31 011451" src="https://github.com/user-attachments/assets/32533588-fab7-438d-8126-a9dcac4c2bab" />
+<img width="1253" height="791" alt="Ekran görüntüsü 2026-07-31 011522" src="https://github.com/user-attachments/assets/98aa0583-79e7-4bdd-af0b-88cd8312ef4b" />
+<img width="1088" height="892" alt="Ekran görüntüsü 2026-07-31 011539" src="https://github.com/user-attachments/assets/307ce398-fb2c-4c30-a077-f9a7b6275a97" />
+<img width="1000" height="902" alt="Ekran görüntüsü 2026-07-31 011554" src="https://github.com/user-attachments/assets/9bc291e5-9f80-4da7-b391-3354bf6cab0b" />
+<img width="1058" height="857" alt="Ekran görüntüsü 2026-07-31 011606" src="https://github.com/user-attachments/assets/58118008-9682-4ba5-bc38-1c4a357a5bfa" />
+<img width="802" height="710" alt="Ekran görüntüsü 2026-07-31 011617" src="https://github.com/user-attachments/assets/78240d58-f3fe-4e55-8c45-9fe800c0b415" />
+<img width="717" height="716" alt="Ekran görüntüsü 2026-07-31 011753" src="https://github.com/user-attachments/assets/df3fbb2c-210b-4e86-9c15-70b79d32a924" />
+<img width="701" height="672" alt="Ekran görüntüsü 2026-07-31 011809" src="https://github.com/user-attachments/assets/b4a37c79-c857-4cd4-ad36-112a874cb767" />
+<img width="712" height="682" alt="Ekran görüntüsü 2026-07-31 011818" src="https://github.com/user-attachments/assets/1be8df05-780d-49fc-b60f-3e363686943b" />
 
 *   **Sprint Review:**
     *   **Alınan Kararlar:** Öğrenme planı üretiminin kota maliyeti nedeniyle **tembel (lazy) yükleme** kalıcı mimari karar olarak benimsenmiştir; 22 rolün planını önden üretmek tek CV yüklemesinde günlük ücretsiz kotanın tamamını yakacağı için reddedilmiştir. Uzun AI beklemelerinde kullanıcıya **yüzdeli ilerleme çubuğu gösterilmemesi** kararlaştırılmıştır: backend tek bir HTTP cevabı döndürdüğü için gerçek ilerleme bilinemez ve uydurma bir yüzde kullanıcıyı yanıltır; bunun yerine gerçek pipeline adımları ve gerçek geçen süre gösterilmektedir. Demo'da öğrenme planının **canlı üretilmemesi**, önceden üretilip dondurulmuş planın kullanılması kararlaştırılmıştır (plan servisi `temperature=0.4` ile çalıştığı için aynı hedefe farklı geçerli yollar üretebiliyor ve 503 riski bulunuyor). Deploy story'si, backend tarafında CORS'un ortam değişkenine taşınmasını ve kalıcı depolama (SQLite veritabanı + yüklenen dosyalar) çözümünü gerektirdiği için sprint içinde kapatılamamış, Sprint 3 sonrası ilk iş olarak planlanmıştır.
