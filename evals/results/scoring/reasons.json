@@ -1,0 +1,111 @@
+{
+  "basari_orani": 100.0,
+  "kontrol_edilen_gerekce": 9,
+  "gecen": 9,
+  "gerekce_alani_bos_dosyalar": [
+    "cv_devops_result.json",
+    "cv_frontend_result.json"
+  ],
+  "kontrol_edilen_dosya_sayisi": 3,
+  "detay": [
+    {
+      "dosya": "cv_backend_result.json",
+      "rol": "backend_developer",
+      "skor": 85,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "FastAPI, Django, PostgreSQL ve Docker kullanarak 1.5 yıl boyunca e-ticaret API'leri ve mikroservis mimarileri geliştirmiştir."
+    },
+    {
+      "dosya": "cv_backend_result.json",
+      "rol": "devops_engineer",
+      "skor": 50,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "Docker, RabbitMQ ve Celery gibi araçlarla asenkron görev kuyrukları ve mikroservis altyapıları kurma deneyimine sahiptir."
+    },
+    {
+      "dosya": "cv_backend_result.json",
+      "rol": "database_administrator",
+      "skor": 50,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "PostgreSQL veri tabanı yönetimi ve Redis cache entegrasyonu ile veri depolama ve önbelleğe alma mekanizmaları tasarlamıştır."
+    },
+    {
+      "dosya": "cv_data_scientist_result.json",
+      "rol": "data_scientist",
+      "skor": 90,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "AnalyticsHub bünyesinde Scikit-learn ile churn ve segmentasyon modelleri geliştirmiş olması ve ODTÜ İstatistik mezuniyeti bu rolün gereksinimleriyle doğrudan örtüşmektedir."
+    },
+    {
+      "dosya": "cv_data_scientist_result.json",
+      "rol": "data_analyst",
+      "skor": 85,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "SQL ve Pandas ile büyük veri kümeleri üzerinde EDA yapması ve Tableau/PowerBI ile interaktif dashboardlar geliştirmesi güçlü bir veri analisti profili sunmaktadır."
+    },
+    {
+      "dosya": "cv_data_scientist_result.json",
+      "rol": "bi_analyst",
+      "skor": 80,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "İş birimleri için Tableau ve PowerBI kullanarak interaktif dashboardlar tasarlamış olması ve SQL yetkinliği BI analisti rolü için güçlü bir temel oluşturmaktadır."
+    },
+    {
+      "dosya": "cv_ml_engineer_result.json",
+      "rol": "machine_learning_engineer",
+      "skor": 85,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "Koç Üniversitesi Yapay Zeka yüksek lisans derecesi ve PyTorch, Hugging Face, Triton Server ile model geliştirip canlıya alma deneyimi bu rolün gereksinimlerini doğrudan karşılamaktadır."
+    },
+    {
+      "dosya": "cv_ml_engineer_result.json",
+      "rol": "data_scientist",
+      "skor": 75,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "Python, Scikit-learn ve NLP/görüntü işleme modelleri geliştirme tecrübesi veri bilimi projeleri için güçlü bir temel oluşturmaktadır."
+    },
+    {
+      "dosya": "cv_ml_engineer_result.json",
+      "rol": "data_analyst",
+      "skor": 50,
+      "gercek_top3_te_mi": true,
+      "isim_ok": true,
+      "skor_ok": true,
+      "gerekce_ok": true,
+      "sonuc": "GECTI",
+      "gerekce": "Python ve Scikit-learn ile veri analizi ve modelleme yapabilme yeteneği temel analitik görevler için uygundur, ancak SQL ve BI araçları eksiktir."
+    }
+  ]
+}

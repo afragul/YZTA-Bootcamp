@@ -488,7 +488,7 @@ Frontend, plan üretiminin 10-15 saniye sürdüğünü kullanıcıya açıkça b
 |---|---|---|
 | Skorlama doğruluğu | `scoring/accuracy` | **5/5 (%100)** |
 | Skor kararlılığı | `scoring/consistency` | 1. rol **5/5 sabit**, ort. oynama 4.09 |
-| Gerekçe tutarlılığı | `scoring/reasons` | **15/15** (0 çağrı 💚) |
+| Gerekçe tutarlılığı | `scoring/reasons` | **9/9** (0 çağrı 💚) |
 | Plan kalitesi | `learning/plans` | **4/4 senaryo** |
 | Koç kalitesi | `coach/quality` | **6/6 (%100)** |
 | Rol senkronu | `guards/role_sync` | **22 == 22 == 22** (0 çağrı 💚) |

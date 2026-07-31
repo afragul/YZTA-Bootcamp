@@ -45,6 +45,7 @@ Gemini'ye gitmez, diskten okur. **Yeniden üretmek için o JSON'ları sil.**
 
 - `results/scoring/accuracy.json` — skorlama doğruluğu (beklenen vs gerçek)
 - `results/scoring/consistency.json` — skor kararlılığı (aynı CV N kez)
+- `results/scoring/reasons.json` — gerekçe tutarlılığı (rol adı/skor/gerekçe doluluğu)
 - `results/learning/plans/*.json` — 4 senaryolu örnek öğrenme planları
 
 ## Klasörler
