@@ -15,7 +15,7 @@ kanıtı olarak kullanılmak üzere. Ham çıktılar aynı klasördeki JSON dosy
 |---|---|---|---|---|---|---|
 | 1 | Rol Skorlama | `scoring/accuracy` | 5 örnek CV | Her CV'de doğru rol tepede | 5/5 doğru | ✅ **%100** |
 | 2 | Rol Skorlama | `scoring/consistency` | Aynı CV × 5 koşu | 1. sıradaki rol değişmesin | 5/5 koşuda aynı | ✅ **sabit** |
-| 3 | Rol Skorlama | `scoring/reasons` | Üretilen gerekçeler | Rol adı + skor tutarlı | 15/15 | ✅ **tutarlı** |
+| 3 | Rol Skorlama | `scoring/reasons` | Üretilen gerekçeler | Rol adı + skor tutarlı | 9/9 | ✅ **tutarlı** |
 | 4 | Öğrenme Yolu | `learning/plans` | 4 senaryo | Proje var, Türkçe, sızıntı yok | 4/4 | ✅ **geçti** |
 | 5 | AI Koç | `coach/quality` | 6 prob | Bağlama sadık, uydurma yok | 6/6 | ✅ **%100** |
 | 6 | Senkron | `guards/role_sync` | 3 rol tanımı | 22 == 22 == 22 | eşit | ✅ **senkron** |
@@ -83,8 +83,17 @@ Ham çıktı: `scoring/consistency.json`
 | `score` değeri `role_scores`'taki puanla aynı mı? | ✅ |
 | `reason` boş değil mi? | ✅ |
 
-**15/15 geçti.** AI'ın gerekçe uydurmadığını (ör. olmayan bir rol adı yazmak, farklı bir
-puan söylemek) doğrular. Kayıtlı analiz çıktıları üzerinden çalışır — **kota harcamaz.**
+**9/9 geçti (3 dosya × 3 gerekçe).** AI'ın gerekçe uydurmadığını (ör. olmayan bir rol adı
+yazmak, farklı bir puan söylemek) doğrular. Kayıtlı analiz çıktıları üzerinden çalışır —
+**kota harcamaz.**
+
+> ⚠️ **Kapsam notu:** `test_results/` altındaki 5 çıktıdan **2'si** (`cv_devops_result.json`,
+> `cv_frontend_result.json`) `top_role_reasons` alanını hiç içermiyor — bunlar alan şemaya
+> eklenmeden önce üretilmiş ve yeniden üretilmemiş eski çıktılar. Eval bu iki dosyayı
+> sessizce atlamıyor, ayrıca raporluyor. Kapsamı 15 kontrole çıkarmak için
+> `python run_cv_tests.py` ile yeniden üretilmeleri gerekir (canlı Gemini, 2 çağrı).
+
+Ham çıktı: `scoring/reasons.json`
 
 ---
 
