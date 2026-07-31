@@ -54,6 +54,10 @@ from evals._paths import TEST_RESULTS, RESULTS
 COACH_RESULTS = os.path.join(RESULTS, "coach")
 os.makedirs(COACH_RESULTS, exist_ok=True)
 
+# --tekrar N ile birden fazla kosu yapilirken kosular arasi bekleme.
+# Her kosu 6 cagri yaptigi icin arka arkaya gitmek RPM limitini zorlar.
+KOSULAR_ARASI_BEKLEME_SN = 8
+
 
 # ---------------------------------------------------------------------------
 # OFFLINE (fixture) mod: Google servisi cevap vermiyorken eval'in MANTIGINI
@@ -372,8 +376,13 @@ def main():
         ap = argparse.ArgumentParser(description="AI Kariyer Kocu kalite eval'i")
         ap.add_argument("--offline", action="store_true",
                         help="Gemini'siz calis: kayitli fixture cevaplarla mantik dogrulamasi")
+        ap.add_argument("--tekrar", type=int, default=1, metavar="N",
+                        help="Bateryi N kez kosar (varsayilan 1). temperature=0.6 oldugu "
+                             "icin tek kosu sans olabilir; N>1 kararliligi olcer. "
+                             "MALIYET: N x 6 Gemini cagrisi.")
         args = ap.parse_args()
         offline = args.offline
+        tekrar = max(1, args.tekrar)
         mod = "offline-fixture" if offline else "canli"
 
         # --- DOSYA OKUMA HATA YAKALAMA REVIZYONU ---
@@ -408,40 +417,123 @@ def main():
         print(f"gecerli yuzdeler: {sorted(gecerli_yuzdeler)}")
         print("=" * 78)
 
-        detay = _bateri_calistir(analiz, gecerli_yuzdeler, rol_kw, rank1_rol, offline=offline)
+        # Offline mod AYRI dosyaya yazar. Sebebi: offline cikti fixture'a dayanir
+        # ve sunum kaniti DEGILDIR; ayni dosyaya yazsaydi kotayla uretilmis canli
+        # sonucu bir test kosusu sessizce silebilirdi (bir kez basimiza geldi).
+        cikti = os.path.join(
+            COACH_RESULTS, "quality.offline.json" if offline else "quality.json"
+        )
+        kosular = []
 
-        gecen = sum(1 for d in detay if d["gecti"])
-        toplam = len(detay)
-        uyarilar = []
-        for d in detay:
-            for c in d["kontroller"]:
-                if not c["kritik"] and not c["gecti"]:
-                    uyarilar.append(f"[{d['sonda']}] {c['ad']}: {c['not']}")
+        def _raporu_yaz():
+            """Tamamlanan kosulardan toplu raporu diske yazar.
 
-        print("\n" + "=" * 78)
-        print(f"SONUC: {gecen}/{toplam} sonda KRITIK kontrolleri gecti")
-        if uyarilar:
-            print("YUMUSAK UYARILAR (kural ihlali / gozlem):")
-            for u in uyarilar:
-                print(f"  - {u}")
-        print("=" * 78)
+            Her kosudan SONRA cagrilir: kota ortada biterse tamamlanmis kosular
+            kaybolmasin. Kismi rapor da gecerli bir kanittir, yeter ki kac kosu
+            yapildigi acikca yazsin.
+            """
+            n = len(kosular)
+            toplam_kontrol = sum(len(k["detay"]) for k in kosular)
+            toplam_gecen = sum(k["gecen"] for k in kosular)
 
-        cikti = os.path.join(COACH_RESULTS, "quality.json")
-        with open(cikti, "w", encoding="utf-8") as f:
-            json.dump({
-                "analiz": ANALIZ_DOSYA,
-                "mod": mod,
-                "not": ("OFFLINE FIXTURE - mantik dogrulamasi, sunum kaniti degil."
-                        if offline else
-                        "temperature=0.6, tek kosu. Kesin karar icin bateryi N kez kosun."),
-                "rank1_rol": rank1_rol,
-                "gecerli_yuzdeler": sorted(gecerli_yuzdeler),
-                "sonda_sayisi": toplam,
-                "gecen": gecen,
-                "basari_orani": round(100 * gecen / toplam, 1) if toplam else 0.0,
-                "yumusak_uyarilar": uyarilar,
-                "detay": detay,
-            }, f, indent=2, ensure_ascii=False)
+            # Sonda bazinda kararlilik: her sonda kac kosuda gecti?
+            sonda_bazinda = {}
+            for k in kosular:
+                for d in k["detay"]:
+                    kayit = sonda_bazinda.setdefault(
+                        d["sonda"], {"sonda": d["sonda"], "gecen": 0, "kosu": 0}
+                    )
+                    kayit["kosu"] += 1
+                    kayit["gecen"] += 1 if d["gecti"] else 0
+            for kayit in sonda_bazinda.values():
+                kayit["kararli"] = kayit["gecen"] == kayit["kosu"]
+
+            tum_uyarilar = [u for k in kosular for u in k["yumusak_uyarilar"]]
+
+            if offline:
+                aciklama = "OFFLINE FIXTURE - mantik dogrulamasi, sunum kaniti degil."
+            elif n == 1:
+                aciklama = ("temperature=0.6, tek kosu. Kesin karar icin "
+                            "--tekrar N ile bateryi N kez kosun.")
+            else:
+                aciklama = (f"temperature=0.6, {n} bagimsiz kosu. Her kosu ayri bir "
+                            f"oturumla calistirildi; 'sonda_bazinda' her sondanin kac "
+                            f"kosuda gectigini gosterir.")
+
+            with open(cikti, "w", encoding="utf-8") as f:
+                json.dump({
+                    "analiz": ANALIZ_DOSYA,
+                    "mod": mod,
+                    "not": aciklama,
+                    "rank1_rol": rank1_rol,
+                    "gecerli_yuzdeler": sorted(gecerli_yuzdeler),
+                    "kosu_sayisi": n,
+                    "sonda_sayisi": len(kosular[0]["detay"]) if kosular else 0,
+                    "toplam_kontrol": toplam_kontrol,
+                    "gecen": toplam_gecen,
+                    "basari_orani": (round(100 * toplam_gecen / toplam_kontrol, 1)
+                                     if toplam_kontrol else 0.0),
+                    "tum_sondalar_her_kosuda_gecti": all(
+                        s["kararli"] for s in sonda_bazinda.values()
+                    ) if sonda_bazinda else False,
+                    "sonda_bazinda": list(sonda_bazinda.values()),
+                    "yumusak_uyarilar": tum_uyarilar,
+                    "kosular": kosular,
+                }, f, indent=2, ensure_ascii=False)
+
+        for i in range(1, tekrar + 1):
+            if tekrar > 1:
+                print("\n" + "#" * 78)
+                print(f"# KOSU {i}/{tekrar}")
+                print("#" * 78)
+
+            try:
+                detay = _bateri_calistir(analiz, gecerli_yuzdeler, rol_kw,
+                                         rank1_rol, offline=offline)
+            except Exception:
+                # Kota/ag hatasi: tamamlanan kosulari koru, neden durdugunu soyle.
+                logger.error(f"KOSU {i} TAMAMLANAMADI:\n{traceback.format_exc()}")
+                if kosular:
+                    _raporu_yaz()
+                    print(f"\n!! Kosu {i} basarisiz. Tamamlanan {len(kosular)} kosu "
+                          f"diske yazildi: {cikti}")
+                else:
+                    print("\n!! Hicbir kosu tamamlanamadi, rapor yazilmadi.")
+                sys.exit(1)
+
+            gecen = sum(1 for d in detay if d["gecti"])
+            uyarilar = [f"[kosu{i}][{d['sonda']}] {c['ad']}: {c['not']}"
+                        for d in detay for c in d["kontroller"]
+                        if not c["kritik"] and not c["gecti"]]
+
+            print("\n" + "=" * 78)
+            print(f"KOSU {i} SONUCU: {gecen}/{len(detay)} sonda KRITIK kontrolleri gecti")
+            if uyarilar:
+                print("YUMUSAK UYARILAR (kural ihlali / gozlem):")
+                for u in uyarilar:
+                    print(f"  - {u}")
+            print("=" * 78)
+
+            kosular.append({"kosu": i, "gecen": gecen, "sonda_sayisi": len(detay),
+                            "yumusak_uyarilar": uyarilar, "detay": detay})
+            _raporu_yaz()  # artimli kayit
+
+            # RPM limitine takilmamak icin kosular arasi nefes (son kosudan sonra gereksiz)
+            if i < tekrar and not offline:
+                time.sleep(KOSULAR_ARASI_BEKLEME_SN)
+
+        # --- Toplu ozet ---
+        toplam_kontrol = sum(len(k["detay"]) for k in kosular)
+        toplam_gecen = sum(k["gecen"] for k in kosular)
+        if tekrar > 1:
+            print("\n" + "=" * 78)
+            print(f"TOPLU SONUC: {len(kosular)} kosu x {kosular[0]['sonda_sayisi']} sonda")
+            print(f"             {toplam_gecen}/{toplam_kontrol} kritik kontrol gecti "
+                  f"(%{round(100 * toplam_gecen / toplam_kontrol, 1) if toplam_kontrol else 0})")
+            for k in kosular:
+                print(f"  kosu {k['kosu']}: {k['gecen']}/{k['sonda_sayisi']}")
+            print("=" * 78)
+
         print(f"\nDetayli rapor: {cikti}")
 
     except BaseException as e:

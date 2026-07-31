@@ -24,3 +24,6 @@ test_one.py
 prompt_kontrol.txt
 eval_errors.log
 model_listesi.py
+
+# Offline fixture eval ciktisi (sunum kaniti degil, lokalde uretilir)
+evals/results/coach/quality.offline.json

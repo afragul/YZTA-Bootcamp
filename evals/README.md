@@ -36,7 +36,7 @@ Kota Pasifik saatiyle gece yarısı sıfırlanır.
 | `scoring/accuracy` | **5** 💸 | ML CV'sine ML Engineer mi en yüksek çıkıyor? (doğruluk %) |
 | `scoring/consistency` | **3** 💸 | Aynı CV N kez → skorlar ne kadar oynuyor? |
 | `learning/plans` | **4** 💸 | Plan kalitesi: sıra, kaynak, proje, Türkçe, teknik sızıntı |
-| `coach/quality`      | **6** 💸 | Koç bağlama sadık mı, Türkçe mi, hafıza + uydurma yok mu |
+| `coach/quality`      | **6 × N** 💸 | Koç bağlama sadık mı, Türkçe mi, hafıza + uydurma yok mu (`--tekrar N`) |
 
 `learning/plans` **cache'li**: `results/learning/plans/` altında dosya varsa
 Gemini'ye gitmez, diskten okur. **Yeniden üretmek için o JSON'ları sil.**
