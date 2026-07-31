@@ -248,6 +248,7 @@ Sprint 2 çalışmalarımızın ardından ekibimizin gerçekleştirdiği değerl
   | **Toplam Planlanan** | **100** | |
 
 - **Daily Scrum:** Daily Scrum toplantıları zamansal sebeplerden ötürü WhatsApp üzerinden yürütülmüştür. Örnek konuşma ekran görüntüleri:
+
   <img width="581" height="477" alt="image" src="https://github.com/user-attachments/assets/dd8c4f1d-fa56-4f65-9470-38cc1e885e20" />
   <img width="680" height="102" alt="image" src="https://github.com/user-attachments/assets/a0998a7c-b85e-40b4-924c-eda49f56b695" />
   <img width="1136" height="232" alt="image" src="https://github.com/user-attachments/assets/f58b435c-d3bc-4358-860e-cbd20c4b8843" />
